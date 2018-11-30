@@ -8,23 +8,23 @@ struct node
 };
 vector<node> mp[MAX];
 bool flag[MAX];
-int dis[MAX],ans;
-void prim()
+int dis[MAX];
+int prim()
 {
+	int res=0;
 	node t,to;
 	priority_queue<node> q;
 	mem(dis,0x3f);
 	mem(flag,0);
 	dis[1]=0;
 	q.push(node(1,dis[1]));
-	ans=0;
 	while(!q.empty())
 	{
 		t=q.top();
 		q.pop();
 		if(flag[t.id]) continue;
 		flag[t.id]=1;
-		ans+=dis[t.id];
+		res+=dis[t.id];
 		for(int i=0;i<sz(mp[t.id]);i++)
 		{
 			to=mp[t.id][i];
@@ -35,4 +35,5 @@ void prim()
 			}
 		}
 	}
+	return res;
 }
