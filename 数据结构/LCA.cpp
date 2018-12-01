@@ -2,7 +2,7 @@
 struct node{int to;int w;node(){}node(int _to,int _w):to(_to),w(_w){}};
 int dis[MAX];
 int path[2*MAX],deep[2*MAX],first[MAX],tot;
-int dp[2*MAX][28];
+int dp[2*MAX][26];
 vector<node> mp[MAX];
 void dfs(int x,int pre,int h)
 {
@@ -23,10 +23,7 @@ void dfs(int x,int pre,int h)
 void ST(int n)
 {
 	int i,j,x,y;
-	for(i=1;i<=n;i++)
-	{
-		dp[i][0]=i;
-	}
+	for(i=1;i<=n;i++) dp[i][0]=i;
 	for(j=1;(1<<j)<=n;j++)
 	{
 		for(i=1;i+(1<<j)-1<=n;i++)
@@ -54,10 +51,7 @@ int LCA(int x,int y)
 	pos=query(l,r);
 	return path[pos];
 } 
-int getdis(int a,int b)
-{
-	return dis[a]+dis[b]-2*dis[LCA(a,b)];
-}
+int getdis(int a,int b){return dis[a]+dis[b]-2*dis[LCA(a,b)];}
 void work(int n)
 {
 	for(int i=0;i<=n;i++) dis[i]=0;
