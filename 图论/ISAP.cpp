@@ -1,13 +1,17 @@
 struct ISAP
 {
+	#define type int
+	#define INF INF
 	static const int N=100010;
 	struct node
 	{
-		int from,to,cap,flow;
+		int from,to;
+		type cap,flow;
 		node(){}
-		node(int u,int v,int c,int f):from(u),to(v),cap(c),flow(f){}
+		node(int u,int v,type c,type f):from(u),to(v),cap(c),flow(f){}
 	};
-	int p[N],num[N],cur[N],d[N];
+	int p[N],num[N],cur[N];
+	type d[N];
 	int t,s,n;
 	bool vis[N];
 	vector<int> mp[N];
@@ -23,7 +27,7 @@ struct ISAP
 		}
 		edge.clear();
 	}
-	void add(int from,int to,int cap)
+	void add(int from,int to,type cap)
 	{
 		edge.pb(node(from,to,cap,0));
 		edge.pb(node(to,from,0,0));
@@ -54,9 +58,10 @@ struct ISAP
 		}
 		return vis[s];
 	}
-	int augment()
+	type augment()
 	{
-		int u=t,flow=INF;
+		int u=t;
+		type flow=INF;
 		while(u!=s)
 		{
 			node &e=edge[p[u]];
@@ -72,11 +77,11 @@ struct ISAP
 		}
 		return flow;
 	}
-	int maxflow(int _s,int _t)
+	type maxflow(int _s,int _t)
 	{
 		s=_s;
 		t=_t;
-		int flow=0;
+		type flow=0;
 		bfs();
 		if(d[s]>=n) return 0;
 		for(int i=0;i<n;i++)
@@ -106,7 +111,7 @@ struct ISAP
 			}
 			if(!ok)
 			{
-				int mn=n-1;
+				type mn=n-1;
 				for(int i=0;i<mp[u].size();i++)
 				{
 					node &e=edge[mp[u][i]];
@@ -120,4 +125,6 @@ struct ISAP
 		}
 		return flow;
 	}
+	#undef type
+	#undef INF
 }isap;
