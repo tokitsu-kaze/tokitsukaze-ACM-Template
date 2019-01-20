@@ -1,19 +1,26 @@
-int Next[MAX];
-void getnext(char *b,int *Next,int len)
+/*
+length of min loop
+
+if(len%(len-nex[len])==0) res=len/(len-nex[len]);
+else res=1; 
+
+*/
+int nex[MAX];
+void get_next(char *s,int *nex,int len)
 {
 	int i,j;
 	i=0;
-	j=Next[0]=-1;
+	j=nex[0]=-1;
 	while(i<len)
 	{
-		if(j==-1||b[i]==b[j]) Next[++i]=++j;
-		else j=Next[j];
+		if(j==-1||s[i]==s[j]) nex[++i]=++j;
+		else j=nex[j];
 	}
 }
 int KMP(char *a,char *b,int lena,int lenb)
 {
 	int i,j;
-	getnext(b,Next,lenb);
+	get_next(b,nex,lenb);
 	i=j=0;
 	while(i<lena)
 	{
@@ -22,7 +29,7 @@ int KMP(char *a,char *b,int lena,int lenb)
 			i++;
 			j++;
 		}
-		else j=Next[j];
+		else j=nex[j];
 		if(j==lenb) break;//successful match
 	}
 	return j==-1?0:j;
