@@ -2,7 +2,7 @@ struct Max_Clique
 {
 	static const int N=;
 	vector<int> sol;
-	int el[N][N/30+1],s[N][N/30+1];
+	int mp[N][N/30+1],s[N][N/30+1];
 	int n,ans,dp[N];
 	void init(int _n)
 	{
@@ -10,22 +10,21 @@ struct Max_Clique
 		for(int i=0;i<=n;i++)
 		{
 			dp[i]=0;
-			mem(el[i],0);
+			mem(mp[i],0);
 		}
 	}
-	/* Zero Base */
-	void add_edge(int a,int b)
+	void add_edge(int a,int b) //0~n-1
 	{
 		if(a>b) swap(a,b);
 		if(a==b) return;
-		el[a][b/32]|=(1<<(b%32));
+		mp[a][b/32]|=(1<<(b%32));
 	}
 	bool dfs(int x,int k)
 	{
 		int c=0,d=0;
 		for(int i=0;i<(n+31)/32;i++)
 		{
-			s[k][i]=el[x][i];
+			s[k][i]=mp[x][i];
 			if(k!=1) s[k][i]&=s[k-1][i];
 			c+=__builtin_popcount(s[k][i]);
 		}
@@ -63,7 +62,7 @@ struct Max_Clique
 		}
 		return 0;
 	}
-	int solve()
+	int max_clique()
 	{
 		ans=0;
 		for(int i=n-1;i>=0;i--)
