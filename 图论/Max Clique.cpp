@@ -74,3 +74,7 @@ struct Max_Clique
 		return ans;
 	}
 }mcp;
+/*
+mcp.init(n);
+mcp.add_edge(a,b); a,b: 0~n-1
+*/
