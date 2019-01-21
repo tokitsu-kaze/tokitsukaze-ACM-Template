@@ -4,7 +4,7 @@
 最小路径覆盖的边数=顶点数n-最大匹配数
 最大独立集=最小路径覆盖=顶点数n-最大匹配数
 */
-//1.匈牙利算法 求最大匹配 
+//1.匈牙利算法 求最大匹配 O(n*m)
 vector<int> mp[MAX];
 int link[MAX],used[MAX];
 int dfs(int x)
