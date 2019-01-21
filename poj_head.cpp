@@ -11,6 +11,7 @@
 #include <queue>
 #include <vector>
 #include <set>
+#include <bitset>
 #include <assert.h>
 #pragma comment(linker, "/STACK:1024000000,1024000000")
 #define mem(a,b) memset((a),(b),sizeof(a))
