@@ -1,7 +1,7 @@
 struct Maximum_Clique
 {
 	static const int N=;
-	vector<int> sol;
+	vector<int> sol; // vertex of maximum clique
 	int mp[N][N/30+1],s[N][N/30+1];
 	int n,ans,dp[N];
 	void init(int _n)
