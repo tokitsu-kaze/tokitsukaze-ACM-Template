@@ -18,7 +18,7 @@ struct Bron_Kerbosch
 	}
 	void dfs(bitset<N> now,bitset<N> some,bitset<N> none)
 	{
-		if(some.none()&&none.none())//one max clique
+		if(some.none()&&none.none())//one maximal clique
 		{
 			cnt_clique++;
 			return;
@@ -40,7 +40,7 @@ struct Bron_Kerbosch
 			none[i]=1;
 		}
 	}
-	int count_clique()
+	int count_maximal_clique()
 	{
 		cnt_clique=0;
 		bitset<N> now;
@@ -48,3 +48,8 @@ struct Bron_Kerbosch
 		return cnt_clique;
 	}
 }bk;
+/*
+undirected graph
+bk.init(n);
+bk.add_edge(a,b); a,b: 0~n-1
+*/
