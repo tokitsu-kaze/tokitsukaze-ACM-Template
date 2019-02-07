@@ -12,7 +12,7 @@ struct High_Level_Preflow_Push
 		n=_n;
 		for(int i=0;i<=n;i++) edge[i].clear();
 	}
-	void add(int u,int v,int cap)
+	void add_edge(int u,int v,int cap)
 	{
 		edge[u].push_back(node{v,cap,edge[v].size()});
 		edge[v].push_back(node{u,0,edge[u].size()-1});
