@@ -1,18 +1,21 @@
-//dinic
 struct Dinic
 {
-	static const int N=10010;
+	#define type int
+	#define inf INF
+	static const int N=;
 	struct node
 	{
-		int from,to,cap,flow;
-		node(int u,int v,int c,int f):from(u),to(v),cap(c),flow(f){}
+		int from,to;
+		type cap,flow;
+		node(int u,int v,type c,type f):from(u),to(v),cap(c),flow(f){}
 	};
-	int s,t;
+	int n,s,t;
 	vector<node> edge;
 	vector<int> mp[N];
 	int vis[N],dist[N],id[N];
-	void init(int n)
+	void init(int _n)
 	{
+		n=_n;
 		edge.clear();
 		for(int i=0;i<=n;i++)
 		{
@@ -20,7 +23,7 @@ struct Dinic
 			id[i]=dist[i]=vis[i]=0;
 		}
 	}
-	void add(int from,int to,int cap)
+	void add_edge(int from,int to,type cap)
 	{
 		edge.pb(node(from,to,cap,0));
 		edge.pb(node(to,from,0,0));
@@ -53,10 +56,10 @@ struct Dinic
 		}
 		return vis[t];
 	}
-	int dfs(int x,int a)
+	type dfs(int x,type a)
 	{
-		if(x==t||!a)return a;
-		int flow=0,f;
+		if(x==t||!a) return a;
+		type flow=0,f;
 		for(int &i=id[x];i<mp[x].size();i++)
 		{
 			node &e=edge[mp[x][i]];
@@ -71,16 +74,22 @@ struct Dinic
 		}
 		return flow;
 	}
-	int maxflow(int _s,int _t)
+	type max_flow(int _s,int _t)
 	{
 		s=_s;
 		t=_t;
-		int res=0;
+		type res=0;
 		while(bfs())
 		{
-			mem(id,0);
-			res+=dfs(s,INF);
+			for(int i=0;i<=n;i++) id[i]=0;
+			res+=dfs(s,inf);
 		}
 		return res;
 	}
+	#undef type
+	#undef inf
 }dc; 
+/*
+dc.init(n);
+dc.add_edge(a,b,cap); a,b: 1~n
+*/
