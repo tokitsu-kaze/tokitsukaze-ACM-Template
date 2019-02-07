@@ -80,7 +80,7 @@ template<class T,class... U>void debug_out(const T& h,const U&... t){cout<<" "<<
 #define se second
 #define sz(x) (int)x.size()
 #define all(x) x.begin(),x.end()
-#define sqr((x)) (x)*(x)
+#define sqr(x) (x)*(x)
 using namespace __gnu_cxx;
 typedef long long ll;
 typedef unsigned long long ull;
