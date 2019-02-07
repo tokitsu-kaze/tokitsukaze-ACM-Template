@@ -1,8 +1,8 @@
 struct ISAP
 {
 	#define type int
-	#define INF INF
-	static const int N=100010;
+	#define inf INF
+	static const int N=;
 	struct node
 	{
 		int from,to;
@@ -22,7 +22,7 @@ struct ISAP
 		for(int i=0;i<=n;i++)
 		{
 			mp[i].clear();
-			d[i]=INF;
+			d[i]=inf;
 			vis[i]=num[i]=cur[i]=0;
 		}
 		edge.clear();
@@ -61,7 +61,7 @@ struct ISAP
 	type augment()
 	{
 		int u=t;
-		type flow=INF;
+		type flow=inf;
 		while(u!=s)
 		{
 			node &e=edge[p[u]];
@@ -86,7 +86,7 @@ struct ISAP
 		if(d[s]>=n) return 0;
 		for(int i=0;i<n;i++)
 		{
-			if(d[i]<INF) num[d[i]]++;
+			if(d[i]<inf) num[d[i]]++;
 		}
 		int u=s;
 		while(d[s]<n)
@@ -126,5 +126,5 @@ struct ISAP
 		return flow;
 	}
 	#undef type
-	#undef INF
+	#undef inf
 }isap;
