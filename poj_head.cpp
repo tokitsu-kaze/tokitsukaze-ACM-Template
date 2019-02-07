@@ -20,13 +20,15 @@
 #define fi first
 #define se second
 #define sz(x) (int)x.size()
-#define len(x) (int) x.length()
 #define all(x) x.begin(),x.end()
+#define sqr(x) (x)*(x)
 using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
 typedef pair<int,int> PII;
 typedef pair<ll,ll> PLL;
+typedef pair<int,ll> PIL;
+typedef pair<ll,int> PLI;
 typedef vector<int> VI;
 typedef vector<ll> VL;
 void go();
