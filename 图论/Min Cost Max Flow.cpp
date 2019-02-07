@@ -1,7 +1,8 @@
 struct MCMF
 {
-	#define type int //int->INF	ll->LLINF
-	static const int N=2005;
+	#define type int
+	#define inf INF
+	static const int N=;
 	struct node
 	{
 		int from,to;
@@ -20,7 +21,7 @@ struct MCMF
 		for(int i=0;i<=n;i++) mp[i].clear();
 		edge.clear();
 	}
-	void add(int from,int to,type cap,type cost=0)
+	void add_edge(int from,int to,type cap,type cost=0)
 	{
 		edge.pb(node(from,to,cap,0,cost));
 		edge.pb(node(to,from,0,0,-cost));
@@ -32,10 +33,10 @@ struct MCMF
 	{
 		for(int i=0;i<=n;i++)
 		{
-			d[i]=INF;
+			d[i]=inf;
 			vis[i]=0;
 		}
-		d[s]=0;vis[s]=1;id[s]=0;a[s]=INF;
+		d[s]=0;vis[s]=1;id[s]=0;a[s]=inf;
 		queue<int> q;
 		q.push(s);
 		while(!q.empty())
@@ -60,7 +61,7 @@ struct MCMF
 				}
 			}
 		}
-		if(d[t]==INF) return false;
+		if(d[t]==inf) return false;
 		flow+=a[t];
 		cost+=a[t]*d[t];
 		int x=t;
@@ -81,4 +82,9 @@ struct MCMF
 		return MP(cost,flow);
 	}
 	#undef type
+	#undef inf
 }mcmf;
+/*
+mcmf.init(n);
+mcmf.add_edge(a,b,cap,cost);  a,b: 1~n
+*/
