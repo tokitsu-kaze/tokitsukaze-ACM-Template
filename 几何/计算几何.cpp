@@ -35,15 +35,9 @@ struct Point
 {  
 	double x,y;
 	Point(){}
-	Point(double a,double b)
-	{
-		x=a;
-		y=b;
-	}
-	void input()
-	{
-		scanf("%lf%lf",&x,&y);
-	}
+	Point(double a,double b) :x(a),y(b){}
+	void in(){scanf("%lf%lf",&x,&y);}
+	void rd(){read(x,y);}
 };
 
 typedef Point Vector;
@@ -66,7 +60,7 @@ Vector Normal(Vector x){return Point(-x.y,x.x)/length(x);} //垂直法向量
 Vector Rotate(Vector a,double rad){return Vector(a.x*cos(rad)-a.y*sin(rad),a.x*sin(rad)+a.y*cos(rad));}
 double calarea(Point c,Point b,Point a){return cross(b-a,c-a);}//三个点求三角形面积 
 Vector vecunit(Vector x){return x/length(x);}//单位向量
-double TwoVectorAngle(Vector a,Vector b){return acos(dot(a,b)/length(a)/length(b));}//两个向量夹角 
+double TwoVectorAngle(Vector a,Vector b){return acosl(dot(a,b)/length(a)/length(b));}//两个向量夹角 
 double VectorAngle(Vector v){return atan2(v.y,v.x);}
 /* 
 向量叉积 
