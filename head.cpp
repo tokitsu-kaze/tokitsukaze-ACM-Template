@@ -86,6 +86,8 @@ typedef long long ll;
 typedef unsigned long long ull;
 typedef pair<int,int> PII;
 typedef pair<ll,ll> PLL;
+typedef pair<int,ll> PIL;
+typedef pair<ll,int> PLI;
 typedef vector<int> VI;
 typedef vector<ll> VL;
 void go();
