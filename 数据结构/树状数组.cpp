@@ -70,3 +70,40 @@ struct Fenwick_Tree
 	}
 	#undef type
 }tr;
+
+//Çø¼ä
+struct Fenwick_Tree
+{
+	#define type int
+	type bit[MAX][2];
+	int n;
+	void init(int _n){n=_n;mem(bit,0);}
+	int lowbit(int x){return x&(-x);}
+	void insert(int x,type v)
+	{
+		for(int i=x;i<=n;i+=lowbit(i))
+		{
+			bit[i][0]+=v;
+			bit[i][1]+=v*(x-1);
+		}
+	}
+	void upd(int l,int r,type v)
+	{
+		insert(l,v);
+		insert(r+1,-v);
+	}
+	type get(int x)
+	{
+		type res=0;
+		for(int i=x;i;i-=lowbit(i))
+		{
+			res+=x*bit[i][0]-bit[i][1];
+		}
+		return res;
+	}
+	type ask(int l,int r)
+	{
+		return get(r)-get(l-1);
+	}
+	#undef type
+}tr; 
