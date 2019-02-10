@@ -1,4 +1,3 @@
-//¿ìËÙÄ£ 
 typedef long long i64;
 typedef unsigned long long u64;
 typedef __uint128_t u128;
@@ -38,6 +37,6 @@ struct FastMod
 	}
 	FastMod operator*(FastMod rhs)const {return FastMod(*this)*=rhs;}
 	u64 get()const {return reduce(x);}
-}a[MAX];
+};
 u64 FastMod::mod,FastMod::inv,FastMod::r2;
 // FastMod::set_mod(p);
