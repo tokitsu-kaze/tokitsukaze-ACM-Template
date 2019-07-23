@@ -1,16 +1,15 @@
-//线性基
 struct Base
 {
 	#define type ll
 	#define mx 60
-	type d[mx+3],p[mx+3],cnt;
-	Base()
+	type d[mx+3];
+	int p[mx+3],cnt;
+	void init()
 	{
 		memset(d,0,sizeof(d));
-		memset(p,0,sizeof(p));
 		cnt=0;
 	}
-	bool insert(type x)
+	bool insert(type x,int pos=0)
 	{
 		int i;
 		for(i=mx;~i;i--)
@@ -20,30 +19,55 @@ struct Base
 			{
 				cnt++;
 				d[i]=x;
+				p[i]=pos;
 				break;
+			}
+			if(p[i]<pos)
+			{
+				swap(d[i],x);
+				swap(p[i],pos);
 			}
 			x^=d[i];
 		}
 		return x>0;
 	}
-	type query_max()
+	type query_max(int pos=-1)
 	{
 		int i;
 		type res=0;
 		for(i=mx;~i;i--)
 		{
-			if((res^d[i])>res) res^=d[i];
+			if(p[i]>=pos)
+			{
+				if((res^d[i])>res) res^=d[i];
+			}
 		}
 		return res;
 	}
-	type query_min()
+	type query_min(int pos=-1)
 	{
 		for(int i=0;i<=mx;i++)
 		{
-			if(d[i]) return d[i];
+			if(d[i]&&p[i]>=pos) return d[i];
 		}
 		return 0;
 	}
+	void merge(Base x)
+	{
+		if(cnt<x.cnt)
+		{
+			swap(cnt,x.cnt);
+			swap(d,x.d);
+			swap(p,x.p);
+		}
+		for(int i=mx;~i;i--)
+		{
+			if(x.d[i]) insert(x.d[i]);
+		}
+	}
+	//kth min
+	//first use rebuild()
+	type tp[mx+3];
 	void rebuild()
 	{
 		int i,j;
@@ -57,24 +81,17 @@ struct Base
 		}
 		for(i=0;i<=mx;i++)
 		{
-			if(d[i]) p[cnt++]=d[i];
+			if(d[i]) tp[cnt++]=d[i];
 		}
 	}
-	type kth(type k)//能异或出的第k小的数 使用前先调用rebuild 
+	type kth(type k)
 	{
 		type res=0;
 		if(k>=(1LL<<cnt)) return -1;
 		for(int i=mx;~i;i--)
 		{
-			if(k&(1LL<<i)) res^=p[i];
+			if(k&(1LL<<i)) res^=tp[i];
 		}
 		return res;
-	}
-	void merge(Base x)
-	{
-		for(int i=mx;~i;i--)
-		{
-			if(x.d[i]) insert(x.d[i]);
-		}
 	}
 };
