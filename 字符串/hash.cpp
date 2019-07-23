@@ -1,6 +1,3 @@
-//seed通常rand()一个 
-//p通常用1e9+7 或者1e9+9
-//ull比mod快 
 struct hash_table
 {
 	ll seed,p;
