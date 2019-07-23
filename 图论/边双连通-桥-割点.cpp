@@ -69,14 +69,14 @@ namespace Tarjan
 	{
 		int i,t;
 		for(i=1;i<=n;i++) e[i].clear();
-	    for(i=1;i<=n;i++)
+		for(i=1;i<=n;i++)
 		{
-	        t=fa[i];
-	        if(belong[i]!=belong[t])
+			t=fa[i];
+			if(belong[i]!=belong[t])
 			{
-	            e[belong[i]].pb(belong[t]);
-	            e[belong[t]].pb(belong[i]);
-	        }
-	    }
+				e[belong[i]].pb(belong[t]);
+				e[belong[t]].pb(belong[i]);
+			}
+		}
 	}
 }
