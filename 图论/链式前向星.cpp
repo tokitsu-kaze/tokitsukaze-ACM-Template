@@ -4,7 +4,7 @@ int head[MAX],tot;
 struct node
 {
 	int to,v,next;
-}mp[MAX];
+}mp[MAX<<1];
 void init()
 {
 	mem(head,-1);
