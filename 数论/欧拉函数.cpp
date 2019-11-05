@@ -1,6 +1,6 @@
 //欧拉函数 (<=n且与n互质的数的和：n*phi[n]/2)
 //1.直接求某个数的欧拉函数 O(sqrt(n))
-int Euler(int n)
+int euler(int n)
 {
 	int ans,i;
 	ans=n;
@@ -16,30 +16,30 @@ int Euler(int n)
 	return ans;
 }
 //2.线性筛 O(n)
-int prime[MAX],phi[MAX],cnt;
+int prime[MAX],phi[MAX],tot;
 bool flag[MAX];
-void Euler(int n)  
+void init(int n)  
 {  
 	int i,j,k;
-	cnt=0;  
+	tot=0;  
 	mem(flag,0);
 	phi[0]=0;
 	phi[1]=1;
-	for(int i=2;i<=n;i++)  
+	for(i=2;i<=n;i++)  
 	{  
 		if(!flag[i])  
 		{  
-			prime[cnt++]=i;  
+			prime[tot++]=i;  
 			phi[i]=i-1;
 		}  
-		for(int j=0;j<cnt&&i*prime[j]<=n;j++)  
+		for(j=0;j<tot&&i*prime[j]<=n;j++)  
 		{  
 			k=i*prime[j];
 			flag[k]=1;
 			if(i%prime[j]==0)
 			{  
 				phi[k]=phi[i]*prime[j];
-				break;  
+				break;
 			}
 			else phi[k]=phi[i]*(prime[j]-1);
 		}

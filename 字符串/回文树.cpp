@@ -1,10 +1,10 @@
 struct Palindrome_Tree
 {
-	int len[MAX],next[MAX][26],fail[MAX],last,s[MAX],tot,n;
+	int len[MAX],nex[MAX][26],fail[MAX],last,s[MAX],tot,n;
 	int cnt[MAX],deep[MAX];
 	int newnode(int l)
 	{
-		mem(next[tot],0);
+		mem(nex[tot],0);
 		fail[tot]=0; 
 		deep[tot]=cnt[tot]=0;
 		len[tot]=l;
@@ -28,18 +28,23 @@ struct Palindrome_Tree
 		int id,now;
 		s[++n]=t;
 		now=get_fail(last);
-		if(!next[now][t])
+		if(!nex[now][t])
 		{
 			id=newnode(len[now]+2);
-			fail[id]=next[get_fail(fail[now])][t];
+			fail[id]=nex[get_fail(fail[now])][t];
 			deep[id]=deep[fail[id]]+1;
-			next[now][t]=id;
+			nex[now][t]=id;
 		}
-		last=next[now][t];
+		last=nex[now][t];
 		cnt[last]++;
 	}
 	void count()
 	{
-		for(int i=tot-1;~i;i--) cnt[fail[i]]+=cnt[i];
+		for(int i=tot-1;i;i--) cnt[fail[i]]+=cnt[i];
+	}
+	void build_tree(VI mp[])// root is 0
+	{
+		for(int i=0;i<=tot+1;i++) mp[i].clear();
+		for(int i=1;i<tot;i++) mp[fail[i]].pb(i);
 	}
 }pam; //pam.init(); 

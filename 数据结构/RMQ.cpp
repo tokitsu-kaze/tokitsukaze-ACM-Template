@@ -1,66 +1,57 @@
 //一维RMQ
-//MAX=1e6时 第二维开22 内存(int型)占10w 
-int v[MAX],maxx[MAX][22],minn[MAX][22];
-void RMQ(int n)
+struct RMQ
 {
-	int i,j;
-	for(i=1;i<=n;i++)
+	#define type int
+	type v[MAX];
+	int pmax(int a,int b){return v[a]>v[b]?a:b;}
+	int pmin(int a,int b){return v[a]<v[b]?a:b;}
+	int lg[MAX],bin[22];
+	int pmx[MAX][22],pmn[MAX][22];
+	type mx[MAX][22],mn[MAX][22];
+	void work(int n,type *a)
 	{
-		maxx[i][0]=minn[i][0]=v[i];//下标rmq 初始化赋值成i 
+		int i,j;
+		for(i=bin[0]=1;1<<(i-1)<=n;i++) bin[i]=(bin[i-1]<<1);
+		for(i=2,lg[1]=0;i<=n;i++) lg[i]=lg[i>>1]+1;
+		for(i=1;i<=n;i++)
+		{
+			v[i]=a[i];
+			mx[i][0]=mn[i][0]=v[i];
+			pmx[i][0]=pmn[i][0]=i;
+		}
 		for(j=1;1<<(j-1)<=n;j++)
 		{
-			maxx[i][j]=0;
-			minn[i][j]=INF;
+			for(i=1;i+bin[j]-1<=n;i++)
+			{
+				mx[i][j]=max(mx[i][j-1],mx[i+bin[j-1]][j-1]);
+				mn[i][j]=min(mn[i][j-1],mn[i+bin[j-1]][j-1]);
+				pmx[i][j]=pmax(pmx[i][j-1],pmx[i+bin[j-1]][j-1]);
+				pmn[i][j]=pmin(pmn[i][j-1],pmn[i+bin[j-1]][j-1]);
+			}
 		}
 	}
-	for(j=1;1<<(j-1)<=n;j++)
+	type ask_max(int l,int r)
 	{
-		for(i=1;i+(1<<j)-1<=n;i++)
-		{
-			int t=1<<(j-1);
-			maxx[i][j]=max(maxx[i][j-1],maxx[i+t][j-1]);
-			minn[i][j]=min(minn[i][j-1],minn[i+t][j-1]);
-		}
+		int t=lg[r-l+1];
+		return max(mx[l][t],mx[r-bin[t]+1][t]);
 	}
-}
-int query(int l,int r)
-{
-	int j=(int)(log10(r-l+1)/log10(2))+1;
-	int i=r-(1<<(j-1))+1;
-	return max(maxx[l][j-1],maxx[i][j-1]);
-//	return min(minn[l][j-1],minn[i][j-1]);
-} 
-
-
-
-//下标RMQ
-int v[MAX],maxx[MAX][22],minn[MAX][22];
-int pmax(int a,int b){return v[a]>v[b]?a:b;}
-int pmin(int a,int b){return v[a]<v[b]?a:b;}
-void RMQ(int n)
-{
-	int i,j;
-	for(i=1;i<=n;i++)
+	type ask_min(int l,int r)
 	{
-		maxx[i][0]=minn[i][0]=i;
+		int t=lg[r-l+1];
+		return min(mn[l][t],mn[r-bin[t]+1][t]);
 	}
-	for(j=1;1<<(j-1)<=n;j++)
+	type ask_pmax(int l,int r)
 	{
-		for(i=1;i+(1<<j)-1<=n;i++)
-		{
-			int t=1<<(j-1);
-			maxx[i][j]=pmax(maxx[i][j-1],maxx[i+t][j-1]);
-			minn[i][j]=pmin(minn[i][j-1],minn[i+t][j-1]);
-		}
+		int t=lg[r-l+1];
+		return pmax(pmx[l][t],pmx[r-bin[t]+1][t]);
 	}
-}
-int query(int l,int r)
-{
-	int j=(int)(log10(r-l+1)/log10(2))+1;
-	int i=r-(1<<(j-1))+1;
-	return pmax(maxx[l][j-1],maxx[i][j-1]);
-//	return pmin(minn[l][j-1],minn[i][j-1]);
-} 
+	type ask_pmin(int l,int r)
+	{
+		int t=lg[r-l+1];
+		return pmin(pmn[l][t],pmn[r-bin[t]+1][t]);
+	}
+	#undef type
+}rmq;
 
 
 

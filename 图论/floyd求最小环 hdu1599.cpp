@@ -1,5 +1,5 @@
-int mp[111][111],dis[111][111],ans,n;
-void floyd()
+int mp[111][111],dis[111][111],ans;
+void floyd(int n)
 {
 	int i,j,k;
 	for(k=1;k<=n;k++)
@@ -26,7 +26,7 @@ void floyd()
 }
 int main()
 {
-	int m,i,a,b,w;
+	int m,i,a,b,w,n;
 	while(~scanf("%d%d",&n,&m))
 	{
 		mem(mp,0x3f);
@@ -37,7 +37,7 @@ int main()
 			scanf("%d%d%d",&a,&b,&w);
 			mp[a][b]=mp[b][a]=dis[a][b]=dis[b][a]=min(mp[a][b],w);
 		}
-		floyd();
+		floyd(n);
 		if(ans==INF) puts("It's impossible.");
 		else printf("%d\n",ans);
 	}

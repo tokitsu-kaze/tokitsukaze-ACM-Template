@@ -1,36 +1,36 @@
-/*
-length of min loop
-
-if(len%(len-nex[len])==0) res=len/(len-nex[len]);
-else res=1; 
-
-*/
-int nex[MAX];
-void get_next(char *s,int *nex,int len)
+//length of min loop  len-nex[len]
+struct KMP
 {
-	int i,j;
-	i=0;
-	j=nex[0]=-1;
-	while(i<len)
+	int nex[MAX],len;
+	char s[MAX];
+	void get_next()
 	{
-		if(j==-1||s[i]==s[j]) nex[++i]=++j;
-		else j=nex[j];
-	}
-}
-int KMP(char *a,char *b,int lena,int lenb)
-{
-	int i,j;
-	get_next(b,nex,lenb);
-	i=j=0;
-	while(i<lena)
-	{
-		if(j==-1||a[i]==b[j])
+		int i,j;
+		i=0;
+		j=nex[0]=-1;
+		while(i<len)
 		{
-			i++;
-			j++;
+			if(j==-1||s[i]==s[j]) nex[++i]=++j;
+			else j=nex[j];
 		}
-		else j=nex[j];
-		if(j==lenb) break;//successful match
 	}
-	return j==-1?0:j;
-}
+	void init(char *_s)
+	{
+		len=strlen(_s);
+		for(int i=0;i<len;i++) s[i]=_s[i];
+		s[len]='\0';
+		get_next();
+	}
+	int match(char *a)//s is a substring of a
+	{
+		int n,i,j;
+		n=strlen(a);
+		for(i=j=0;i<n;i++)
+		{
+			if(j==-1||a[i]==s[j]) j++;
+			else j=nex[j];
+			if(j==len) return 1;
+		}
+		return 0;
+	}
+}kmp;// kmp.init(s); s[0..len-1]

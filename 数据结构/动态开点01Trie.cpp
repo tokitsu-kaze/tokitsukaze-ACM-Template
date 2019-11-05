@@ -1,63 +1,75 @@
-/*
-数组大小(x+1)*MAX:插入的值的最大值<2^x<MAX
-Trie.Insert(1,x,v);
-Trie.Delete(1,x,v);
-Trie.query(1,x,v); 
-Trie.clear(1,x);
-*/
 struct Trie
 {
-	int root,tot,ls[MAX*31],rs[MAX*31],val[MAX*31],cnt[MAX*31];
-	void init()
-	{
-		root=0;
-		ls[0]=rs[0]=0;
-		val[0]=cnt[0]=0; 
-		tot=1;
-	}
+	#define type int
+	static const int mx=30;
+	int root,tot,nex[MAX*mx][2];
+	type cnt[MAX*mx];
 	int newnode()
 	{
-		ls[tot]=rs[tot]=0;
-		val[tot]=0;
+		mem(nex[tot],0);
+		cnt[tot]=0;
 		return tot++;
 	}
-	void Insert(int &x,int pos,int v)
+	void init()
 	{
-		if(!x) x=newnode();
-		if(pos<0)
-		{
-			cnt[x]++;
-			val[x]=v;
-			return;
-		}
-		if((v>>pos)&1) Insert(rs[x],pos-1,v);
-		else Insert(ls[x],pos-1,v);
-		cnt[x]=cnt[ls[x]]+cnt[rs[x]];
+		mem(nex[0],0);
+		cnt[0]=0;
+		tot=1;
+		root=newnode();
 	}
-	void Delete(int x,int pos,int v)
+	void upd(type x,type v)
 	{
-		if(pos<0)
+		int id,t,i;
+		id=root;
+		for(i=mx;~i;i--)
 		{
-			cnt[x]--;
-			return;
-		}
-		if((v>>pos)&1) Delete(rs[x],pos-1,v);
-		else Delete(ls[x],pos-1,v);
-		cnt[x]=cnt[ls[x]]+cnt[rs[x]];
-	}
-	int query(int x,int pos,int v)
-	{
-		if(pos<0) return val[x];
-		int temp=(v>>pos)&1;
-		if(temp)
-		{
-			if(cnt[rs[x]]) return query(rs[x],pos-1,v);
-			else return query(ls[x],pos-1,v);
-		}
-		else
-		{
-			if(cnt[ls[x]]) return query(ls[x],pos-1,v);
-			else return query(rs[x],pos-1,v);
+			t=(x>>i)&1;
+			if(!nex[id][t]) nex[id][t]=newnode();
+			id=nex[id][t];
+			cnt[id]+=v;
 		}
 	}
+	type count(int x)
+	{
+		int id,t,i;
+		id=root;
+		for(i=mx;~i;i--)
+		{
+			t=(x>>i)&1;
+			if(!nex[id][t]) return 0;
+			id=nex[id][t];
+		}
+		return cnt[id];
+	}
+	type ask_max(type x)
+	{
+		int id,t,i;
+		type res;
+		id=root;
+		res=0;
+		for(i=mx;~i;i--)
+		{
+			t=(x>>i)&1;
+			if(nex[id][t^1]&&cnt[nex[id][t^1]]) t^=1;
+			res|=(t<<i);
+			id=nex[id][t];
+		}
+		return res;
+	}
+	type ask_min(type x)
+	{
+		int id,t,i;
+		type res;
+		id=root;
+		res=0;
+		for(i=mx;~i;i--)
+		{
+			t=(x>>i)&1;
+			if(!nex[id][t]||!cnt[nex[id][t]]) t^=1;
+			res|=(t<<i);
+			id=nex[id][t];
+		}
+		return res;
+	}
+	#undef type
 }tr;

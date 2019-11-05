@@ -20,7 +20,7 @@ struct exKMP
 			}
 		}
 	}
-	void work(char *a,char *b,int *ex)
+	void work(char *a,char *b,int *ex)// a,b 0~len-1
 	{
 		int i=0,j,pos,lena,lenb;
 		getnext(b);

@@ -32,6 +32,7 @@ typedef pair<int,ll> PIL;
 typedef pair<ll,int> PLI;
 typedef vector<int> VI;
 typedef vector<ll> VL;
+typedef vector<PII > VPII;
 void go();
 int main(){
 	#ifdef tokitsukaze

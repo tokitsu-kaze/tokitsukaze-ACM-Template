@@ -1,15 +1,12 @@
 struct AC_Automaton
 {
 	static const int K=26;//may need change
-	int next[MAX][K],fail[MAX],cnt[MAX],last[MAX];
+	int nex[MAX][K],fail[MAX],cnt[MAX],last[MAX];
 	int root,tot;
-	inline int getid(char c)//may need change
-	{
-		return c-'a';
-	}
+	inline int getid(char c){return c-'a';}//may need change
 	int newnode()
 	{
-		mem(next[tot],0);
+		mem(nex[tot],0);
 		fail[tot]=0;
 		cnt[tot]=0;
 		return tot++;
@@ -27,18 +24,18 @@ struct AC_Automaton
 		for(i=0;i<len;i++)
 		{
 			int t=getid(s[i]);
-			if(!next[now][t]) next[now][t]=newnode();
-			now=next[now][t];
+			if(!nex[now][t]) nex[now][t]=newnode();
+			now=nex[now][t];
 		}
 		cnt[now]++;
 	}
-	void setfail()
+	void work()
 	{
 		int i,now;
 		queue<int>q;
 		for(i=0;i<K;i++)
 		{
-			if(next[root][i]) q.push(next[root][i]);
+			if(nex[root][i]) q.push(nex[root][i]);
 		}
 		while(!q.empty())
 		{
@@ -53,12 +50,12 @@ struct AC_Automaton
 			*/
 			for(i=0;i<K;i++)
 			{
-				if(next[now][i])
+				if(nex[now][i])
 				{
-					fail[next[now][i]]=next[fail[now]][i];
-					q.push(next[now][i]);
+					fail[nex[now][i]]=nex[fail[now]][i];
+					q.push(nex[now][i]);
 				}
-				else next[now][i]=next[fail[now]][i];
+				else nex[now][i]=nex[fail[now]][i];
 			}
 		}
 	}
@@ -71,7 +68,7 @@ struct AC_Automaton
 		for(i=0;i<len;i++)
 		{
 			int t=getid(s[i]);
-			now=next[now][t];
+			now=nex[now][t];
 			int tmp=now;
 			while(tmp&&cnt[tmp]!=-1)
 			{

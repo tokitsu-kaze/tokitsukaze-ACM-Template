@@ -24,8 +24,9 @@ struct Fenwick_Tree
 		}
 		return res;
 	}
-	type query(int l,int r)
+	type ask(int l,int r)
 	{
+		if(l-1<=0) return get(r);
 		return get(r)-get(l-1);
 	}
 	#undef type
@@ -62,7 +63,7 @@ struct Fenwick_Tree
 		}
 		return res;
 	}
-	type query(int x1,int x2,int y1,int y2)
+	type ask(int x1,int x2,int y1,int y2)
 	{
 		x1--;
 		y1--;

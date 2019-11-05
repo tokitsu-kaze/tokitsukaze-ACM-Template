@@ -5,7 +5,7 @@ namespace fastIO{
 	#define OUT_SIZE 100000
 	//fread->read
 	bool IOerror=0;
-//	inline char nc(){char ch=getchar();if(ch==-1)IOerror=1;return ch;} 
+	//inline char nc(){char ch=getchar();if(ch==-1)IOerror=1;return ch;} 
 	inline char nc(){
 		static char buf[BUF_SIZE],*p1=buf+BUF_SIZE,*pend=buf+BUF_SIZE;
 		if(p1==pend){
@@ -90,6 +90,7 @@ typedef pair<int,ll> PIL;
 typedef pair<ll,int> PLI;
 typedef vector<int> VI;
 typedef vector<ll> VL;
+typedef vector<PII > VPII;
 /************* define end  *************/
 void read(int *x,int l,int r){for(int i=l;i<=r;i++) read(x[i]);}
 void read(ll *x,int l,int r){for(int i=l;i<=r;i++) read(x[i]);}

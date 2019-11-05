@@ -111,10 +111,7 @@ struct Line
 
 //点p在线段上
 //线段包含端点时改成<=  
-bool OnSeg(Point p,Point p1,Point p2)
-{  
-	return sgn(cross(p1-p,p2-p))==0&&sgn(dot(p1-p,p2-p))<0;
-}
+bool OnSeg(Point p,Point p1,Point p2){return sgn(cross(p1-p,p2-p))==0&&sgn(dot(p1-p,p2-p))<0;}
 
 //点A在射线L(p,v)上，不含端点
 int onRay(Point a, Line l)
