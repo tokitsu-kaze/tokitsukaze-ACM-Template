@@ -1,13 +1,37 @@
-//最长上升子序列(>)nlogn 返回长度 
-//最长下降子序列(<) 把原数组取负数 
-int a[MAX],b[MAX];
-int LIS(int n)
+VI LIS(VI a)
 {
-	int i;
-	mem(b,0x3f);
+	int i,pos,len,mx,n;
+	n=sz(a);
+	VI b(n),tmp(n),res;
 	for(i=0;i<n;i++)
 	{
-		*lower_bound(b,b+n,a[i])=a[i];//最长不下降子序列(>=)改为upper_bound 
+		//LIS: INF
+		//LDS: -INF
+		b[i]=INF;
 	}
-	return lower_bound(b,b+n,INF)-b;
+	for(i=0;i<n;i++)
+	{
+		//    strict: lower_bound
+		//not strict: upper_bound
+		pos=lower_bound(all(b),a[i])-b.begin();
+		b[pos]=a[i];
+		tmp[i]=pos;
+	}
+	len=lower_bound(all(b),INF)-b.begin();
+	mx=INF;
+	for(i=n-1;~i;i--)
+	{
+		if(!len) break;
+		//    strict LIS: >
+		//not strict LIS: >=
+		//    strict LDS: <
+		//not strict LDS: <=
+		if(tmp[i]+1==len&&mx>a[i])
+		{
+			len--;
+			res.pb(i);
+			mx=a[i];
+		}
+	}
+	return res;
 }
