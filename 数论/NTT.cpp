@@ -74,6 +74,6 @@ namespace NTT
 		res.resize(len);
 		for(i=0;i<len;i++) res[i]=1ll*a[i]*b[i]%p;
 		ntt(res,len,1);
-		res.resize(l1);
+		res.resize(l1+l2-1);
 	}
 };//NTT::getwn();
