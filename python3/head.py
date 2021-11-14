@@ -52,10 +52,15 @@ input = lambda: sys.stdin.readline().rstrip("\r\n")
 def readline_int(): return map(int,input().split(' '))
 def init_array_1d(n,val): return [val for i in range(n+1)]
 def init_array_2d(n,m,val): return [[val for i in range(m+1)] for j in range(n+1)]
+def __gcd(a,b):
+    if b==0: return a
+    else: return __gcd(b,a%b)
 def reverse(s): return s[::-1]
 from collections import deque
 from collections import defaultdict
 from functools import cmp_to_key
+import sys
+sys.setrecursionlimit(200010) #扩栈
 INF=0x3f3f3f3f
 LLINF=0x3f3f3f3f3f3f3f3f
 MAX=int(1e6)+10
@@ -64,7 +69,9 @@ MAX=int(1e6)+10
 
 
 def go():
-    pass
+
+    
+
 
 
 
