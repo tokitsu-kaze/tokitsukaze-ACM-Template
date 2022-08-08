@@ -6,7 +6,7 @@ namespace NTT
 	int pow2(int a,int b)
 	{
 		int res=1;
-		while(b)
+		while(b>0)
 		{
 			if(b&1) res=1ll*res*a%p;
 			a=1ll*a*a%p;
@@ -16,6 +16,7 @@ namespace NTT
 	}
 	void getwn()
 	{
+		assert(p==mod);
 		for(int i=0;i<25;i++) wn[i]=pow2(g,(p-1)/(1LL<<i));
 	}
 	void ntt(VI &a,int len,int f)
@@ -75,5 +76,21 @@ namespace NTT
 		for(i=0;i<len;i++) res[i]=1ll*a[i]*b[i]%p;
 		ntt(res,len,1);
 		res.resize(l1+l2-1);
+	}
+	VI merge_generating_functions(vector<VI > &dp)
+	{
+		int i,j;
+		priority_queue<PII > q;
+		for(i=0;i<sz(dp);i++) q.push(MP(-sz(dp[i]),i));
+		while(sz(q)>1)
+		{
+			i=q.top().se;
+			q.pop();
+			j=q.top().se;
+			q.pop();
+			mul(dp[i],dp[i],dp[j]);
+			q.push(MP(-sz(dp[i]),i));
+		}
+		return dp[q.top().se];
 	}
 };//NTT::getwn();
