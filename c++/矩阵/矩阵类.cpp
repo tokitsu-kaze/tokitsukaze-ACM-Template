@@ -1,12 +1,14 @@
 const ll mod=1e9+7;
 struct Matrix
 {
-	ll c[6][6],n;
+	static const int N=;
+	int n;
+	ll c[N][N];
 	Matrix(){}
-	Matrix(ll a,ll v=0)
+	Matrix(int _n,ll v=0)
 	{
 		int i,j;
-		n=a;
+		n=_n;
 		for(i=0;i<n;i++)
 		{
 			for(j=0;j<n;j++)
@@ -15,6 +17,7 @@ struct Matrix
 			}
 		}
 	}
+	void init_identity_matrix() {for(int i=0;i<n;i++) c[i][i]=1;}
 	Matrix operator *(const Matrix &b)const
 	{
 		int i,j,k;
@@ -37,10 +40,7 @@ struct Matrix
 Matrix matpow2(Matrix a,ll b)
 {
 	Matrix res(a.n);
-	for(int i=0;i<a.n;i++)
-	{
-		res.c[i][i]=1;
-	}
+	res.init_identity_matrix();
 	while(b)
 	{
 		if(b&1) res=res*a;
