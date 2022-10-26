@@ -1,3 +1,4 @@
 <hash> <hash.cpp> <> <>
+<good_hash_prime> <good_hash_prime.cpp> <> <>
 <hash\_map> <hash_map.cpp> <> <>
 <BKDRHash> <BKDRHash.cpp> <> <>
