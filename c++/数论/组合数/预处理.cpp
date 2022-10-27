@@ -23,3 +23,8 @@ ll C(ll n,ll m)
 	if(m>n||m<0||n<0) return 0;
 	return fac[n]*invfac[m]%mod*invfac[n-m]%mod;
 }
+ll A(ll n,ll m)
+{
+	if(m>n||m<0||n<0) return 0;
+	return fac[n]*invfac[n-m]%mod;
+}
