@@ -75,6 +75,7 @@ struct MCMF_dij
 		}
 		return true;
 	}
+	//O(m*logm*max_flow)
 	pair<type,type> mincost_maxflow(int _s,int _t)
 	{
 		type flow=0,cost=0;
