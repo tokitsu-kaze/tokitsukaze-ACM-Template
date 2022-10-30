@@ -39,8 +39,7 @@ struct MCMF_dij
 		{
 			PTI x=q.top();
 			q.pop();
-			if(x.fi!=dis[x.se]) continue;
-			if(x.se==t) break;
+			if(x.fi>dis[x.se]) continue;
 			for(int i=0;i<mp[x.se].size();i++)
 			{
 				node& e=edge[mp[x.se][i]];
