@@ -5,8 +5,8 @@ struct Dijkstra
 	#define PTI pair<type,int>
 	static const int N=MAX;
 	vector<pair<int,type> > mp[N];
-	type dist[N];
-	int n;
+	type dis[N];
+	int n,vis[N];
 	void init(int _n)
 	{
 		n=_n;
@@ -18,22 +18,27 @@ struct Dijkstra
 		int i,to;
 		type w;
 		priority_queue<PTI ,vector<PTI>,greater<PTI> > q;
-		for(i=0;i<=n;i++) dist[i]=inf;
-		dist[s]=0;
+		for(i=0;i<=n;i++)
+		{
+			dis[i]=inf;
+			vis[i]=0;
+		}
+		dis[s]=0;
 		q.push(MP(type(0),s));
 		while(!q.empty())
 		{
 			PTI t=q.top();
 			q.pop();
-			if(t.fi>dist[t.se]) continue;
+			if(vis[t.se]) continue;
+			vis[t.se]=1;
 			for(auto it:mp[t.se])
 			{
 				to=it.fi;
 				w=it.se;
-				if(dist[to]>dist[t.se]+w)
+				if(dis[to]>dis[t.se]+w)
 				{
-					dist[to]=dist[t.se]+w;
-					q.push(MP(dist[to],to));
+					dis[to]=dis[t.se]+w;
+					if(!vis[to]) q.push(MP(dis[to],to));
 				}
 			}
 		}
