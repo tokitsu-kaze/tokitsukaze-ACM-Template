@@ -11,7 +11,7 @@ struct MCMF_dij
 		node(){}
 		node(int u,int v,type f,type co):from(u),to(v),flow(f),cost(co){}
 	};
-	int n,s,t,id[N];
+	int n,s,t,id[N],vis[N];
 	vector<node> edge;
 	vector<int> mp[N];
 	type dis[N],h[N];
@@ -29,62 +29,99 @@ struct MCMF_dij
 		mp[from].pb(m-2);
 		mp[to].pb(m-1);
 	}
-	bool dij(type& flow,type& cost)
+	void spfa()
 	{
-		for(int i=0;i<=n;i++) dis[i]=inf;
-		dis[s]=0;id[s]=0;
+		int i,x;
+		for(i=0;i<=n;i++)
+		{
+			h[i]=inf;
+			vis[i]=0;
+		}
+		queue<int> q;
+		q.push(s);
+		h[s]=0;
+		vis[s]=1;
+		while(!q.empty())
+		{
+			x=q.front();
+			q.pop();
+			vis[x]=0;
+			for(i=0;i<mp[x.se].size();i++)
+			{
+				node e=edge[mp[x.se][i]];
+				to=e.to;
+				if(h[to]>h[x]+e.cost)
+				{ 
+					h[to]=h[x]+e.cost;
+					if(!vis[to])
+					{
+						vis[to]=1;
+						q.push(to);
+					}
+				}
+			}
+		}
+	}
+	bool dij()
+	{
+		int i,to;
+		for(i=0;i<=n;i++)
+		{
+			dis[i]=inf;
+			vis[i]=0;
+		}
+		dis[s]=0;
+		id[s]=0;
 		priority_queue<PTI ,vector<PTI>,greater<PTI> > q;
 		q.push(MP(type(0),s));
 		while(!q.empty())
 		{
 			PTI x=q.top();
 			q.pop();
-			if(x.fi>dis[x.se]) continue;
-			for(int i=0;i<mp[x.se].size();i++)
+			if(vis[x.se]) continue;
+			vis[x.se]=1;
+			for(i=0;i<mp[x.se].size();i++)
 			{
 				node& e=edge[mp[x.se][i]];
-				int to=e.to;
+				to=e.to;
 				type now_cost=e.cost+h[x.se]-h[to];
 				if(e.flow>0&&dis[to]>dis[x.se]+now_cost)
 				{ 
 					dis[to]=dis[x.se]+now_cost;
-					q.push(MP(dis[to],to));
 					e.from=x.se;
 					id[to]=mp[x.se][i];
+					if(!vis[to]) q.push(MP(dis[to],to));
 				}
 			}
 		}
-		if(dis[t]==inf) return false;
-		for(int i=0;i<=n;i++) h[i]=min(h[i]+dis[i],inf);
-		type new_flow=inf;
-		int x=t;
-		while(x!=s)
-		{
-			new_flow=min(new_flow,edge[id[x]].flow);
-			x=edge[id[x]].from;
-		}
-		flow+=new_flow;
-		cost+=new_flow*h[t];
-		x=t;
-		while(x!=s)
-		{
-			edge[id[x]].flow-=new_flow;
-			edge[id[x]^1].flow+=new_flow;
-			x=edge[id[x]].from;
-		}
-		return true;
+		return dis[t]!=inf;
 	}
-	//O(m*logm*max_flow)
 	pair<type,type> mincost_maxflow(int _s,int _t)
 	{
+		int i;
 		type flow=0,cost=0;
-		for(int i=0;i<=n;i++) h[i]=0;
 		s=_s;
 		t=_t;
-		while(dij(flow,cost));
+		spfa();
+		while(dij())
+		{
+			for(i=0;i<=n;i++) h[i]+=dis[i];
+			type new_flow=inf;
+			for(i=t;i!=s;i=edge[id[i]].from)
+			{
+				new_flow=min(new_flow,edge[id[i]].flow);
+			}
+			for(i=t;i!=s;i=edge[id[i]].from)
+			{
+				edge[id[i]].flow-=new_flow;
+				edge[id[i]^1].flow+=new_flow;
+			}
+			flow+=new_flow;
+			cost+=new_flow*h[t];
+		}
 		return MP(cost,flow);
 	}
 	#undef type
 	#undef inf
 	#undef PTI
-}mcmf;
+}mcmf; //O(m*logm*max_flow)
