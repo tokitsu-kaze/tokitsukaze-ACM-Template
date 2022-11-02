@@ -1,40 +1,60 @@
-﻿//最长路 dis变为-INF 松弛改成< 
-struct node
+struct SPFA
 {
-	int id;
-	int v;
-	node(){}
-	node(int a,int b) :id(a),v(b){}
-};
-vector<node> mp[MAX];
-int dis[MAX];
-bool flag[MAX]; 
-void spfa(int s)
-{
-	queue<node> q;
-	node t,to;
-	mem(dis,0x3f);
-	mem(flag,0);
-	dis[s]=0;
-	flag[s]=1;
-	q.push(node(s,dis[s]));
-	while(!q.empty())
+	#define type int
+	#define inf INF
+	#define PTI pair<type,int>
+	static const int N=MAX;
+	vector<pair<int,type> > mp[N];
+	type dis[N];
+	int n,vis[N],cnt[N];
+	void init(int _n)
 	{
-		t=q.front();
-		q.pop();
-		flag[t.id]=0;
-		for(int i=0;i<sz(mp[t.id]);i++)
+		n=_n;
+		for(int i=0;i<=n;i++) mp[i].clear();
+	}
+	void add_edge(int x,int y,type v){ mp[x].pb(MP(y,v));}
+	bool work(int s)
+	{
+		int i,x,to,w;
+		queue<int> q;
+		for(i=0;i<=n;i++)
 		{
-			to=mp[t.id][i];
-			if(dis[to.id]>dis[t.id]+to.v)
+			dis[i]=inf;
+			vis[i]=cnt[i]=0;
+		}
+		dis[s]=0;
+		vis[s]=1;
+		q.push(s);
+		while(!q.empty())
+		{
+			x=q.front();
+			q.pop();
+			vis[x]=0;
+			for(auto it:mp[x])
 			{
-				dis[to.id]=dis[t.id]+to.v;
-				if(!flag[to.id])
+				to=it.fi;
+				w=it.se;
+				if(dis[to]>dis[x]+w)
 				{
-					q.push(node(to.id,dis[to.id]));
-					flag[to.id]=1;
+					dis[to]=dis[x]+w;
+					cnt[to]=cnt[x]+1;
+					if(cnt[to]>=n)
+					{
+						// cnt is edge counts of current short path
+						// if cnt >=n, the graph exists negative ring
+						return false;
+					}
+					if(!vis[to])
+					{
+						q.push(to);
+						vis[to]=1;
+					}
 				}
 			}
 		}
+		return true;
 	}
-}
+	#undef type
+	#undef inf
+	#undef PTI
+}spfa;
