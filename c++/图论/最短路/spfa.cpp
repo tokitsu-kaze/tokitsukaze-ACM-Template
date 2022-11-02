@@ -15,7 +15,8 @@ struct SPFA
 	void add_edge(int x,int y,type v){ mp[x].pb(MP(y,v));}
 	bool work(int s)
 	{
-		int i,x,to,w;
+		int i,x,to;
+		type w;
 		queue<int> q;
 		for(i=0;i<=n;i++)
 		{
@@ -38,10 +39,10 @@ struct SPFA
 				{
 					dis[to]=dis[x]+w;
 					cnt[to]=cnt[x]+1;
-					if(cnt[to]>=n)
+					if(cnt[to]>n)
 					{
 						// cnt is edge counts of current short path
-						// if cnt >=n, the graph exists negative ring
+						// if cnt >= (sum of node), the graph exists negative ring
 						return false;
 					}
 					if(!vis[to])
