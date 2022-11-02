@@ -31,7 +31,7 @@ struct MCMF_dij
 	}
 	void spfa()
 	{
-		int i,x;
+		int i,x,to;
 		for(i=0;i<=n;i++)
 		{
 			h[i]=inf;
@@ -46,11 +46,11 @@ struct MCMF_dij
 			x=q.front();
 			q.pop();
 			vis[x]=0;
-			for(i=0;i<mp[x.se].size();i++)
+			for(i=0;i<sz(mp[x]);i++)
 			{
-				node e=edge[mp[x.se][i]];
+				node &e=edge[mp[x][i]];
 				to=e.to;
-				if(h[to]>h[x]+e.cost)
+				if(e.flow>0&&h[to]>h[x]+e.cost)
 				{ 
 					h[to]=h[x]+e.cost;
 					if(!vis[to])
@@ -80,7 +80,7 @@ struct MCMF_dij
 			q.pop();
 			if(vis[x.se]) continue;
 			vis[x.se]=1;
-			for(i=0;i<mp[x.se].size();i++)
+			for(i=0;i<sz(mp[x.se]);i++)
 			{
 				node& e=edge[mp[x.se][i]];
 				to=e.to;
