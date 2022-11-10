@@ -24,22 +24,32 @@ struct dsu
 		return 0;
 	}
 }dsu;
-struct node
+struct Kruskal
 {
-	int x,y,w;
-	node(){}
-	node(int a,int b,int c):x(a),y(b),w(c){}
-	friend bool operator<(node a,node b) {return a.w<b.w;}
-};
-vector<node> edge;
-int kruskal(int n)
-{
-	int res=0;
-	dsu.init(n);
-	sort(all(edge));
-	for(int i=0;i<sz(edge);i++)
+	#define type ll
+	#define inf LLINF
+	vector<pair<type,PII> > e;
+	void init(){e.clear();}
+	void add_edge(int a,int b,type w){e.pb(MP(w,MP(a,b)));}
+	type work(int n)
 	{
-		if(dsu.merge(edge[i].x,edge[i].y)) res+=edge[i].w;
+		int x,y,i,cnt;
+		type w;
+		type res=0;
+		dsu.init(n);
+		sort(all(e));
+		for(auto it:e)
+		{
+			x=it.se.fi;
+			y=it.se.se;
+			w=it.fi;
+			if(dsu.merge(x,y)) res+=w;
+		}
+		cnt=0;
+		for(i=1;i<=n;i++) cnt+=dsu.find(i)==i;
+		if(cnt!=1) return inf;
+		return res;
 	}
-	return res;
-}
+	#undef type
+	#undef inf
+}krsk;
