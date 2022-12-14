@@ -1,4 +1,4 @@
-﻿struct HLD
+struct HLD
 {
 	#define type int
 	struct edge{int a,b;type v;edge(int _a,int _b,type _v=0):a(_a),b(_b),v(_v){}};
