@@ -1,4 +1,4 @@
-﻿struct president_tree
+struct president_tree
 {
 	#define type int
 	int root[MAX],ls[40*MAX],rs[40*MAX],tot,ql,qr;
