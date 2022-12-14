@@ -9,7 +9,7 @@ void init(int n)
 	for(i=2;i<=n;i++)
 	{
 		if(!prime[i]) prime[i]=p[tot++]=i;
-        for(j=0;j<tot&&p[j]*i<=n;j++)
+		for(j=0;j<tot&&p[j]*i<=n;j++)
 		{
 			prime[i*p[j]]=p[j];
 			if(i%p[j]==0) break;
