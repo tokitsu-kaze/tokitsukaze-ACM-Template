@@ -1,4 +1,4 @@
-﻿namespace FWT
+namespace FWT
 {
 	ll inv2;//2对p的逆元 
 	const ll p=1e9+7;
