@@ -1,4 +1,4 @@
-﻿const int S=20;
+const int S=20;
 mt19937 rd(time(0));
 ll mul2(ll a,ll b,ll p)
 {
