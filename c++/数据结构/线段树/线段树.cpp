@@ -9,9 +9,10 @@ struct Segment_Tree
 	{
 		
 	}
-	void pushdown(int id)
+	void pushdown(int l,int r,int id)
 	{
 		if(!tag[id]) return;
+		int mid=(l+r)>>1;
 		
 	}
 	void build(int l,int r,int id)
@@ -34,7 +35,7 @@ struct Segment_Tree
 			//do something
 			return;
 		}
-		pushdown(id);
+		pushdown(l,r,id);
 		int mid=(l+r)>>1;
 		if(ql<=mid) update(l,mid,ls);
 		if(qr>mid) update(mid+1,r,rs);
@@ -48,7 +49,7 @@ struct Segment_Tree
 			//do something
 			return;
 		}
-		pushdown(id);
+		pushdown(l,r,id);
 		int mid=(l+r)>>1;
 		if(ql<=mid) query(l,mid,ls);
 		if(qr>mid) query(mid+1,r,rs);
