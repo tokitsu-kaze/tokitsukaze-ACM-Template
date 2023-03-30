@@ -23,6 +23,7 @@
 #define sz(x) ((int)x.size())
 #define all(x) x.begin(),x.end()
 #define sqr(x) ((x)*(x))
+using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
 typedef pair<int,int> PII;
