@@ -1,7 +1,7 @@
-struct dominator_tree
+struct Dominator_Tree
 {
 	int n,tot,dfn[MAX],best[MAX],semi[MAX],idom[MAX],id[MAX],fa[MAX];
-	VI nex[MAX],pre[MAX],tmp[MAX],son[MAX];
+	vector<int> nex[MAX],pre[MAX],tmp[MAX],son[MAX];
 	void init(int _n)
 	{
 		n=_n;
@@ -32,20 +32,20 @@ struct dominator_tree
 	{
 		dfn[x]=++tot;
 		id[tot]=x;
-		for(auto to:nex[x])
+		for(auto &to:nex[x])
 		{
 			if(dfn[to]) continue;
 			dfs(to);
 			son[x].pb(to);
 		}
 	}
-	void tarjan(VI mp[])
+	void tarjan(vector<int> *mp)
 	{
 		int i,j,k;
 		for(i=tot;i;i--)
 		{
 			k=id[i];
-			for(auto to:pre[k])
+			for(auto &to:pre[k])
 			{
 				if(!dfn[to]) continue;
 				if(dfn[to]<dfn[k])
@@ -59,13 +59,13 @@ struct dominator_tree
 				}
 			}
 			if(k!=semi[k]) tmp[semi[k]].pb(k);
-			for(auto to:tmp[k])
+			for(auto &to:tmp[k])
 			{
 				getfa(to);
 				if(semi[best[to]]==k) idom[to]=k;
 				else idom[to]=best[to];
 			}
-			for(auto to:son[k]) fa[to]=k;
+			for(auto &to:son[k]) fa[to]=k;
 		}
 		for(i=2;i<=tot;i++)
 		{
@@ -73,12 +73,12 @@ struct dominator_tree
 			if(idom[k]!=semi[k]) idom[k]=idom[idom[k]];
 			if (k!=idom[k])
 			{
-				mp[idom[k]].pb(k);  //add edge
+				mp[idom[k]].push_back(k);  //add edge
 				
 			}
 		}
 	}
-	void work(int rt,VI mp[])
+	void work(int rt,vector<int> *mp)
 	{
 		for(int i=0;i<=n;i++) mp[i].clear();
 		tot=0;
@@ -91,3 +91,4 @@ dt.init(n);
 dt.add_edge(a,b);  // DAG
 dt.work(rt,mp);
 */
+
