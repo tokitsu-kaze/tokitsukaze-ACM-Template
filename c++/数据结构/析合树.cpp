@@ -1,4 +1,4 @@
-struct permutation_tree
+struct Permutation_Tree
 {
 	struct RMQ
 	{
@@ -154,7 +154,7 @@ struct permutation_tree
 		}
 		return st[1];
 	}
-	void work(int n,int *a)
+	void work(int n,int *a)// a[1..n]
 	{
 		int rt=build(n,a);
 		
