@@ -1,4 +1,4 @@
-struct dsu
+struct Disjoint_Set_Union
 {
 	int pre[MAX];
 	void init(int n)
@@ -26,24 +26,27 @@ struct dsu
 }dsu;
 struct Kruskal
 {
-	#define type ll
-	#define inf LLINF
-	vector<pair<type,PII> > e;
+	#define type int
+	#define inf INF
+	struct edge
+	{
+		int x,y;
+		type w;
+	};
+	vector<edge> e;
 	void init(){e.clear();}
-	void add_edge(int a,int b,type w){e.pb(MP(w,MP(a,b)));}
+	void add_edge(int a,int b,type w){e.pb({a,b,w});}
 	type work(int n)
 	{
-		int x,y,i,cnt;
-		type w;
+		int i,cnt;
 		type res=0;
 		dsu.init(n);
-		sort(all(e));
-		for(auto it:e)
+		sort(all(e),[&](edge x,edge y){
+			return x.w<y.w;
+		});
+		for(auto &it:e)
 		{
-			x=it.se.fi;
-			y=it.se.se;
-			w=it.fi;
-			if(dsu.merge(x,y)) res+=w;
+			if(dsu.merge(it.x,it.y)) res+=it.w;
 		}
 		cnt=0;
 		for(i=1;i<=n;i++) cnt+=dsu.find(i)==i;
