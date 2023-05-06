@@ -1,4 +1,4 @@
-struct dsu
+struct Disjoint_Set_Union
 {
 	int pre[MAX];
 	void init(int n)
