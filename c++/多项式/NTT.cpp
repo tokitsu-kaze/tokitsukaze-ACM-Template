@@ -19,7 +19,7 @@ namespace NTT
 		assert(p==mod);
 		for(int i=0;i<25;i++) wn[i]=pow2(g,(p-1)/(1LL<<i));
 	}
-	void ntt(VI &a,int len,int f)
+	void ntt(vector<int> &a,int len,int f)
 	{
 		int i,j=0,t,k,w,id;
 		for(i=1;i<len-1;i++)
@@ -49,48 +49,51 @@ namespace NTT
 			for(i=0;i<len;i++) a[i]=1ll*a[i]*inv%p;
 		}
 	}
-	void qpow(VI &a,int b)//limt: sz(a)*b is small
+	vector<int> qpow(vector<int> a,int b)//limt: sz(a)*b is small
 	{
 		int len,i,l1;
-		l1=sz(a);
-		for(len=1;len<=(l1+1)*b-1;len<<=1);
-		a.resize(len+1);
-		for(i=l1;i<=len;i++) a[i]=0;
+		l1=a.size();
+		for(len=1;len<(l1+1)*b-1;len<<=1);
+		a.resize(len,0);
 		ntt(a,len,0);
-		for(i=0;i<len;i++) a[i]=pow2(a[i],b);
-		ntt(a,len,1);
-		a.resize((l1+1)*b-1);
+		vector<int> res(len);
+		for(i=0;i<len;i++) res[i]=pow2(a[i],b);
+		ntt(res,len,1);
+		res.resize((l1+1)*b-1);
+		return res;
 	}
-	void mul(VI &res,VI a,VI b)
+	vector<int> mul(vector<int> a,vector<int> b)
 	{
 		int len,i,l1,l2;
-		l1=sz(a);
-		l2=sz(b);
-		for(len=1;len<=l1+l2;len<<=1);
-		a.resize(len+1);
-		b.resize(len+1);
-		for(i=l1+1;i<=len;i++) a[i]=0;
-		for(i=l2+1;i<=len;i++) b[i]=0;
+		l1=a.size();
+		l2=b.size();
+		for(len=1;len<l1+l2;len<<=1);
+		a.resize(len,0);
+		b.resize(len,0);
 		ntt(a,len,0);ntt(b,len,0);
-		res.resize(len);
+		vector<int> res(len);
 		for(i=0;i<len;i++) res[i]=1ll*a[i]*b[i]%p;
 		ntt(res,len,1);
 		res.resize(l1+l2-1);
+		return res;
 	}
-	VI merge_generating_functions(vector<VI > &dp)
+	
+	//get kth 
+	vector<int> merge_generating_functions(vector<vector<int>> &dp,int k)
 	{
 		int i,j;
-		priority_queue<PII > q;
-		for(i=0;i<sz(dp);i++) q.push(MP(-sz(dp[i]),i));
-		while(sz(q)>1)
+		priority_queue<pair<int,int>> q;
+		for(i=0;i<dp.size();i++) q.push({-dp[i].size(),i});
+		while(q.size()>1)
 		{
-			i=q.top().se;
+			i=q.top().second;
 			q.pop();
-			j=q.top().se;
+			j=q.top().second;
 			q.pop();
-			mul(dp[i],dp[i],dp[j]);
-			q.push(MP(-sz(dp[i]),i));
+			dp[i]=mul(dp[i],dp[j]);
+			if(dp[i].size()>k) dp[i].resize(k+1);
+			q.push({-dp[i].size(),i});
 		}
-		return dp[q.top().se];
+		return dp[q.top().second];
 	}
 };//NTT::getwn();
