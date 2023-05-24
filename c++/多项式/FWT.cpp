@@ -1,19 +1,8 @@
 namespace FWT
 {
-	ll inv2;//2对p的逆元 
-	const ll p=1e9+7;
-	ll pow2(ll a,ll b)
-	{
-		ll res=1;
-		while(b)
-		{
-			if(b&1) res=res*a%p;
-			a=a*a%p;
-			b>>=1;
-		}
-		return res;
-	}
-	void fwt(ll *a,int n,int f,int v)
+	const int p=998244353;
+	const ll inv2=(p+1)/2;
+	void fwt(vector<int> &a,int n,int f,int v)
 	{  
 		for(int d=1;d<n;d<<=1)
 		{
@@ -39,33 +28,43 @@ namespace FWT
 		}
 	}
 	
-	//结果存在a 
-	void XOR(ll *a,ll *b,int n)
+	vector<int> XOR(vector<int> a,vector<int> b)
 	{
-		int len;
-		for(len=1;len<=n;len<<=1);
+		int n,len;
+		n=a.size();
+		for(len=1;len<n;len<<=1);
+		a.resize(len,0);
+		b.resize(len,0);
 		fwt(a,len,1,0);
 		fwt(b,len,1,0);
-		for(int i=0;i<len;i++) a[i]=a[i]*b[i]%p;
-		inv2=pow2(2,p-2);
+		for(int i=0;i<len;i++) a[i]=1ll*a[i]*b[i]%p;
 		fwt(a,len,1,1);
+		return a;
 	}
-	void AND(ll *a,ll *b,int n)
+	vector<int> AND(vector<int> a,vector<int> b)
 	{
-		int len;
-		for(len=1;len<=n;len<<=1);
+		int n,len;
+		n=a.size();
+		for(len=1;len<n;len<<=1);
+		a.resize(len,0);
+		b.resize(len,0);
 		fwt(a,len,2,0);
 		fwt(b,len,2,0);
-		for(int i=0;i<len;i++) a[i]=a[i]*b[i]%p;
+		for(int i=0;i<len;i++) a[i]=1ll*a[i]*b[i]%p;
 		fwt(a,len,2,1);
+		return a;
 	}
-	void OR(ll *a,ll *b,int n)
+	vector<int> OR(vector<int> a,vector<int> b)
 	{
-		int len;
-		for(len=1;len<=n;len<<=1);
+		int n,len;
+		n=a.size();
+		for(len=1;len<n;len<<=1);
+		a.resize(len,0);
+		b.resize(len,0);
 		fwt(a,len,3,0);
 		fwt(b,len,3,0);
-		for(int i=0;i<len;i++) a[i]=a[i]*b[i]%p;
+		for(int i=0;i<len;i++) a[i]=1ll*a[i]*b[i]%p;
 		fwt(a,len,3,1);
+		return a;
 	}
 };
