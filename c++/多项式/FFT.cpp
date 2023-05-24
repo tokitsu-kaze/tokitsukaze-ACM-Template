@@ -1,4 +1,4 @@
-﻿namespace FFT
+namespace FFT
 {
 	#define rep(i,a,b) for(int i=(a);i<=(b);i++)
 	const double pi=acos(-1);
@@ -42,8 +42,9 @@
 		if(v)for(i=0;i<k;i++)x[i]=(cp){x[i].a/k,x[i].b/k};
 	}
 	
-	//多项式b与多项式c相乘 结果存在a
-	//l1为b的长度-1 l2为c的长度-1 
+	// a=b*c
+	// b[0..l1]
+	// c[0..l2]
 	void mul(int *a,int *b,int *c,int l1,int l2)
 	{
 		if(l1<128&&l2<128)
