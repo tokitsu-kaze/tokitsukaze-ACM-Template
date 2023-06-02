@@ -1,6 +1,6 @@
-struct dsu
+struct Disjoint_Set_Union
 {
-	PII st[MAX];
+	pair<int,int> st[MAX];
 	int pre[MAX],top,sz[MAX];
 	void init(int n)
 	{
@@ -26,13 +26,13 @@ struct dsu
 		if(sz[ra]>sz[rb]) swap(ra,rb);
 		pre[ra]=rb;
 		sz[rb]+=sz[ra];
-		st[top++]=MP(ra,rb);
+		st[top++]={ra,rb};
 		return 1;
 	}
 	void roll_back()
 	{
 		PII now=st[--top];
-		pre[now.fi]=now.fi;
-		sz[now.se]-=sz[now.fi];
+		pre[now.first]=now.first;
+		sz[now.second]-=sz[now.first];
 	}
 }dsu;
