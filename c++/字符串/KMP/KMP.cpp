@@ -1,36 +1,38 @@
-//length of min loop  len-nex[len]
 struct KMP
 {
 	int nex[MAX],len;
-	char s[MAX];
-	void get_next()
+	char t[MAX];
+	void get_next(char *s)
 	{
 		int i,j;
-		i=0;
-		j=nex[0]=-1;
-		while(i<len)
+		len=strlen(s+1);
+		for(i=1;i<=len;i++) t[i]=s[i];
+		t[len+1]='\0';
+		j=nex[1]=0;
+		for(i=2;i<=len;i++)
 		{
-			if(j==-1||s[i]==s[j]) nex[++i]=++j;
-			else j=nex[j];
+			while(j&&t[j+1]!=s[i]) j=nex[j];
+			if(t[j+1]==s[i]) j++;
+			nex[i]=j;
 		}
 	}
-	void init(char *_s)
-	{
-		len=strlen(_s);
-		for(int i=0;i<len;i++) s[i]=_s[i];
-		s[len]='\0';
-		get_next();
-	}
-	int match(char *a)//s is a substring of a
+	
+	// s[1..n], return all pos t in s 
+	vector<int> match(char *s)
 	{
 		int n,i,j;
-		n=strlen(a);
-		for(i=j=0;i<n;i++)
+		vector<int> res;
+		n=strlen(s+1);
+		for(i=1,j=0;i<=n;i++)
 		{
-			if(j==-1||a[i]==s[j]) j++;
-			else j=nex[j];
-			if(j==len) return 1;
+			while(j&&t[j+1]!=s[i]) j=nex[j];
+			if(t[j+1]==s[i]) j++;
+			if(j==len)
+			{
+				res.push_back(i-len+1);
+				j=nex[j];
+			}
 		}
-		return 0;
+		return res;
 	}
-}kmp;// kmp.init(s); s[0..len-1]
+}kmp;// kmp.get_next(s); s[1..len]
