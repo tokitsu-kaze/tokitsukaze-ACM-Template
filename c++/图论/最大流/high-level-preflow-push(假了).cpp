@@ -113,7 +113,7 @@ struct High_Level_Preflow_Push
 			List[nh].push_back(u);
 		}
 	}
-	int maxflow(int s,int e)
+	int max_flow(int s,int e)
 	{
 		int i,u;
 		if(s==e) return 0;
