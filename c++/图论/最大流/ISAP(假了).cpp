@@ -27,7 +27,7 @@ struct ISAP
 		}
 		edge.clear();
 	}
-	void add(int from,int to,type cap)
+	void add_edge(int from,int to,type cap)
 	{
 		edge.pb(node(from,to,cap,0));
 		edge.pb(node(to,from,0,0));
@@ -77,7 +77,7 @@ struct ISAP
 		}
 		return flow;
 	}
-	type maxflow(int _s,int _t)
+	type max_flow(int _s,int _t)
 	{
 		s=_s;
 		t=_t;
