@@ -4,7 +4,7 @@ void init(int n)
 {
 	int i,j;
 	tot=0;
-	mem(prime,0);
+	memset(prime,0,sizeof prime);
 	prime[1]=1;
 	for(i=2;i<=n;i++)
 	{
