@@ -1,6 +1,6 @@
 const int DIGIT=9;
 const int DEPTH=1000000000;
-const int MAXN=2000;
+const int MAXN=100;
 typedef ll bignum_t[MAXN+1];
 ll read(bignum_t a,istream&is=cin)
 {
