@@ -8,7 +8,8 @@ struct KMP
 		len=strlen(s+1);
 		for(i=1;i<=len;i++) t[i]=s[i];
 		t[len+1]='\0';
-		j=nex[1]=0;
+		nex[0]=nex[1]=0;
+		j=0;
 		for(i=2;i<=len;i++)
 		{
 			while(j&&t[j+1]!=s[i]) j=nex[j];
