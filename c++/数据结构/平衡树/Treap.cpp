@@ -1,70 +1,86 @@
 struct Treap
 {
-	#define type ll
+	#define type int
+	const type inf=INF;
 	struct node
 	{
-		int ch[2],fix,sz,w;
+		int ch[2],fix,sz,cnt;
 		type v;
 		node(){}
 		node(type x)
 		{
 			v=x;
 			fix=rand();
-			sz=w=1;
+			sz=cnt=1;
 			ch[0]=ch[1]=0;
 		} 
-	}t[MAX];  
-	int tot,root,tmp;
+	}t[MAX];
+	int tot,root;
 	void init()
 	{
-		srand(unsigned(new char));
+		srand(time(0));
 		root=tot=0;
-		t[0].sz=t[0].w=0;
-		mem(t[0].ch,0);
+		t[0].sz=t[0].cnt=0;
+		memset(t[0].ch,0,sizeof t[0].ch);
 	}
-	inline void maintain(int k)  
+	void pushup(int id)  
 	{  
-		t[k].sz=t[t[k].ch[0]].sz+t[t[k].ch[1]].sz+t[k].w ;  
+		t[id].sz=t[t[id].ch[0]].sz+t[t[id].ch[1]].sz+t[id].cnt;  
 	}  
-	inline void rotate(int &id,int k)
+	void rotate(int &id,int k)
 	{
 		int y=t[id].ch[k^1];
 		t[id].ch[k^1]=t[y].ch[k];
 		t[y].ch[k]=id;
-		maintain(id);
-		maintain(y);
+		pushup(id);
+		pushup(y);
 		id=y;
 	}
 	void insert(int &id,type v)
 	{
-		if(!id) t[id=++tot]=node(v);
+		if(!id)
+		{
+			id=++tot;
+			t[id]=node(v);
+			return;
+		}
+		if(t[id].v==v) t[id].cnt++;
 		else
 		{
-			if(t[id].sz++,t[id].v==v)t[id].w++;
-			else if(insert(t[id].ch[tmp=v>t[id].v],v),t[t[id].ch[tmp]].fix>t[id].fix) rotate(id,tmp^1);
-	    }
+			int tmp=(v>t[id].v);
+			insert(t[id].ch[tmp],v);
+			if(t[t[id].ch[tmp]].fix>t[id].fix) rotate(id,tmp^1);
+		}
+		pushup(id);
 	}
 	void erase(int &id,type v)
 	{
-		if(!id)return;
+		if(!id) return;
 		if(t[id].v==v)
 		{
-			if(t[id].w>1) t[id].w--,t[id].sz--;
+			if(t[id].cnt>1)
+			{
+				t[id].cnt--;
+				pushup(id);
+				return;
+			}
+			if(!(t[id].ch[0]&&t[id].ch[1]))
+			{
+				id=t[id].ch[0]+t[id].ch[1];
+				return;
+			}
 			else
 			{
-				if(!(t[id].ch[0]&&t[id].ch[1])) id=t[id].ch[0]|t[id].ch[1];
-				else
-				{
-					rotate(id,tmp=t[t[id].ch[0]].fix>t[t[id].ch[1]].fix);
-					t[id].sz--;
-					erase(t[id].ch[tmp],v);
-				}
+				int tmp=(t[t[id].ch[0]].fix>t[t[id].ch[1]].fix);
+				rotate(id,tmp);
+				erase(t[id].ch[tmp],v);
+				pushup(id);
 			}
 		}
 		else
 		{
-			t[id].sz--;
 			erase(t[id].ch[v>t[id].v],v);
+			pushup(id);
 		}
 	}
 	type kth(int k)//k small
@@ -74,10 +90,10 @@ struct Treap
 		while(id)
 		{
 			if(t[t[id].ch[0]].sz>=k) id=t[id].ch[0];
-			else if(t[t[id].ch[0]].sz+t[id].w>=k) return t[id].v;
+			else if(t[t[id].ch[0]].sz+t[id].cnt>=k) return t[id].v;
 			else
 			{
-				k-=t[t[id].ch[0]].sz+t[id].w;
+				k-=t[t[id].ch[0]].sz+t[id].cnt;
 				id=t[id].ch[1];
 			}
 		}
@@ -87,10 +103,10 @@ struct Treap
 		int id=root,res=0;
 		while(id)
 		{
-			if(t[id].v<=key)
+			if(t[id].v<key)
 			{
-				res+=t[t[id].ch[0]].sz+t[id].w;
-				if(f&&key==t[id].v) res-=t[id].w;
+				res+=t[t[id].ch[0]].sz+t[id].cnt;
+				if(f&&key==t[id].v) res-=t[id].cnt;
 				id=t[id].ch[1];
 			}
 			else id=t[id].ch[0];
@@ -99,28 +115,28 @@ struct Treap
 	}
 	type find_pre(type key)
 	{
-		type res=-LLINF;
+		type res=-inf;
 		int id=root;
 		while(id)
 		{
 			if(t[id].v<key)
 			{
-				res=max(res,t[id].v);
+				res=t[id].v;
 				id=t[id].ch[1];
 			}
 			else id=t[id].ch[0];
 		}
 		return res;
 	}
-	type find_suc(type key)
+	type find_nex(type key)
 	{
-		type res=LLINF;
+		type res=inf;
 		int id=root;
 		while(id)
 		{
 			if(t[id].v>key)
 			{
-				res=min(res,t[id].v);
+				res=t[id].v;
 				id=t[id].ch[0];
 			}
 			else id=t[id].ch[1];
@@ -129,8 +145,9 @@ struct Treap
 	}
 	void insert(type v){insert(root,v);}
 	void erase(type v){erase(root,v);}
-	int upper_bound_count(type key){return find(key,0);}//the count >=key
-	int lower_bound_count(type key){return find(key,1);}//the count >key
+	int upper_bound_count(type key){return find(key,0);}//the count <=key
+	int lower_bound_count(type key){return find(key,1);}//the count <key
 	int rank(type key){return lower_bound_count(key)+1;}
+	int size(){return t[root].sz;}
 	#undef type
-}t; //t.init();
+}tr; //tr.init();
