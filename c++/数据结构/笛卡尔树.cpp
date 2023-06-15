@@ -1,10 +1,10 @@
-﻿namespace Cartesian_Tree
+struct Cartesian_Tree
 {
 	int l[MAX],r[MAX],vis[MAX],stk[MAX];
 	int build(int *a,int n)
 	{
 		int i,top=0;
-		for(i=1;i<=n;i++) l[i]=0,r[i]=0,vis[i]=0;
+		for(i=1;i<=n;i++) l[i]=r[i]=vis[i]=0;
 		for(i=1;i<=n;i++)
 		{
 			int k=top;
@@ -20,4 +20,4 @@
 			if(!vis[i]) return i;
 		}
 	}
-}
+}ct;
