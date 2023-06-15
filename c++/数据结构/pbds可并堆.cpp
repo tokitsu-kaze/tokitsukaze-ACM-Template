@@ -1,4 +1,4 @@
-ï»¿#include <ext/pb_ds/priority_queue.hpp>
+#include <ext/pb_ds/priority_queue.hpp>
 using namespace __gnu_pbds;
 __gnu_pbds::priority_queue<int,greater<int>,pairing_heap_tag> q[MAX];
-//q[i].join(q[j]) ->  q[j]åˆå¹¶åˆ°q[i],q[j]æ¸…ç©º 
+//q[i].join(q[j]) ->  q[j]ºÏ²¢µ½q[i],q[j]Çå¿Õ 
