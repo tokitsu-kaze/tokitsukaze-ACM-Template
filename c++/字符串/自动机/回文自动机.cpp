@@ -26,7 +26,7 @@ struct Palindrome_Tree
 		while(s[n-len[x]-1]!=s[n]) x=fail[x];
 		return x;
 	}
-	void add(int t,int p)//attention the type of t is int
+	void add(int t,int p)
 	{
 		int id,now;
 		s[++n]=t;
