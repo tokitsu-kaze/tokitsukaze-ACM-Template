@@ -1,10 +1,11 @@
+mt19937_64 rd(time(0));
 struct hash_table
 {
 	ll seed,p;
 	ll Hash[MAX],tmp[MAX];
-	void set(ll _seed,ll _p)
+	void set(ll _p)
 	{
-		seed=_seed;
+		seed=rd()%_p;
 		p=_p;
 	}
 	void work(char *s,int n)
