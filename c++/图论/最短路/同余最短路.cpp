@@ -1,7 +1,7 @@
 struct Dijkstra
 {
 	#define type ll
-	#define inf LLINF
+	const type inf=LLINF;
 	struct node
 	{
 		int id;
@@ -17,7 +17,7 @@ struct Dijkstra
 		n=_n;
 		for(int i=0;i<=n;i++) mp[i].clear();
 	}
-	void add_edge(int x,int y,type v){ mp[x].pb({y,v});}
+	void add_edge(int x,int y,type v){ mp[x].push_back({y,v});}
 	void work(int s)
 	{
 		int i,to;
@@ -49,15 +49,15 @@ struct Dijkstra
 		}
 	}
 	#undef type
-	#undef inf
 }dij;
 //求[l,r]中有多少个 b 满足 sum{ai*xi}=b, xi>=0 
-ll congruent_short_path(vector<int> a,ll l,ll r)
+ll congruent_short_path(vector<int> &a,ll l,ll r)
 {
 	int n,i,j;
 	ll res;
 	n=a.size();
 	sort(a.begin(),a.end());
+	a.resize(unique(a.begin(),a.end())-a.begin());
 	dij.init(a[0]);
 	for(i=0;i<a[0];i++)
 	{
