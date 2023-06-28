@@ -1,43 +1,49 @@
-ï»¿int a[MAX];
-int Huffman(int k)
+struct k_Huffman
 {
-	int i,res,s;
-	queue<int> q,d;
-	s=((n-1)%(k-1)?k-1-(n-1)%(k-1):0);//è®¡ç®—è¦è¡¥å¤šå°‘ä¸ª0 
-	while(s--) q.push(0);
-	for(i=1;i<=n;i++) q.push(a[i]);
-	res=0;
-	while(sz(q)+sz(d)>1)
+	#define type ll
+	type work(int n,int k,type *a)// a[1..n], sorted 
 	{
-		s=0;
-		for(i=0;i<k;i++)
+		int i;
+		type res,s;
+		queue<type> q,d;
+		s=((n-1)%(k-1)?k-1-(n-1)%(k-1):0);//¼ÆËãÒª²¹¶àÉÙ¸ö0 
+		while(s--) q.push(0);
+		for(i=1;i<=n;i++) q.push(a[i]);
+		res=0;
+		while(q.size()+d.size()>1)
 		{
-			if(sz(q)&&sz(d))
+			s=0;
+			for(i=0;i<k;i++)
 			{
-				if(q.front()<d.front())
+				if(q.size()&&d.size())
+				{
+					if(q.front()<=d.front())
+					{
+						s+=q.front();
+						q.pop();
+					}
+					else
+					{
+						s+=d.front();
+						d.pop();
+					}
+				}
+				else if(q.size())
 				{
 					s+=q.front();
 					q.pop();
 				}
-				else
+				else if(d.size())
 				{
 					s+=d.front();
 					d.pop();
 				}
 			}
-			else if(sz(q))
-			{
-				s+=q.front();
-				q.pop();
-			}
-			else if(sz(d))
-			{
-				s+=d.front();
-				d.pop();
-			}
+			res+=s;
+			d.push(s);
 		}
-		res+=s;
-		d.push(s);
+		return res;
 	}
-	return res;
-} 
+	#undef type
+}hfm;
+
