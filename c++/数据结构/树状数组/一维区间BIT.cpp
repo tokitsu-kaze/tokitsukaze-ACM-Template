@@ -12,7 +12,6 @@ struct Fenwick_Tree
 		}
 	}
 	int lowbit(int x){return x&(-x);}
-	//外部不能调用_insert 
 	void _insert(int x,type v)
 	{
 		for(int i=x;i<=n;i+=lowbit(i))
@@ -20,11 +19,6 @@ struct Fenwick_Tree
 			bit[i][0]+=v;
 			bit[i][1]+=v*(x-1);
 		}
-	}
-	void upd(int l,int r,type v)
-	{
-		_insert(l,v);
-		_insert(r+1,-v);
 	}
 	type get(int x)
 	{
@@ -34,6 +28,11 @@ struct Fenwick_Tree
 			res+=x*bit[i][0]-bit[i][1];
 		}
 		return res;
+	}
+	void upd(int l,int r,type v)
+	{
+		_insert(l,v);
+		_insert(r+1,-v);
 	}
 	type ask(int l,int r)
 	{
