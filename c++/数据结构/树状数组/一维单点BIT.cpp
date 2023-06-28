@@ -9,14 +9,6 @@ struct Fenwick_Tree
 		for(int i=0;i<=n;i++) bit[i]=0;
 	}
 	int lowbit(int x){return x&(-x);}
-	void insert(int x,type v)
-	{
-		while(x<=n)
-		{
-			bit[x]+=v;
-			x+=lowbit(x);
-		}
-	}
 	type get(int x)
 	{
 		type res=0;
@@ -26,6 +18,14 @@ struct Fenwick_Tree
 			x-=lowbit(x);
 		}
 		return res;
+	}
+	void upd(int x,type v)
+	{
+		while(x<=n)
+		{
+			bit[x]+=v;
+			x+=lowbit(x);
+		}
 	}
 	type ask(int l,int r)
 	{
