@@ -1,7 +1,7 @@
 struct Dinic
 {
 	#define type int
-	#define inf INF
+	const type inf=INF;
 	static const int N=;
 	struct node
 	{
@@ -25,16 +25,16 @@ struct Dinic
 	}
 	void add_edge(int from,int to,type cap)
 	{
-		edge.pb(node(from,to,cap,0));
-		edge.pb(node(to,from,0,0));
+		edge.push_back(node(from,to,cap,0));
+		edge.push_back(node(to,from,0,0));
 		int m=edge.size();
-		mp[from].pb(m-2);
-		mp[to].pb(m-1);
+		mp[from].push_back(m-2);
+		mp[to].push_back(m-1);
 	}
 	bool bfs()
 	{
 		int i,x;
-		mem(vis,0);
+		memset(vis,0,sizeof vis);
 		queue<int>q;
 		q.push(s);
 		dist[s]=0;
