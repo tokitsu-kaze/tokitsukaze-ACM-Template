@@ -35,13 +35,13 @@ struct Kruskal
 	};
 	vector<edge> e;
 	void init(){e.clear();}
-	void add_edge(int a,int b,type w){e.pb({a,b,w});}
+	void add_edge(int a,int b,type w){e.push_back({a,b,w});}
 	type work(int n)
 	{
 		int i,cnt;
 		type res=0;
 		dsu.init(n);
-		sort(all(e),[&](edge x,edge y){
+		sort(e.begin(),e.end(),[&](edge x,edge y){
 			return x.w<y.w;
 		});
 		for(auto &it:e)
