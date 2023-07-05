@@ -1,40 +1,28 @@
-//O(nlogn)-O(logn) 
 struct LCA
 {
-	int fa[MAX][22],dep[MAX],n,limt,bin[22];
-	VI mp[MAX];
-	void init(int _n)
+	static const int N=MAX;
+	static const int LOGN=log2(N)+3;
+	int fa[N][LOGN],dep[N],limt,bin[LOGN];
+	void dfs(int x,int pre,vector<int> mp[])
 	{
-		n=_n;
-		for(limt=1;1<<(limt-1)<=n;limt++);
-		for(int i=bin[0]=1;1<<(i-1)<=n;i++) bin[i]=(bin[i-1]<<1);
-		for(int i=0;i<=n;i++)
+		int i;
+		for(i=1;bin[i]<=dep[x];i++) fa[x][i]=fa[fa[x][i-1]][i-1];
+		for(auto &to:mp[x])
 		{
-			mp[i].clear();
-			mem(fa[i],0);
-		}
-	}
-	void add_edge(int a,int b)
-	{
-		mp[a].pb(b);
-		mp[b].pb(a);
-	}
-	void dfs(int x,int pre)
-	{
-		for(int i=1;bin[i]<=dep[x];i++) fa[x][i]=fa[fa[x][i-1]][i-1];
-		for(int i=0;i<sz(mp[x]);i++)
-		{
-			int to=mp[x][i];
 			if(to==pre) continue;
 			dep[to]=dep[x]+1;
 			fa[to][0]=x;
-			dfs(to,x);
+			dfs(to,x,mp);
 		}
 	}
-	void work(int rt)
+	void work(int n,int root,vector<int> mp[])
 	{
-		dep[rt]=0;
-		dfs(rt,0);
+		int i;
+		for(limt=1;(1<<(limt-1))<n;limt++);
+		for(i=bin[0]=1;i<=limt;i++) bin[i]=(bin[i-1]<<1);
+		for(i=0;i<=n;i++) memset(fa[i],0,sizeof fa[i]);
+		dep[root]=0;
+		dfs(root,-1,mp);
 	}
 	int go(int x,int d)
 	{
@@ -48,19 +36,24 @@ struct LCA
 		}
 		return x;
 	}
-	int lca(int a,int b)
+	int lca(int x,int y)
 	{
-		if(dep[a]<dep[b]) swap(a,b);
-		a=go(a,dep[a]-dep[b]);
-		if(a==b) return a;
+		if(dep[x]<dep[y]) swap(x,y);
+		x=go(x,dep[x]-dep[y]);
+		if(x==y) return x;
 		for(int i=limt;~i;i--)
 		{
-			if(fa[a][i]!=fa[b][i])
+			if(fa[x][i]!=fa[y][i])
 			{
-				a=fa[a][i];
-				b=fa[b][i];
+				x=fa[x][i];
+				y=fa[y][i];
 			}
 		}
-		return fa[a][0];
+		return fa[x][0];
 	}
 }lca;
+/*
+O(nlogn)-O(logn)
+lca.init();
+lca.work(n,root,mp);
+*/
