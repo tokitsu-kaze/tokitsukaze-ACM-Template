@@ -1,12 +1,23 @@
-// O(nlogn)-O(1)
 struct LCA
 {
+	static const int N=MAX;
+	static const int LOG2N=log2(2*N)+3;
 	#define type int
-	struct node{int to;type w;node(){}node(int _to,type _w):to(_to),w(_w){}};
-	type dis[MAX];
-	int path[2*MAX],deep[2*MAX],first[MAX],len[MAX],tot,n;
-	int dp[2*MAX][22];
-	vector<node> mp[MAX];
+	struct node{int to;type w;};
+	type dis[N];
+	int path[2*N],deep[2*N],first[N],len[N],tot,n;
+	int dp[2*N][LOG2N];
+	vector<node> mp[N];
+	void init(int _n)
+	{
+		n=_n;
+		for(int i=0;i<=n;i++)
+		{
+			dis[i]=len[i]=0;
+			mp[i].clear();
+		}
+	}
+	void add_edge(int a,int b,type w=1){mp[a].push_back({b,w});}
 	void dfs(int x,int pre,int h)
 	{
 		int i;
@@ -41,7 +52,7 @@ struct LCA
 	int query(int l,int r)
 	{
 		int len,x,y;
-		len=(int)log2(r-l+1); 
+		len=__lg(r-l+1); 
 		x=dp[l][len];
 		y=dp[r-(1<<len)+1][len];
 		return deep[x]<deep[y]?x:y;
@@ -57,43 +68,30 @@ struct LCA
 	} 
 	type get_dis(int a,int b){return dis[a]+dis[b]-2*dis[lca(a,b)];}
 	int get_len(int a,int b){return len[a]+len[b]-2*len[lca(a,b)];}
-	void init(int _n)
-	{
-		n=_n;
-		for(int i=0;i<=n;i++)
-		{
-			dis[i]=0;
-			len[i]=0;
-			mp[i].clear();
-		}
-	}
-	void add_edge(int a,int b,type w=1)
-	{
-		mp[a].pb(node(b,w));
-		mp[b].pb(node(a,w));
-	}
 	void work(int rt)
 	{
 		tot=0;
 		dfs(rt,0,0);
 		ST(2*n-1);
 	}
-	int lca_root(int rt,int a,int b)
+	int lca_root(int rt,int x,int y)
 	{
-		int fa,fb;
-		fa=lca(a,rt);
-		fb=lca(b,rt);
-		if(fa==fb) return lca(a,b);
+		int fx,fy;
+		fx=lca(x,rt);
+		fy=lca(y,rt);
+		if(fx==fy) return lca(x,y);
 		else
 		{
-			if(get_dis(fa,rt)<get_dis(fb,rt)) return fa;
-			else return fb;
+			if(get_len(fx,rt)<get_len(fy,rt)) return fx;
+			else return fy;
 		}
 	}
 	#undef type
 }lca;
 /*
+O(n*log(n))-O(1)
+
 lca.init(n);
-lca.add_edge(a,b,w) undirected edge.
+lca.add_edge(a,b,w);
 lca.work(rt);
 */
