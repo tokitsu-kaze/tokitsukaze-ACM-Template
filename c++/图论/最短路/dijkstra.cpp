@@ -1,7 +1,7 @@
 struct Dijkstra
 {
 	#define type int
-	#define inf INF
+	const type inf=INF;
 	struct node
 	{
 		int id;
@@ -49,5 +49,4 @@ struct Dijkstra
 		}
 	}
 	#undef type
-	#undef inf
 }dij;
