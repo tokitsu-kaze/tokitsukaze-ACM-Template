@@ -1,70 +1,36 @@
 struct Trie
 {
 	#define type int
-	struct trie
+	static const int K=26;
+	int nex[MAX][K],cnt[MAX];
+	int root,tot;
+	int getid(char c){return c-'a';}
+	int newnode()
 	{
-		int v;
-		trie *next[26];
-		trie()
-		{
-			v=0;
-			for(int i=0;i<26;i++) next[i]=NULL;
-		}
-	}*root;
-	void insert(trie *p,char *s)
-	{
-		int i=0,t;
-		while(s[i])
-		{
-			t=s[i]-'a';
-			if(p->next[t]==NULL) p->next[t]=new trie;
-			p=p->next[t];
-			p->v++;  //may need change
-			i++;
-		}
+		memset(nex[tot],0,sizeof nex[tot]);
+		cnt[tot]=0;
+		return tot++;
 	}
-	int find(trie *p,char *s)
+	void init()
 	{
-		int i=0,t;
-		while(s[i])
-		{
-			t=s[i]-'a';
-			if(p->next[t]==NULL) return 0;
-			p=p->next[t];
-			i++;
-		}
-		return p->v;  //may need change
-	} 
-	//É¾³ýÇ°×ºÎªsµÄ×Ö·û´® 
-	void del(char *s)
+		tot=0;
+		root=newnode();
+	}
+	void insert(char *s,int n) // s[0..n-1]
 	{
-		int i=0,t,temp;
-		trie *p,*pre;
-		pre=p=root;
-		while(s[i])
+		int now,i,t;
+		now=root;
+		for(i=0;i<n;i++)
 		{
-			t=s[i]-'a';
-			if(p->next[t]==NULL) return;
-			if(!s[i+1])
-			{
-				temp=p->next[t]->v;
-				p->next[t]=NULL;
-				break;
-			}
-			pre=p;
-			p=p->next[t];
-			i++;
+			t=getid(s[i]);
+			if(!nex[now][t]) nex[now][t]=newnode();
+			now=nex[now][t];
 		}
-		i=0;
-		p=root;
-		while(s[i])
-		{
-			t=s[i]-'a';
-			if(p->next[t]==NULL) return;
-			p=p->next[t];
-			p->v-=temp;
-			i++;
-		}
+		cnt[now]++;
 	}
 	#undef type
 }tr;
+/*
+tr.init();
+tr.insert(s,len); s[0..len-1]
+*/
