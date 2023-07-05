@@ -1,7 +1,7 @@
 struct Palindrome_Tree
 {
 	static const int N=MAX;
-	static const int LOGN=log2(N)+2;
+	static const int LOGN=log2(N)+3;
 	static const int K=26;// char size: [0,25]
 	int len[N],nex[N][K],fail[N],last,pos[N],s[N],tot,n;
 	int cnt[N],deep[N];
@@ -42,7 +42,7 @@ struct Palindrome_Tree
 		cnt[last]++;
 		pos[p]=last;
 	}
-	void count()
+	void topsort()
 	{
 		for(int i=tot-1;i;i--) cnt[fail[i]]+=cnt[i];
 	}
@@ -76,4 +76,8 @@ struct Palindrome_Tree
 		for(int i=1;i<tot;i++) mp[fail[i]].pb(i);
 	}
 	
-}pam; //pam.init(); 
+}pam;
+/*
+pam.init();
+pam.add(t,id); t is int
+*/
