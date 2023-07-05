@@ -1,25 +1,21 @@
-VI mp[MAX];
-int degree[MAX];
-VI toplist;
-bool topsort(int n)
+vector<int> topsort(vector<int> &node,vector<int> mp[],int *in)
 {
-	int i,x;
 	queue<int> q;
-	for(i=1;i<=n;i++)
+	for(auto &it:node)
 	{
-		if(!degree[i]) q.push(i);
+		if(!in[it]) q.push(it);
 	}
-	toplist.clear();
+	vector<int> toplist;
 	while(!q.empty())
 	{
-		x=q.front();
+		int x=q.front();
 		q.pop();
-		toplist.pb(x);
-		for(auto to:mp[x])
+		toplist.push_back(x);
+		for(auto &to:mp[x])
 		{
-			degree[to]--;
-			if(!degree[to]) q.push(to);
+			in[to]--;
+			if(!in[to]) q.push(to);
 		}
 	}
-	return !(sz(toplist)==n);
+	return toplist;
 }
