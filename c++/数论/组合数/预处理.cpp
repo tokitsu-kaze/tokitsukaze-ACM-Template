@@ -1,7 +1,7 @@
-ll pow2(ll a,ll b)
+ll qpow(ll a,ll b)
 {
 	ll res=1;
-	while(b)
+	while(b>0)
 	{
 		if(b&1) res=res*a%mod;
 		a=a*a%mod;
@@ -9,7 +9,7 @@ ll pow2(ll a,ll b)
 	}
 	return res;
 }
-ll inv(ll x){return pow2(x,mod-2);}
+ll inv(ll x){return qpow(x,mod-2);}
 ll fac[MAX],invfac[MAX];
 void init(int n)
 {
