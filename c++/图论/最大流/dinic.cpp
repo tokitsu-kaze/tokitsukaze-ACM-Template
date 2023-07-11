@@ -87,7 +87,6 @@ struct Dinic
 		return res;
 	}
 	#undef type
-	#undef inf
 }dc; 
 /*
 dc.init(n);
