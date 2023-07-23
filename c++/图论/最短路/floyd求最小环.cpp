@@ -1,45 +1,61 @@
-int mp[111][111],dis[111][111],ans;
-void floyd(int n)
+struct Floyd
 {
-	int i,j,k;
-	for(k=1;k<=n;k++)
+	#define type int
+	const type inf=INF;
+	static const int N=;
+	int n;
+	type mp[N][N],dis[N][N];
+	type min_circle_3;// len(circle)>=3
+	type min_circle;  // len(circle)>=1
+	void init(int _n)
 	{
-		for(i=1;i<k;i++)
-		{
-			if(mp[k][i]==INF) continue;
-			for(j=i+1;j<k;j++)
-			{
-				if(mp[k][j]==INF) continue;
-				ans=min(ans,mp[k][i]+mp[k][j]+dis[i][j]);
-			}
-		}
+		int i,j;
+		n=_n;
 		for(i=1;i<=n;i++)
 		{
-			if(dis[i][k]==INF) continue;
 			for(j=1;j<=n;j++)
 			{
-				if(dis[k][j]==INF) continue;
-				dis[i][j]=min(dis[i][j],dis[i][k]+dis[k][j]);
+				mp[i][j]=dis[i][j]=inf;
 			}
 		}
 	}
-}
-int main()
-{
-	int m,i,a,b,w,n;
-	while(~scanf("%d%d",&n,&m))
+	void add_edge(int x,int y,type w)
 	{
-		mem(mp,0x3f);
-		mem(dis,0x3f);
-		ans=INF;
-		while(m--)
-		{
-			scanf("%d%d%d",&a,&b,&w);
-			mp[a][b]=mp[b][a]=dis[a][b]=dis[b][a]=min(mp[a][b],w);
-		}
-		floyd(n);
-		if(ans==INF) puts("It's impossible.");
-		else printf("%d\n",ans);
+		w=min(mp[x][y],w);
+		mp[x][y]=dis[x][y]=w;
 	}
-	return 0;	
-}
+	void work()
+	{
+		int i,j,k;
+		min_circle_3=inf;
+		for(k=1;k<=n;k++)
+		{
+			for(i=1;i<k;i++)
+			{
+				if(mp[i][k]==INF) continue;
+				for(j=1;j<k;j++)
+				{
+					if(i==j||mp[k][j]==INF||dis[j][i]==INF) continue;
+					min_circle_3=min(min_circle_3,mp[i][k]+mp[k][j]+dis[j][i]);
+				}
+			}
+			for(i=1;i<=n;i++)
+			{
+				if(dis[i][k]==INF) continue;
+				for(j=1;j<=n;j++)
+				{
+					if(dis[k][j]==INF) continue;
+					dis[i][j]=min(dis[i][j],dis[i][k]+dis[k][j]);
+				}
+			}
+		}
+		min_circle=inf;
+		for(i=1;i<=n;i++) min_circle=min(min_circle,dis[i][i]);
+	}
+	#undef type
+}flyd;
+/*
+flyd.init(n);
+flyd.add_edge(x,y,w); x,y [1..n] x->y 
+flyd.work();
+*/

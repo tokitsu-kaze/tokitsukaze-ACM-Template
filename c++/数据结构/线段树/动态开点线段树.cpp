@@ -2,8 +2,9 @@
 struct Segment_Tree
 {
 	#define type int
-	int root,tot,ls[MAX*20],rs[MAX*20],ql,qr,n;
-	type v[MAX*20],tag[MAX*20],qv;
+	static const int LOGN=31;
+	int root,tot,ls[MAX*LOGN],rs[MAX*LOGN],ql,qr,n;
+	type v[MAX*LOGN],tag[MAX*LOGN],qv;
 	int newnode()
 	{
 		ls[tot]=rs[tot]=0;
@@ -11,7 +12,7 @@ struct Segment_Tree
 		tag[tot]=-1;
 		return tot++;
 	}
-	void init(int _n)
+	void build(int _n)
 	{
 		n=_n;
 		tot=0;

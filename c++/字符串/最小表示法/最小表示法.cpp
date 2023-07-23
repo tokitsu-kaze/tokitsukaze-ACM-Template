@@ -1,15 +1,17 @@
-int min_representation(char *s)
+int min_representation(char *s,int n) // s[0..n-1]
 {
-	int i=0,j=1,k=0;
-	int len=strlen(s);
-	while(i<len&&j<len&&k<len)
+	int i,j,k,tmp;
+	i=k=0;
+	j=1;
+	while(i<n&&j<n&&k<n)
 	{
-		if(s[(i+k)%len]==s[(j+k)%len])k++;
+		tmp=s[(i+k)%n]-s[(j+k)%n];
+		if(!tmp) k++;
 		else
 		{
-			if(s[(i+k)%len]>s[(j+k)%len])i=i+k+1;
+			if(tmp>0) i=i+k+1;
 			else j=j+k+1;
-			if(i==j)j++;
+			if(i==j) j++;
 			k=0;
 		}
 	}

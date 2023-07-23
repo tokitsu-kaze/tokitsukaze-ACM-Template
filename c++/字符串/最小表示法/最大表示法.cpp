@@ -1,22 +1,17 @@
-int max_representation(char *s)
+int max_representation(char *s,int n) // s[0..n-1]
 {
-	int i,j,k,len,t;
-	len=strlen(s);
+	int i,j,k,tmp;
 	i=k=0;
 	j=1;
-	while(i<len&&j<len&&k<len)
+	while(i<n&&j<n&&k<n)
 	{
-		t=s[(i+k)%len]-s[(j+k)%len];
-		if(!t) k++;
+		tmp=s[(i+k)%n]-s[(j+k)%n];
+		if(!tmp) k++;
 		else
 		{
-			if(t>0)
-			{
-				if(j+k+1>i) j=j+k+1;
-				else j=i+1;
-			}
-			else if(i+k+1>j) i=i+k+1;
-			else i=j+1;
+			if(tmp<0) i=i+k+1;
+			else j=j+k+1;
+			if(i==j) j++;
 			k=0;
 		}
 	}

@@ -1,16 +1,16 @@
 struct KMP
 {
+	#define type char
 	int nex[MAX],len;
-	char t[MAX];
-	void get_next(char *s)
+	type t[MAX];
+	void get_next(type *s,int n)
 	{
 		int i,j;
-		len=strlen(s+1);
-		for(i=1;i<=len;i++) t[i]=s[i];
-		t[len+1]='\0';
+		for(i=1;i<=n;i++) t[i]=s[i];
+		t[n+1]=0;
 		nex[0]=nex[1]=0;
 		j=0;
-		for(i=2;i<=len;i++)
+		for(i=2;i<=n;i++)
 		{
 			while(j&&t[j+1]!=s[i]) j=nex[j];
 			if(t[j+1]==s[i]) j++;
@@ -19,11 +19,10 @@ struct KMP
 	}
 	
 	// s[1..n], return all pos t in s 
-	vector<int> match(char *s)
+	vector<int> match(type *s,int n)
 	{
 		int n,i,j;
 		vector<int> res;
-		n=strlen(s+1);
 		for(i=1,j=0;i<=n;i++)
 		{
 			while(j&&t[j+1]!=s[i]) j=nex[j];
@@ -36,4 +35,5 @@ struct KMP
 		}
 		return res;
 	}
-}kmp;// kmp.get_next(s); s[1..len]
+	#undef type
+}kmp;// kmp.get_next(s,n); s[1..n]

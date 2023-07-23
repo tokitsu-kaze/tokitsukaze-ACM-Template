@@ -29,6 +29,7 @@ struct Fenwick_Tree
 	}
 	type ask(int l,int r)
 	{
+		if(l>r) return 0;
 		if(l-1<=0) return get(r);
 		return get(r)-get(l-1);
 	}

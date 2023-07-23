@@ -25,8 +25,49 @@ double solve(double a,double b,double c,double d,double e,double f)
 
 
 /*************点*************/  
+int sgn(double x)
+{  
+	if(fabs(x)<eps) return 0;
+	else return x>0?1:-1;  
+}
+//点定义 
+struct Point
+{  
+	double x,y;
+	Point(){}
+	Point(double a,double b)
+	{
+		x=a;
+		y=b;
+	}
+	void input()
+	{
+		scanf("%lf%lf",&x,&y);
+	}
+};
+
+typedef Point Vector;
+
+Vector operator +(Vector a,Vector b){return Vector(a.x+b.x,a.y+b.y);}  
+Vector operator -(Vector a,Vector b){return Vector(a.x-b.x,a.y-b.y);}  
+Vector operator *(Vector a,double p){return Vector(a.x*p,a.y*p);}  
+Vector operator /(Vector a,double p){return Vector(a.x/p,a.y/p);}
+
+bool operator <(Point a,Point b){return a.x<b.x||(a.x==b.x&&a.y<b.y);}
+bool operator ==(Point a,Point b){return sgn(a.x-b.x)==0&&sgn(a.y-b.y)==0;}
 
 
+double dot(Vector a,Vector b){return a.x*b.x+a.y*b.y;}//点积
+double length(Vector a){return sqrt(dot(a,a));}//向量的模 
+double cross(Vector a,Vector b){return a.x*b.y-a.y*b.x;}//叉积 
+double dist(Point a,Point b){return sqrt(dot(a-b,a-b));}//两点距离 
+Point midseg(Point a,Point b){return (a+b)/2;}//线段ab中点
+Vector Normal(Vector x){return Point(-x.y,x.x)/length(x);} //垂直法向量 
+Vector Rotate(Vector a,double rad){return Vector(a.x*cos(rad)-a.y*sin(rad),a.x*sin(rad)+a.y*cos(rad));}
+double calarea(Point c,Point b,Point a){return cross(b-a,c-a);}//三个点求三角形面积 
+Vector vecunit(Vector x){return x/length(x);}//单位向量
+double TwoVectorAngle(Vector a,Vector b){return acos(dot(a,b)/length(a)/length(b));}//两个向量夹角 
+double VectorAngle(Vector v){return atan2(v.y,v.x);}
 /* 
 向量叉积 
 若 PxQ>0,则P在Q的顺时针方向。 
@@ -74,7 +115,12 @@ struct Line
 	}
 };
 
-
+//点p在线段上
+//线段包含端点时改成<=  
+bool OnSeg(Point p,Point p1,Point p2)
+{  
+	return sgn(cross(p1-p,p2-p))==0&&sgn(dot(p1-p,p2-p))<0;
+}
 
 //点A在射线L(p,v)上，不含端点
 int onRay(Point a, Line l)
@@ -84,12 +130,42 @@ int onRay(Point a, Line l)
 	return 0;
 }
 
+//点p在线段范围内
+bool PointInRange(Point p,Point a,Point b)
+{
+	return dot(p-a,b-a)>0&&dot(p-b,a-b)>0;//pab<90  pba<90 
+}
 
+//点到线段距离  
+double DisPointToSeg(Point p,Point a,Point b)
+{
+	if(a==b) return length(p-a);
+	Vector v1,v2,v3;
+	v1=b-a;
+	v2=p-a;
+	v3=p-b;
+	if(sgn(dot(v1,v2))<0) return length(v2);
+	else if(sgn(dot(v1,v3))>0) return length(v3);
+	else return fabs(cross(v1,v2))/length(v1);
+}
 
+//两线段最近距离  
+double DisSegToSeg(Point a,Point b,Point c,Point d)
+{
+	return min(min(DisPointToSeg(a,c,d),DisPointToSeg(b,c,d))
+	,min(DisPointToSeg(c,a,b),DisPointToSeg(d,a,b)));
+}
 
-
-
-
+//线段相交判定  
+bool JudgeSegInter(Point a,Point b,Point c,Point d)
+{
+	double t1,t2,t3,t4;
+	t1=cross(b-a,c-a);
+	t2=cross(b-a,d-a);
+	t3=cross(d-c,a-c);
+	t4=cross(d-c,b-c);
+	return sgn(t1)*sgn(t2)<0&&sgn(t3)*sgn(t4)<0;
+}
 
 //判断直线ab和线段cd是否相交
 bool SegInterLine(Point a,Point b,Point c,Point d)
@@ -97,10 +173,32 @@ bool SegInterLine(Point a,Point b,Point c,Point d)
 	return sgn(cross((c-b),(a-b)))*sgn(cross((d-b),(a-b)))<=0;
 }
 
+//点到直线距离  
+double DisPointToLine(Point p, Point a, Point b)
+{
+	Vector v1,v2;
+	v1=b-a;
+	v2=p-a; 
+	return fabs(cross(v1,v2))/length(v1);//如果不取绝对值,得到的是有向距离  
+}
 
-
-
-
+//判断直线相交 
+int JudgeLineInter(Line a,Line b)
+{
+	if(sgn(cross(a.v,b.v))==0)
+	{
+		if(sgn(cross(a.p-b.p,b.v))==0) return 0;//重合 
+		else return 1;//平行 
+	}
+	else return 2;//有交点 
+}
+//求两直线交点 
+Point PointOfLineInter(Line a,Line b)
+{
+	Vector u=a.p-b.p;
+	double t=cross(b.v,u)/cross(a.v,b.v);
+	return a.p+a.v*t;
+}
 
 //点关于直线ax+by+c=0的对称点
 //1.
@@ -124,7 +222,12 @@ Point mirrorPoint(Point a,Line l)
 	return tmp+(tmp-a);
 }
 
-
+//点p在直线ab的投影  
+Point GetLineProjection(Point p,Point a,Point b)
+{  
+	Vector v=b-a;  
+	return a+v*(Dot(v,p-a)/dot(v,v));
+}
 
 //半平面交
 bool OnLeft(Line l,Point p)
@@ -169,10 +272,45 @@ vector<Point> hpi(vector<Line> l)
 
 
 /***************三角形****************/
-
-
-
-
+//内心
+Point InCenter(Point a,Point b,Point c)
+{
+    Line u,v;
+    double m,n;
+    u.a=a;
+    m=atan2(b.y-a.y,b.x-a.x);
+    n=atan2(c.y-a.y,c.x-a.x);
+    u.b.x=u.a.x+cos((m+n)/2);
+    u.b.y=u.a.y+sin((m+n)/2);
+    v.a=b;
+    m=atan2(a.y-b.y,a.x-b.x);
+    n=atan2(c.y-b.y,c.x-b.x);
+    v.b.x=v.a.x+cos((m+n)/2);
+    v.b.y=v.a.y+sin((m+n)/2);
+    return PointOfLineInter(u,v);
+}
+//外心 
+Point CircumCircle(Point a,Point b,Point c)  
+{  
+	Point res;   
+    double a1=b.x-a.x,b1=b.y-a.y,c1=(a1*a1+b1*b1)/2;  
+    double a2=c.x-a.x,b2=c.y-a.y,c2=(a2*a2+b2*b2)/2;  
+    double d=a1*b2-a2*b1;  
+    return Point(a.x+(c1*b2-c2*b1)/d,a.y+(a1*c2-a2*c1)/d);
+}
+//垂心
+Point OrthoCenter(Point a,Point b,Point c)
+{  
+    double c1,c2,d;
+    Point p1,p2;
+    p1=c-b;
+    c1=0;
+    p2=c-a;
+    c2=dot(b-a,p2);
+    d=cross(p1,p2);
+    return Point(a.x+(c1*p2.y-c2*p1.y)/d,a.y+(p1.x*c2-p2.x*c1)/d);  
+}
+//重心->见多边形重心 
 
 
 /***************多边形****************/  

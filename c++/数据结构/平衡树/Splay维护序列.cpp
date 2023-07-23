@@ -2,53 +2,29 @@ struct Splay
 {
 	#define type int
 	const type inf=INF;
+	const type zero=0;
 	struct node
 	{
 		int ch[2],fa,sz,cnt,rev,tag;
-		type v,sum,mx,mn;
+		type v;
 	}t[MAX];
 	int tot,root;
+	type a[MAX];
 	queue<int> pool;
-	void maintain(int id,type v)
+	void init_null_node()
 	{
-		t[id].v=t[id].mx=t[id].mn=v;
-		t[id].sum=t[id].sz*t[id].v;
+		memset(t[0].ch,0,sizeof t[0].ch);
+		t[0].sz=t[0].cnt=t[0].fa=0;
+		t[0].v=zero;
+		t[0].mnid=0;
 	}
-	void pushup(int id)
+	void init()
 	{
-		int ls=t[id].ch[0];
-		int rs=t[id].ch[1];
-		t[id].sz=t[ls].sz+t[rs].sz+t[id].cnt;
-		t[id].sum=t[ls].sum+t[rs].sum+t[id].v;
-		t[id].mx=max({t[ls].mx,t[rs].mx,t[id].v});
-		t[id].mn=min({t[ls].mn,t[rs].mn,t[id].v});
-	}
-	void pushdown(int id)
-	{
-		int ls=t[id].ch[0];
-		int rs=t[id].ch[1];
-		if(t[id].tag)
-		{
-			if(ls)
-			{
-				maintain(ls,t[id].v);
-				t[ls].tag=1;
-			}
-			if(rs)
-			{
-				maintain(rs,t[id].v);
-				t[rs].tag=1;
-			}
-			t[id].tag=0;
-		}
-		if(t[id].rev)
-		{
-			t[ls].rev^=1;
-			t[rs].rev^=1;
-			swap(t[ls].ch[0],t[ls].ch[1]);
-			swap(t[rs].ch[0],t[rs].ch[1]);
-			t[id].rev=0;
-		}
+		root=tot=0;
+		while(!pool.empty()) pool.pop();
+		init_null_node();
+		a[0]=a[1]=zero;
+		root=build(0,1,0);
 	}
 	int newnode(type v,int fa)
 	{
@@ -63,8 +39,57 @@ struct Splay
 		t[id].fa=fa;
 		t[id].sz=t[id].cnt=1;
 		t[id].tag=t[id].rev=0;
-		maintain(id,v);
+		t[id].v=v;
 		return id;
+	}
+	void pushup(int id)
+	{
+		int ls=t[id].ch[0];
+		int rs=t[id].ch[1];
+		t[id].sz=t[ls].sz+t[rs].sz+t[id].cnt;
+		
+		
+	}
+	void pushdown(int id)
+	{
+		int ls=t[id].ch[0];
+		int rs=t[id].ch[1];
+		if(t[id].tag)
+		{
+			if(ls)
+			{
+				
+				t[ls].tag=1;
+			}
+			if(rs)
+			{
+				
+				t[rs].tag=1;
+			}
+			t[id].tag=0;
+		}
+		if(t[id].rev)
+		{
+			t[ls].rev^=1;
+			t[rs].rev^=1;
+			swap(t[ls].ch[0],t[ls].ch[1]);
+			swap(t[rs].ch[0],t[rs].ch[1]);
+			t[id].rev=0;
+		}
+	}
+	void insert(int pos,vector<int> nums)
+	{
+		int x,y,z,i;
+		for(i=0;i<nums.size();i++) a[i+1]=nums[i];
+		z=build(1,nums.size(),0);
+		x=find(pos);
+		y=find(pos+1);
+		splay(x,0);
+		splay(y,x);
+		t[y].ch[0]=z;
+		t[z].fa=y;
+		pushup(y);
+		pushup(x);
 	}
 	void rotate(int x)
 	{
@@ -97,7 +122,7 @@ struct Splay
 		}
 		if(goal==0) root=x;
 	}
-	type kth(int k)//k small
+	int kth(int k)//k small
 	{
 		int id=root;
 		while(id)
@@ -115,16 +140,6 @@ struct Splay
 		return id;
 	}
 	int find(int x){return kth(x+1);}
-	int split(int l,int r)
-	{
-		int x,y;
-		x=find(l-1);
-		y=find(r+1);
-		splay(x,0);
-		splay(y,x);
-		return t[y].ch[0];
-	}
-	type a[MAX];
 	int build(int l,int r,int fa)
 	{
 		if(l>r) return 0;
@@ -135,36 +150,6 @@ struct Splay
 		t[id].ch[1]=build(mid+1,r,id);
 		pushup(id);
 		return id;
-	}
-	void init_null_node()
-	{
-		memset(t[0].ch,0,sizeof t[0].ch);
-		t[0].sz=t[0].cnt=t[0].fa=0;
-		t[0].v=t[0].sum=0;
-		t[0].mx=-inf;
-		t[0].mn=inf;
-	}
-	void init()
-	{
-		root=tot=0;
-		while(!pool.empty()) pool.pop();
-		init_null_node();
-		a[0]=a[1]=0;
-		root=build(0,1,0);
-	}
-	void insert(int pos,vector<type> &nums)
-	{
-		int x,y,z,i;
-		for(i=0;i<nums.size();i++) a[i+1]=nums[i];
-		z=build(1,nums.size(),0);
-		x=find(pos);
-		y=find(pos+1);
-		splay(x,0);
-		splay(y,x);
-		t[y].ch[0]=z;
-		t[z].fa=y;
-		pushup(y);
-		pushup(x);
 	}
 	void _del(int id)
 	{
@@ -183,15 +168,14 @@ struct Splay
 		pushup(fa);
 		pushup(t[fa].fa);
 	}
-	void upd(int l,int r,type qv)
+	int split(int l,int r)
 	{
-		int x,fa;
-		x=split(l,r);
-		fa=t[x].fa;
-		t[x].tag=1;
-		maintain(x,qv);
-		pushup(fa);
-		pushup(t[fa].fa);
+		int x,y;
+		x=find(l-1);
+		y=find(r+1);
+		splay(x,0);
+		splay(y,x);
+		return t[y].ch[0];
 	}
 	void rev(int l,int r)
 	{
@@ -203,27 +187,10 @@ struct Splay
 		pushup(fa);
 		pushup(t[fa].fa);
 	}
-	type ask_sum(int l,int r)
+	int ask(int l,int r)
 	{
 		int x=split(l,r);
-		return t[x].sum;
-	}
-	vector<type> res;
-	void dfs(int id)
-	{
-		if(!id) return;
-		pushdown(id);
-		dfs(t[id].ch[0]);
-		res.push_back(t[id].v);
-		dfs(t[id].ch[1]);
-	}
-	void debug()
-	{
-		res.clear();
-		dfs(root);
-		puts("************");
-		for(int i=0;i<res.size();i++) cout<<res[i]<<" \n"[i==res.size()-1];
-		puts("************");
+		return ;
 	}
 	int size(){return t[root].sz-2;}
 	#undef type
