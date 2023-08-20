@@ -54,6 +54,5 @@ struct LCA
 }lca;
 /*
 O(nlogn)-O(logn)
-lca.init();
 lca.work(n,root,mp);
 */
