@@ -1,44 +1,44 @@
-int scc,top,tot;
-vector<int> mp[MAX];
-int low[MAX],dfn[MAX],belong[MAX];
-int stk[MAX],flag[MAX];
-void init(int n)
+struct Strongly_Connected_Components
 {
-	int i;
-	for(i=1;i<=n;i++)
+	int scc_cnt,tot;
+	int low[MAX],dfn[MAX],col[MAX],sz[MAX];
+	int st[MAX],top,flag[MAX];
+	void dfs(int x,vector<int> *mp)
 	{
-		mp[i].clear();
-		low[i]=0;
-		dfn[i]=0;
-		stk[i]=0;
-		flag[i]=0;
-	}
-	scc=top=tot=0;
-}
-void tarjan(int x)
-{
-	int to,i,temp;
-	stk[top++]=x;
-	flag[x]=1;
-	low[x]=dfn[x]=++tot;
-	for(i=0;i<mp[x].size();i++)
-	{
-		to=mp[x][i];
-		if(!dfn[to])
+		int tmp;
+		st[top++]=x;
+		flag[x]=1;
+		low[x]=dfn[x]=++tot;
+		for(auto &to:mp[x])
 		{
-			tarjan(to);
-			low[x]=min(low[x],low[to]);
+			if(!dfn[to])
+			{
+				dfs(to,mp);
+				low[x]=min(low[x],low[to]);
+			}
+			else if(flag[to]) low[x]=min(low[x],dfn[to]);
 		}
-		else if(flag[to]) low[x]=min(low[x],dfn[to]);
-	}
-	if(low[x]==dfn[x])
-	{
-		scc++;
-		do
+		if(low[x]==dfn[x])
 		{
-			temp=stk[--top];
-			flag[temp]=0;
-			belong[temp]=scc;
-		}while(temp!=x);
+			scc_cnt++;
+			do
+			{
+				tmp=st[--top];
+				flag[tmp]=0;
+				col[tmp]=scc_cnt;
+				sz[scc_cnt]++;
+			}while(tmp!=x);
+		}
 	}
-}
+	void work(int n,vector<int> *mp)
+	{
+		int i;
+		for(i=1;i<=n;i++) col[i]=sz[i]=flag[i]=0;
+		scc_cnt=top=tot=0;
+		for(i=1;i<=n;i++)
+		{
+			if(col[i]) continue;
+			dfs(i,mp);
+		}
+	}
+}scc;
