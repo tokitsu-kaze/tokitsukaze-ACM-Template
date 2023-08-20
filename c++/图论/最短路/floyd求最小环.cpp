@@ -32,19 +32,19 @@ struct Floyd
 		{
 			for(i=1;i<k;i++)
 			{
-				if(mp[i][k]==INF) continue;
+				if(mp[i][k]==inf) continue;
 				for(j=1;j<k;j++)
 				{
-					if(i==j||mp[k][j]==INF||dis[j][i]==INF) continue;
+					if(i==j||mp[k][j]==inf||dis[j][i]==inf) continue;
 					min_circle_3=min(min_circle_3,mp[i][k]+mp[k][j]+dis[j][i]);
 				}
 			}
 			for(i=1;i<=n;i++)
 			{
-				if(dis[i][k]==INF) continue;
+				if(dis[i][k]==inf) continue;
 				for(j=1;j<=n;j++)
 				{
-					if(dis[k][j]==INF) continue;
+					if(dis[k][j]==inf) continue;
 					dis[i][j]=min(dis[i][j],dis[i][k]+dis[k][j]);
 				}
 			}
