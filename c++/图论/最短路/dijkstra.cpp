@@ -17,7 +17,7 @@ struct Dijkstra
 		n=_n;
 		for(int i=0;i<=n;i++) mp[i].clear();
 	}
-	void add_edge(int x,int y,type v){ mp[x].pb({y,v});}
+	void add_edge(int x,int y,type v){mp[x].push_back({y,v});}
 	void work(int s)
 	{
 		int i,to;
