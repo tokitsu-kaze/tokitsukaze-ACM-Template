@@ -28,11 +28,7 @@ struct Kruskal
 {
 	#define type int
 	#define inf INF
-	struct edge
-	{
-		int x,y;
-		type w;
-	};
+	struct edge{int x,y;type w;};
 	vector<edge> e;
 	void init(){e.clear();}
 	void add_edge(int a,int b,type w){e.push_back({a,b,w});}
