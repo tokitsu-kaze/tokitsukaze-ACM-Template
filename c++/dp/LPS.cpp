@@ -1,17 +1,16 @@
-﻿//最长回文子序列
-//dp[i][j] 表示s[i..j] 最长回文子序列的长度 
-int dp[2222][2222];
-void LPS(char *s,int n)
+int dp[105][105];
+void LPS(char *s,int n) // s[1..n]
 {
-	int i,j,len;
+	int i,len,l,r;
+	memset(dp,0,sizeof dp);
 	for(i=1;i<=n;i++) dp[i][i]=1;
 	for(len=2;len<=n;len++)
 	{
-		for(i=1;i<=n-len+1;i++)
+		for(l=1;l+len-1<=n;l++)
 		{
-			j=i+len-1;
-			if(s[i]==s[j]) dp[i][j]=dp[i+1][j-1]+2;
-			else dp[i][j]=max({dp[i+1][j],dp[i][j-1],dp[i+1][j-1]});
+			r=l+len-1;
+			if(s[l]==s[r]) dp[l][r]=dp[l+1][r-1]+2;
+			else dp[l][r]=max(dp[l+1][r],dp[l][r-1]);
 		}
 	}
 }

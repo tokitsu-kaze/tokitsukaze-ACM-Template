@@ -46,7 +46,7 @@ struct Kruskal
 		}
 		cnt=0;
 		for(i=1;i<=n;i++) cnt+=dsu.find(i)==i;
-		if(cnt!=1) return inf;
+		if(cnt!=1) return inf; // no connect
 		return res;
 	}
 	#undef type
