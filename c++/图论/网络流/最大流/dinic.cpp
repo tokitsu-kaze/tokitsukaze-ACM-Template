@@ -89,6 +89,9 @@ struct Dinic
 	#undef type
 }dc; 
 /*
+O(n^2*m)
+bipartite graph: O(m*sqrt(n))
+
 dc.init(n);
 dc.add_edge(a,b,cap); a,b: 1~n
 */
