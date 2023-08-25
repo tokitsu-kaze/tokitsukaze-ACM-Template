@@ -23,34 +23,38 @@ struct MCMF_dij
 	}
 	void add_edge(int from,int to,type cap,type cost=0)
 	{
-		edge.pb(node(from,to,cap,cost));
-		edge.pb(node(to,from,0,-cost));
+		edge.push_back(node(from,to,cap,cost));
+		edge.push_back(node(to,from,0,-cost));
 		int m=edge.size();
-		mp[from].pb(m-2);
-		mp[to].pb(m-1);
+		mp[from].push_back(m-2);
+		mp[to].push_back(m-1);
 	}
 	bool dij()
 	{
-		for(int i=0;i<=n;i++) dis[i]=inf;
+		int i,x,to;
+		type cost,now_cost;
+		for(i=0;i<=n;i++) dis[i]=inf;
 		dis[s]=0;id[s]=0;
 		priority_queue<PTI ,vector<PTI>,greater<PTI> > q;
-		q.push(MP(type(0),s));
+		q.push({type(0),s});
 		while(!q.empty())
 		{
-			PTI x=q.top();
+			PTI tmp=q.top();
 			q.pop();
-			if(x.fi>dis[x.se]) continue;
-			for(int i=0;i<mp[x.se].size();i++)
+			cost=tmp.first;
+			x=tmp.second;
+			if(cost>dis[x]) continue;
+			for(i=0;i<mp[x].size();i++)
 			{
-				node& e=edge[mp[x.se][i]];
-				int to=e.to;
-				type now_cost=e.cost+h[x.se]-h[to];
-				if(e.flow>0&&dis[to]>dis[x.se]+now_cost)
-				{ 
-					dis[to]=dis[x.se]+now_cost;
-					q.push(MP(dis[to],to));
-					e.from=x.se;
-					id[to]=mp[x.se][i];
+				node& e=edge[mp[x][i]];
+				to=e.to;
+				type now_cost=e.cost+h[x]-h[to];
+				if(e.flow>0&&dis[to]>dis[x]+now_cost)
+				{
+					dis[to]=dis[x]+now_cost;
+					q.push({dis[to],to});
+					e.from=x;
+					id[to]=mp[x][i];
 				}
 			}
 		}
@@ -79,7 +83,7 @@ struct MCMF_dij
 			flow+=new_flow;
 			cost+=new_flow*h[t];
 		}
-		return MP(cost,flow);
+		return {cost,flow};
 	}
 	#undef type
 	#undef inf
