@@ -1,7 +1,12 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int INF=0x3f3f3f3f;
+const int MAX=5e4+10;
 struct Treap
 {
 	#define type int
-	static const type inf=INF;
+	#define inf INF
 	struct node
 	{
 		int ch[2],fix,sz,cnt;
@@ -14,8 +19,8 @@ struct Treap
 			sz=cnt=_sz;
 			ch[0]=ch[1]=0;
 		} 
-	}t[MAX];
-	int tot,root[MAX],rt;
+	}t[MAX*40];
+	int tot,root[MAX<<2],rt;
 	void init(int n=1)
 	{
 		for(int i=0;i<=n;i++) root[i]=0;
@@ -167,22 +172,123 @@ struct Treap
 	int lower_bound_count(type key){return _find(key,1);}//the count <key
 	int order_of_key(type key){return lower_bound_count(key)+1;}
 	int size(){return t[root[rt]].sz;}
+}treap;
+struct Segment_Tree
+{
+	#define ls (id<<1)
+	#define rs (id<<1|1)
+	int n,ql,qr,qop;
+	type qv;
+	void update(int l,int r,int id)
+	{
+		if(qop==1) treap[id].insert(qv);
+		else treap[id].erase(qv);
+		if(l>=ql&&r<=qr) return;
+		int mid=(l+r)>>1;
+		if(ql<=mid) update(l,mid,ls);
+		if(qr>mid) update(mid+1,r,rs);
+	}
+	vector<int> treap_id;
+	void dfs(int l,int r,int id)
+	{
+		if(l>=ql&&r<=qr)
+		{
+			treap_id.push_back(id);
+			return;
+		}
+		int mid=(l+r)>>1;
+		if(ql<=mid) dfs(l,mid,ls);
+		if(qr>mid) dfs(mid+1,r,rs);
+	}
+	void get_treap_id(int l,int r)
+	{
+		ql=l;
+		qr=r;
+		treap_id.clear();
+		dfs(1,n,1);
+	}
+	void build(int _n){n=_n;treap.init(n<<2);}
+	void insert(int pos,type v)
+	{
+		ql=qr=pos;
+		qop=1;
+		qv=v;
+		update(1,n,1);
+	}
+	void erase(int pos,type v)
+	{
+		ql=qr=pos;
+		qop=2;
+		qv=v;
+		update(1,n,1);
+	}
+	int ask_rank(int l,int r,type v)
+	{
+		get_treap_id(l,r);
+		int res=1;
+		for(auto &rt:treap_id) res+=treap[rt].order_of_key(v)-1;
+		return res;
+	}
+	int ask_kth(int l,int r,int k)
+	{
+		get_treap_id(l,r);
+		l=0;
+		r=1e8;
+		while(l<r)
+		{
+			int mid=(l+r)>>1,now=1;
+			for(auto &rt:treap_id) now+=treap[rt].order_of_key(mid+1)-1;
+			if(now<=k) l=mid+1;
+			else r=mid;
+		}
+		return l;
+	}
+	type find_pre(int l,int r,type v)
+	{
+		get_treap_id(l,r);
+		type res=-inf;
+		for(auto &rt:treap_id) res=max(res,treap[rt].find_pre(v));
+		if(res==-inf) return -2147483647;
+		return res;
+	}
+	type find_nex(int l,int r,type v)
+	{
+		get_treap_id(l,r);
+		type res=inf;
+		for(auto &rt:treap_id) res=min(res,treap[rt].find_nex(v));
+		if(res==inf) return 2147483647;
+		return res;
+	}
 	#undef type
+	#undef ls
+	#undef rs
 }tr;
-/*
-1 treap
-tr.init();
-tr.insert(x);
-tr.erase(x);
-tr.count(x);
-tr.order_of_key(x); // rank
-tr.find_by_order(k); // kth
-tr.find_pre(x);
-tr.find_nex(x);
-tr.upper_bound_count(x); //the count <=key
-tr.lower_bound_count(x); //the count <key
-
-n treap
-tr.init(n);
-tr[i].insert(x);
-*/
+int a[MAX];
+int main()
+{
+	int n,m,i,op,l,r,k;
+	scanf("%d%d",&n,&m);
+	tr.build(n);
+	for(i=1;i<=n;i++)
+	{
+		scanf("%d",&a[i]);
+		tr.insert(i,a[i]);
+	}
+	while(m--)
+	{
+		scanf("%d%d",&op,&l);
+		if(op==3) scanf("%d",&k);
+		else scanf("%d%d",&r,&k);
+		if(op==1) printf("%d\n",tr.ask_rank(l,r,k));
+		else if(op==2) printf("%d\n",tr.ask_kth(l,r,k));
+		else if(op==3)
+		{
+			tr.erase(l,a[l]);
+			a[l]=k;
+			tr.insert(l,a[l]);
+		}
+		else if(op==4) printf("%d\n",tr.find_pre(l,r,k));
+		else if(op==5) printf("%d\n",tr.find_nex(l,r,k));
+	}
+	return 0;
+}

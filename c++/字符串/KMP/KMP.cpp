@@ -21,7 +21,7 @@ struct KMP
 	// s[1..n], return all pos t in s 
 	vector<int> match(type *s,int n)
 	{
-		int n,i,j;
+		int i,j;
 		vector<int> res;
 		for(i=1,j=0;i<=n;i++)
 		{

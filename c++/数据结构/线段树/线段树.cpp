@@ -3,12 +3,23 @@ struct Segment_Tree
 	#define type int
 	#define ls (id<<1)
 	#define rs (id<<1|1)
-	int n,ql,qr;
-	type a[MAX],v[MAX<<2],tag[MAX<<2],qv;
-	void pushup(int id)
+	struct node
 	{
+		type v;
+		void init()
+		{
+			
+		}
+	}t[MAX<<2];
+	int n,ql,qr,qop;
+	type a[MAX],tag[MAX<<2],qv;
+	node merge(node x,node y)
+	{
+		node res;
 		
+		return res;
 	}
+	void pushup(int id){t[id]=merge(t[ls],t[rs]);}
 	void pushdown(int l,int r,int id)
 	{
 		if(!tag[id]) return;
@@ -18,6 +29,7 @@ struct Segment_Tree
 	void build(int l,int r,int id)
 	{
 		tag[id]=0;
+		t[id].init();
 		if(l==r)
 		{
 			//init
@@ -32,7 +44,7 @@ struct Segment_Tree
 	{
 		if(l>=ql&&r<=qr)
 		{
-			//do something
+			
 			return;
 		}
 		pushdown(l,r,id);
@@ -41,18 +53,14 @@ struct Segment_Tree
 		if(qr>mid) update(mid+1,r,rs);
 		pushup(id);
 	}
-	type res;
-	void query(int l,int r,int id)
+	node query(int l,int r,int id)
 	{
-		if(l>=ql&&r<=qr)
-		{
-			//do something
-			return;
-		}
+		if(l>=ql&&r<=qr) return t[id];
 		pushdown(l,r,id);
 		int mid=(l+r)>>1;
-		if(ql<=mid) query(l,mid,ls);
-		if(qr>mid) query(mid+1,r,rs);
+		if(qr<=mid) return query(l,mid,ls);
+		if(ql>mid) return query(mid+1,r,rs);
+		return merge(query(l,mid,ls),query(mid+1,r,rs));
 	}
 	void build(int _n){n=_n;build(1,n,1);}
 	void upd(int l,int r,type v)
@@ -62,13 +70,11 @@ struct Segment_Tree
 		qv=v;
 		update(1,n,1);
 	}
-	type ask(int l,int r)//init res
+	type ask(int l,int r)
 	{
 		ql=l;
 		qr=r;
-		res=0;
-		query(1,n,1);
-		return res;
+		return query(1,n,1).v;
 	}
 	#undef type
 	#undef ls

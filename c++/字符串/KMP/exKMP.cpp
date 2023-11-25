@@ -1,45 +1,58 @@
-struct exKMP
+struct Z_Algorithm
 {
-	int next[MAX];
-	void getnext(char *s)
+	char s[MAX];
+	int n,z[MAX],ex[MAX];
+	void get_z_func(char *_s,int _n) // s[0..n-1]
 	{
-		int i,j,pos,len;
-		next[i=0]=len=strlen(s);
-		while(s[i]==s[i+1]&&i+1<len) i++;
-		next[1]=i;
-		pos=1;
-		for(i=2;i<len;i++)
+		int i,j,l,r;
+		n=_n;
+		memcpy(s,_s,n);
+		z[0]=l=r=0;
+		for(i=1;i<n;i++)
 		{
-			if(next[i-pos]+i<next[pos]+pos) next[i]=next[i-pos];
+			if(i+z[i-l]-1<r) z[i]=z[i-l];
 			else
 			{
-				j=max(0,next[pos]+pos-i);
-				while(i+j<len&&s[j]==s[j+i]) j++;
-				next[i]=j;
-				pos=i;
+				j=max(0,r-i+1);
+				while(i+j<n&&s[i+j]==s[j]) j++;
+				z[i]=j;
+				if(i+z[i]-1>r)
+				{
+					l=i;
+					r=i+z[i]-1;
+				}
 			}
 		}
+		z[0]=n;
 	}
-	void work(char *a,char *b,int *ex)// a,b 0~len-1
+	void get_ex(char *t,int m) // t[0..m-1]
 	{
-		int i=0,j,pos,lena,lenb;
-		getnext(b);
-		lena=strlen(a);
-		lenb=strlen(b);
-		i=0;
-		while(a[i]==b[i]&&i<lenb&&i<lena) i++;
-		ex[0]=i;
-		pos=0;
-		for(i=1;i<lena;i++)
+		int i,j,l,r;
+		j=l=0;
+		while(j<n&&j<m&&t[j]==s[j]) j++;
+		ex[0]=j;
+		r=l+ex[0]-1;
+		for(i=1;i<m;i++)
 		{
-			if(next[i-pos]+i<ex[pos]+pos) ex[i]=next[i-pos];
+			if(i+z[i-l]-1<r) ex[i]=z[i-l];
 			else
 			{
-				j=max(0,ex[pos]+pos-i);
-				while(i+j<lena&&j<lenb&&a[j+i]==b[j]) j++;
+				j=max(0,r-i+1);
+				while(i+j<m&&t[i+j]==s[j]) j++;
 				ex[i]=j;
-				pos=i;
+				if(i+ex[i]-1>r)
+				{
+					l=i;
+					r=i+ex[i]-1;
+				}
 			}
 		}
 	}
-}exkmp;
+}z;
+/*
+z[i]:  lcp(s,s[i..n-1]) i=0..n-1
+ex[i]: lcp(s,t[i..m-1]) i=0..m-1
+
+z.get_z_func(s,n) s[0..n-1]
+z.get_ex(t,m) t[0..m-1]
+*/

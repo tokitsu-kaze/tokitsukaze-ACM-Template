@@ -3,7 +3,8 @@ struct Strongly_Connected_Components
 	int scc_cnt,tot;
 	int low[MAX],dfn[MAX],col[MAX],sz[MAX];
 	int st[MAX],top,flag[MAX];
-	void dfs(int x,vector<int> *mp)
+	vector<int> mp[MAX];
+	void dfs(int x)
 	{
 		int tmp;
 		st[top++]=x;
@@ -13,7 +14,7 @@ struct Strongly_Connected_Components
 		{
 			if(!dfn[to])
 			{
-				dfs(to,mp);
+				dfs(to);
 				low[x]=min(low[x],low[to]);
 			}
 			else if(flag[to]) low[x]=min(low[x],dfn[to]);
@@ -30,15 +31,32 @@ struct Strongly_Connected_Components
 			}while(tmp!=x);
 		}
 	}
-	void work(int n,vector<int> *mp)
+	void work(int n,vector<int> *_mp)
 	{
 		int i;
-		for(i=1;i<=n;i++) col[i]=sz[i]=flag[i]=0;
+		for(i=1;i<=n;i++)
+		{
+			col[i]=sz[i]=flag[i]=0;
+			mp[i]=_mp[i];
+		}
 		scc_cnt=top=tot=0;
 		for(i=1;i<=n;i++)
 		{
 			if(col[i]) continue;
-			dfs(i,mp);
+			dfs(i);
+		}
+	}
+	void rebuild(int n,vector<int> *g)
+	{
+		int i;
+		for(i=1;i<=n;i++) g[i].clear();
+		for(i=1;i<=n;i++)
+		{
+			for(auto &to:mp[i])
+			{
+				if(col[i]==col[to]) continue;
+				g[col[i]].push_back(col[to]);
+			}
 		}
 	}
 }scc;

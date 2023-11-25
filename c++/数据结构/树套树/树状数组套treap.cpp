@@ -1,7 +1,12 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int INF=0x3f3f3f3f;
+const int MAX=1e5+10;
 struct Treap
 {
 	#define type int
-	static const type inf=INF;
+	#define inf INF
 	struct node
 	{
 		int ch[2],fix,sz,cnt;
@@ -14,7 +19,7 @@ struct Treap
 			sz=cnt=_sz;
 			ch[0]=ch[1]=0;
 		} 
-	}t[MAX];
+	}t[MAX*20];
 	int tot,root[MAX],rt;
 	void init(int n=1)
 	{
@@ -167,22 +172,84 @@ struct Treap
 	int lower_bound_count(type key){return _find(key,1);}//the count <key
 	int order_of_key(type key){return lower_bound_count(key)+1;}
 	int size(){return t[root[rt]].sz;}
+}treap;
+struct Fenwick_Tree
+{
+	int n;
+	void init(int _n)
+	{
+		n=_n;
+		treap.init(n);
+	}
+	int lowbit(int x){return x&(-x);}
+	type get(int x,type v)
+	{
+		type res=0;
+		while(x)
+		{
+			res+=treap[x].lower_bound_count(v);
+			x-=lowbit(x);
+		}
+		return res;
+	}
+	void insert(int x,type v)
+	{
+		while(x<=n)
+		{
+			treap[x].insert(v);
+			x+=lowbit(x);
+		}
+	}
+	void erase(int x,type v)
+	{
+		while(x<=n)
+		{
+			treap[x].erase(v);
+			x+=lowbit(x);
+		}
+	}
+	int ask_kth(int ql,int qr,int k)
+	{
+		int l,r,mid;
+		l=0;
+		r=1e9;
+		while(l<r)
+		{
+			mid=(l+r)>>1;
+			if(get(qr,mid+1)-get(ql-1,mid+1)+1<=k) l=mid+1;
+			else r=mid;
+		}
+		return l;
+	}
 	#undef type
 }tr;
-/*
-1 treap
-tr.init();
-tr.insert(x);
-tr.erase(x);
-tr.count(x);
-tr.order_of_key(x); // rank
-tr.find_by_order(k); // kth
-tr.find_pre(x);
-tr.find_nex(x);
-tr.upper_bound_count(x); //the count <=key
-tr.lower_bound_count(x); //the count <key
-
-n treap
-tr.init(n);
-tr[i].insert(x);
-*/
+int a[MAX];
+int main()
+{
+	int n,m,i,l,r,k;
+	char op[3];
+	scanf("%d%d",&n,&m);
+	tr.init(n);
+	for(i=1;i<=n;i++)
+	{
+		scanf("%d",&a[i]);
+		tr.insert(i,a[i]);
+	}
+	while(m--)
+	{
+		scanf("%s%d",op,&l);
+		if(op[0]=='Q')
+		{
+			scanf("%d%d",&r,&k);
+			printf("%d\n",tr.ask_kth(l,r,k));
+		}
+		else
+		{
+			scanf("%d",&k);
+			tr.erase(l,a[l]);
+			a[l]=k;
+			tr.insert(l,a[l]);
+		}
+	}
+	return 0;
+}

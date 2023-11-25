@@ -4,12 +4,12 @@ struct Palindrome_Tree
 	static const int LOGN=log2(N)+3;
 	static const int K=26;// char size: [0,25]
 	int len[N],nex[N][K],fail[N],last,pos[N],s[N],tot,n;
-	int cnt[N],deep[N];
+	int cnt[N],dep[N];
 	int newnode(int l)
 	{
 		memset(nex[tot],0,sizeof nex[tot]);
 		fail[tot]=0; 
-		deep[tot]=cnt[tot]=0;
+		dep[tot]=cnt[tot]=0;
 		len[tot]=l;
 		return tot++;
 	}
@@ -35,7 +35,7 @@ struct Palindrome_Tree
 		{
 			id=newnode(len[now]+2);
 			fail[id]=nex[get_fail(fail[now])][t];
-			deep[id]=deep[fail[id]]+1;
+			dep[id]=dep[fail[id]]+1;
 			nex[now][t]=id;
 		}
 		last=nex[now][t];
@@ -70,10 +70,10 @@ struct Palindrome_Tree
 		//maybe need judge if len[now]==r-l+1
 		return now;
 	}
-	void build_tree(VI mp[])// root is 0
+	void build_tree(vector<int> mp[])// root is 0
 	{
 		for(int i=0;i<=tot+1;i++) mp[i].clear();
-		for(int i=1;i<tot;i++) mp[fail[i]].pb(i);
+		for(int i=1;i<tot;i++) mp[fail[i]].push_back(i);
 	}
 	
 }pam;

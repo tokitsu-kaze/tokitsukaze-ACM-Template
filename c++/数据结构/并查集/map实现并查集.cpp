@@ -1,16 +1,17 @@
 struct dsu
 {
-	unordered_map<int,int> pre;
+	#define type int
+	unordered_map<type,type> pre;
 	void init(){pre.clear();}
-	int find(int x)
+	type find(type x)
 	{
 		if(pre.count(x)) pre[x]=find(pre[x]);
 		else return x;
 		return pre[x];
 	}
-	bool merge(int a,int b)
+	bool merge(type a,type b)
 	{
-		int ra,rb;
+		type ra,rb;
 		ra=find(a);
 		rb=find(b);
 		if(ra!=rb)
@@ -20,4 +21,5 @@ struct dsu
 		}
 		return 0;
 	}
+	#undef type
 }dsu;

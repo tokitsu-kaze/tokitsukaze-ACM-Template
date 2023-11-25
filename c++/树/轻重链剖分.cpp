@@ -1,60 +1,59 @@
-struct HLD
+struct Heavy_Light_Decomposition
 {
 	#define type int
-	struct edge{int a,b;type v;edge(int _a,int _b,type _v=0):a(_a),b(_b),v(_v){}};
-	struct node{int to;type w;node(){}node(int _to,type _w):to(_to),w(_w){}};
+	struct edge{int a,b;type v;};
+	struct node{int to;type w;};
 	vector<int> mp[MAX];
 	vector<edge> e;
-	int deep[MAX],fa[MAX],size[MAX],son[MAX];
-	int rnk[MAX],top[MAX],idx[MAX],tot;
+	int dep[MAX],fa[MAX],sz[MAX],son[MAX];
+	int id[MAX],top[MAX],dfn[MAX],tot;
 	int n,rt;
 	void init(int _n)
 	{
 		n=_n;
 		for(int i=0;i<=n;i++) mp[i].clear();
 		e.clear();
-		e.pb(edge(0,0));
+		e.push_back({0,0,0});
 	}
 	void add_edge(int a,int b,type v=0)
 	{
-		e.pb(edge(a,b,v));
-		mp[a].pb(b);
-		mp[b].pb(a);
+		e.push_back({a,b,v});
+		mp[a].push_back(b);
+		mp[b].push_back(a);
 	}
-	void dfs1(int x,int pre,int h)  
+	void dfs1(int x,int pre,int h)
 	{
 		int i,to;
-		deep[x]=h;
+		dep[x]=h;
 		fa[x]=pre;
-		size[x]=1;
-		for(i=0;i<sz(mp[x]);i++)
+		sz[x]=1;
+		for(i=0;i<mp[x].size();i++)
 		{
 			to=mp[x][i];
 			if(to==pre) continue;
 			dfs1(to,x,h+1);
-			size[x]+=size[to];
-			if(son[x]==-1||size[to]>size[son[x]]) son[x]=to;
+			sz[x]+=sz[to];
+			if(son[x]==-1||sz[to]>sz[son[x]]) son[x]=to;
 		}
 	}
 	void dfs2(int x,int tp)
 	{
 		int i,to;
+		dfn[x]=++tot;
+		id[dfn[x]]=x;
 		top[x]=tp;
-		idx[x]=++tot;
-		rnk[idx[x]]=x;
 		if(son[x]==-1) return;
 		dfs2(son[x],tp);
-		for(i=0;i<sz(mp[x]);i++)
+		for(i=0;i<mp[x].size();i++)
 		{
 			to=mp[x][i];
 			if(to!=son[x]&&to!=fa[x]) dfs2(to,to);
 		}
 	}
-	void work(int _rt) 
+	void work(int _rt)
 	{
-		int i;
 		rt=_rt;
-		mem(son,-1);
+		for(int i=0;i<=n;i++) son[i]=-1;
 		tot=0;
 		dfs1(rt,0,0);
 		dfs2(rt,rt);
@@ -62,85 +61,91 @@ struct HLD
 	int LCA(int x,int y)
 	{
 		while(top[x]!=top[y])
-		{  
-			if(deep[top[x]]<deep[top[y]]) swap(x,y);
+		{
+			if(dep[top[x]]<dep[top[y]]) swap(x,y);
 			x=fa[top[x]];
-	    }  
-	    if(deep[x]>deep[y]) swap(x,y);
+	    }
+	    if(dep[x]>dep[y]) swap(x,y);
 	    return x;
 	}
 	//node
-	void init_node()
+	void init_node(type *v)
 	{
-		build(n);
+		for(int i=1;i<=n;i++) tr.a[dfn[i]]=v[i];
+		tr.build(n);
 	}
-	void modify_node(int x,int y,type val)
-	{  
+	void upd_node(int x,int y,type v)
+	{
 		while(top[x]!=top[y])
-		{  
-			if(deep[top[x]]<deep[top[y]]) swap(x,y);
-			update(idx[top[x]],idx[x],val);
+		{
+			if(dep[top[x]]<dep[top[y]]) swap(x,y);
+			tr.upd(dfn[top[x]],dfn[x],v);
 			x=fa[top[x]];
-	    }  
-	    if(deep[x]>deep[y]) swap(x,y);
-	    update(idx[x],idx[y],val);
+	    }
+	    if(dep[x]>dep[y]) swap(x,y);
+	    tr.upd(dfn[x],dfn[y],v);
 	}
-	type query_node(int x,int y)
-	{  
+	type ask_node(int x,int y)
+	{
 		type res=0;
 		while(top[x]!=top[y])
-		{  
-			if(deep[top[x]]<deep[top[y]]) swap(x,y);
-			res+=query(idx[top[x]],idx[x]);
+		{
+			if(dep[top[x]]<dep[top[y]]) swap(x,y);
+			res+=tr.ask(dfn[top[x]],dfn[x]);
 			x=fa[top[x]];
-	    }  
-	    if(deep[x]>deep[y]) swap(x,y);
-	    res+=query(idx[x],idx[y]);
+	    }
+	    if(dep[x]>dep[y]) swap(x,y);
+	    res+=tr.ask(dfn[x],dfn[y]);
 	    return res;
 	}
 	//path
 	void init_path()
 	{
-		v[idx[rt]]=0;
+		tr.a[dfn[rt]]=0;
 		for(int i=1;i<n;i++)
 		{
-			if(deep[e[i].a]<deep[e[i].b]) swap(e[i].a,e[i].b);
-			v[idx[e[i].a]]=e[i].v;
+			if(dep[e[i].a]<dep[e[i].b]) swap(e[i].a,e[i].b);
+			tr.a[dfn[e[i].a]]=e[i].v;
 		}
-		build(n);
+		tr.build(n);
 	}
-	void modify_edge(int id,type val)
+	void upd_edge(int id,type v)
 	{
-		if(deep[e[id].a]>deep[e[id].b]) update(idx[e[id].a],idx[e[id].a],val);
-		else update(idx[e[id].b],idx[e[id].b],val);
+		if(dep[e[id].a]>dep[e[id].b]) tr.upd(dfn[e[id].a],dfn[e[id].a],v);
+		else tr.upd(dfn[e[id].b],dfn[e[id].b],v);
 	}
-	void modify_path(int x,int y,type val)
+	void upd_path(int x,int y,type v)
 	{  
 		while(top[x]!=top[y])
-		{  
-			if(deep[top[x]]<deep[top[y]]) swap(x,y);
-			update(idx[top[x]],idx[x],val);
+		{
+			if(dep[top[x]]<dep[top[y]]) swap(x,y);
+			tr.upd(dfn[top[x]],dfn[x],v);
 			x=fa[top[x]];
-	    }  
-	    if(deep[x]>deep[y]) swap(x,y);
-	    if(x!=y) update(idx[x]+1,idx[y],val);
+	    }
+	    if(dep[x]>dep[y]) swap(x,y);
+	    if(x!=y) tr.upd(dfn[x]+1,dfn[y],v);
 	}
-	type query_path(int x,int y)
+	type ask_path(int x,int y)
 	{  
 		type res=0;
 		while(top[x]!=top[y])
 		{  
-			if(deep[top[x]]<deep[top[y]]) swap(x,y);
-			res+=query(idx[top[x]],idx[x]);
+			if(dep[top[x]]<dep[top[y]]) swap(x,y);
+			res+=tr.ask(dfn[top[x]],dfn[x]);
 			x=fa[top[x]];
 	    }  
-	    if(deep[x]>deep[y]) swap(x,y);
-	    if(x!=y) res+=query(idx[x]+1,idx[y]);
+	    if(dep[x]>dep[y]) swap(x,y);
+	    if(x!=y) res+=tr.ask(dfn[x]+1,dfn[y]);
 	    return res;
 	}
+	// sub tree
+	void upd_subtree(int x,type v){tr.upd(dfn[x],dfn[x]+sz[x]-1,v);}
+	type ask_subtree(int x){return tr.ask(dfn[x],dfn[x]+sz[x]-1);}
 	#undef type
 }hld;
-/***********attention!************/
-//hld.init(n)
-//hld.add_edge(): undirected edge.
-/*********************************/
+/*
+hld.init(n)
+hld.add_edge(a,b,v=0);  a <-> b
+hld.work(root);
+*/
+
