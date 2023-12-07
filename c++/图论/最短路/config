@@ -1,3 +1,5 @@
 <dijkstra> <dijkstra.cpp>
 <spfa> <spfa.cpp>
 <floyd求最小环> <floyd求最小环.cpp>
+<Johnson> <Johnson.cpp>
+<同余最短路> <同余最短路.cpp>
