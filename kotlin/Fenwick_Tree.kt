@@ -1,19 +1,20 @@
-class Fenwick_Tree(var n:Int)
+class Fenwick_Tree <T:Number> (var n:Int)
 {
-	var bit=Array(n+1){0}
+	var bit=LongArray(n+1){0}
 	fun lowbit(x:Int):Int{return x and (-x)}
-	fun insert(xx:Int,v:Int)
+	fun insert(xx:Int,qv:T)
 	{
 		var x=xx
+        var v=qv.toLong()
 		while(x<=n)
 		{
 			bit[x]+=v
 			x+=lowbit(x)
 		}
 	}
-	fun get(xx:Int):Int
+	fun get(xx:Int):Long
 	{
-		var res=0
+		var res=0L
 		var x=xx
 		while(x>0)
 		{
@@ -22,8 +23,10 @@ class Fenwick_Tree(var n:Int)
 		}
 		return res
 	}
-	fun ask(l:Int,r:Int):Int
+	fun ask(l:Int,r:Int):T
 	{
-		return get(r)-get(l-1)
+        if(l>r) return 0 as T
+        if(l-1<=0) return get(r) as T
+		return (get(r)-get(l-1)) as T
 	}
 }

@@ -8,6 +8,15 @@ struct Fenwick_Tree
 		n=_n;
 		for(int i=0;i<=n;i++) bit[i]=0;
 	}
+	void init(int _n,type *a)
+	{
+		n=_n;
+		for(int i=1;i<=n;i++)
+		{
+			a[i]+=a[i-1];
+			bit[i]=a[i]-a[i-lowbit(i)];
+		}
+	}
 	int lowbit(int x){return x&(-x);}
 	type get(int x)
 	{

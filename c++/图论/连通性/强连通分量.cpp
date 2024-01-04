@@ -60,3 +60,6 @@ struct Strongly_Connected_Components
 		}
 	}
 }scc;
+/*
+scc.work(n,mp);
+*/

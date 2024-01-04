@@ -6,13 +6,13 @@ struct Trie
 	type cnt[MAX*mx];
 	int newnode()
 	{
-		mem(nex[tot],0);
+		memset(nex[tot],0,sizeof nex[tot]);
 		cnt[tot]=0;
 		return tot++;
 	}
 	void init()
 	{
-		mem(nex[0],0);
+		memset(nex[0],0,sizeof nex[0]);
 		cnt[0]=0;
 		tot=1;
 		root=newnode();
