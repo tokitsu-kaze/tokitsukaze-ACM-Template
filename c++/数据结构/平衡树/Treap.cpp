@@ -27,8 +27,8 @@ struct Treap
 	}
 	void pushup(int id)  
 	{  
-		t[id].sz=t[t[id].ch[0]].sz+t[t[id].ch[1]].sz+t[id].cnt;  
-	}  
+		t[id].sz=t[t[id].ch[0]].sz+t[t[id].ch[1]].sz+t[id].cnt;
+	}
 	void rotate(int &id,int k)
 	{
 		int y=t[id].ch[k^1];
@@ -91,7 +91,7 @@ struct Treap
 		int id=root[rt],res=0;
 		while(id)
 		{
-			if(t[id].v<key)
+			if(t[id].v<=key)
 			{
 				res+=t[t[id].ch[0]].sz+t[id].cnt;
 				if(f&&key==t[id].v) res-=t[id].cnt;
