@@ -25,17 +25,17 @@ struct President_Tree
 		if(ql<=mid) update(l,mid,ls[id]=0,ls[pre]);
 		else update(mid+1,r,rs[id]=0,rs[pre]);
 	}
-	void query(int l,int r,int id)
+	void query_valsum(int l,int r,int id,int pre)
 	{
 		if(!id) return;
 		if(l>=ql&&r<=qr)
 		{
-			res+=v[id];
+			res+=v[id]-v[pre];
 			return;
 		}
 		int mid=(l+r)>>1;
-		if(ql<=mid) query(l,mid,ls[id]);
-		if(qr>mid) query(mid+1,r,rs[id]);
+		if(ql<=mid) query_valsum(l,mid,ls[id],ls[pre]);
+		if(qr>mid) query_valsum(mid+1,r,rs[id],rs[pre]);
 	}
 	int kth_small(int l,int r,int id,int pre,int k)
 	{
@@ -44,6 +44,12 @@ struct President_Tree
 		int tmp=v[ls[id]]-v[ls[pre]];
 		if(tmp>=k) return kth_small(l,mid,ls[id],ls[pre],k);
 		else return kth_small(mid+1,r,rs[id],rs[pre],k-tmp);
+	}
+	void update_ver(int now_ver,int pre_ver,int pos,type v)
+	{
+		ql=qr=pos;
+		qv=v;
+		update(1,n,root[now_ver],root[pre_ver]);
 	}
 	void copy_ver(int now_ver,int pre_ver)
 	{
@@ -54,30 +60,24 @@ struct President_Tree
 		root[now_ver]=0;
 		update_ver(now_ver,pre_ver,pos,v);
 	}
-	void update_ver(int now_ver,int pre_ver,int pos,type v)
-	{
-		ql=qr=pos;
-		qv=v;
-		update(1,n,root[now_ver],root[pre_ver]);
-	}
-	type ask_ver(int now_ver,int l,int r)
-	{
-		res=0;
-		if(l>r) return res;
-		ql=l;
-		qr=r;
-		query(1,n,root[now_ver]);
-		return res;
-	}
 	int ask_kth_small(int l,int r,int k)
 	{
 		return kth_small(1,n,root[r],root[l-1],k);
 	}
+	type ask_valsum(int pre_ver,int now_ver,int val_l,int val_r)
+	{
+		ql=val_l;
+		qr=val_r;
+		res=0;
+		query_valsum(1,n,root[now_ver],root[pre_ver-1]);
+		return res;
+	}
+	#undef type
 }tr;
 /*
 tr.init(n);
 tr.create_ver(now_ver,pre_ver,pos,v);
-tr.update_ver(now_ver,pre_ver,pos,v);
 tr.copy_ver(now_ver,pre_ver);
 tr.ask_kth_small(l,r,k);
+tr.ask_valsum(l,r,val_l,val_r);
 */
