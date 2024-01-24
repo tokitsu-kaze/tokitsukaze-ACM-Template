@@ -6,20 +6,17 @@ struct Segment_Tree
 	struct node
 	{
 		type v;
-		void init()
-		{
-			
-		}
-	}t[MAX<<2];
+		void init(){}
+	}t[MAX<<2],null_node;
 	int n,ql,qr,qop;
 	type a[MAX],tag[MAX<<2],qv;
-	node merge(node x,node y)
+	node merge_node(node x,node y)
 	{
 		node res;
 		
 		return res;
 	}
-	void pushup(int id){t[id]=merge(t[ls],t[rs]);}
+	void pushup(int id){t[id]=merge_node(t[ls],t[rs]);}
 	void pushdown(int l,int r,int id)
 	{
 		if(!tag[id]) return;
@@ -60,11 +57,17 @@ struct Segment_Tree
 		int mid=(l+r)>>1;
 		if(qr<=mid) return query(l,mid,ls);
 		if(ql>mid) return query(mid+1,r,rs);
-		return merge(query(l,mid,ls),query(mid+1,r,rs));
+		return merge_node(query(l,mid,ls),query(mid+1,r,rs));
 	}
-	void build(int _n){n=_n;build(1,n,1);}
+	void build(int _n)
+	{
+		n=_n;
+		build(1,n,1);
+		null_node.init();
+	}
 	void upd(int l,int r,type v)
 	{
+		if(l>r) return;
 		ql=l;
 		qr=r;
 		qv=v;
@@ -72,6 +75,7 @@ struct Segment_Tree
 	}
 	type ask(int l,int r)
 	{
+		if(l>r) return null_node.v;
 		ql=l;
 		qr=r;
 		return query(1,n,1).v;
@@ -80,3 +84,9 @@ struct Segment_Tree
 	#undef ls
 	#undef rs
 }tr;
+/*
+tr.build(n);
+tr.upd(l,r,v);
+tr.ask(l,r);
+Segment_Tree::node res=tr.merge_node(nodex,nodey);
+*/
