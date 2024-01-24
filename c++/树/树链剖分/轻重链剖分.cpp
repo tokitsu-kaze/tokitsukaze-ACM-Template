@@ -58,7 +58,7 @@ struct Heavy_Light_Decomposition
 		dfs1(rt,0,0);
 		dfs2(rt,rt);
 	}
-	int LCA(int x,int y)
+	int lca(int x,int y)
 	{
 		while(top[x]!=top[y])
 		{
@@ -67,6 +67,15 @@ struct Heavy_Light_Decomposition
 	    }
 	    if(dep[x]>dep[y]) swap(x,y);
 	    return x;
+	}
+	int find_yson_toward_x(int x,int y)
+	{
+		while(top[x]!=top[y])
+		{
+			if(fa[top[x]]==y) return top[x];
+			x=fa[top[x]];
+	    }
+	    return son[y];
 	}
 	//node
 	void init_node(type *v)
@@ -139,13 +148,48 @@ struct Heavy_Light_Decomposition
 	    return res;
 	}
 	// sub tree
-	void upd_subtree(int x,type v){tr.upd(dfn[x],dfn[x]+sz[x]-1,v);}
-	type ask_subtree(int x){return tr.ask(dfn[x],dfn[x]+sz[x]-1);}
+	void change_root(int x){rt=x;}
+	void upd_subtree(int x,type v)
+	{
+		if(x==rt) tr.upd(1,n,v);
+		if(dfn[rt]>=dfn[x]&&dfn[rt]<=dfn[x]+sz[x]-1)
+		{
+			x=find_yson_toward_x(rt,x);
+			tr.upd(1,dfn[x]-1,v);
+			tr.upd(dfn[x]+sz[x],n,v);
+		}
+		tr.upd(dfn[x],dfn[x]+sz[x]-1,v);
+	}
+	type ask_subtree(int x)
+	{
+		if(x==rt) return tr.ask(1,n).v;
+		if(dfn[rt]>=dfn[x]&&dfn[rt]<=dfn[x]+sz[x]-1)
+		{
+			x=find_yson_toward_x(rt,x);
+			return tr.merge(tr.ask(1,dfn[x]-1),
+							tr.ask(dfn[x]+sz[x],n)).v;
+		}
+		return tr.ask(dfn[x],dfn[x]+sz[x]-1).v;
+	}
 	#undef type
 }hld;
 /*
 hld.init(n)
 hld.add_edge(a,b,v=0);  a <-> b
-hld.work(root);
+hld.work(rt);
+hld.lca(a,b);
+---- node ----
+hld.init_node();
+hld.upd_node(a,b,v);
+hld.ask_node(a,b);
+---- path ----
+hld.init_path();
+hld.upd_edge(id,v);   id:1..n-1
+hld.upd_path(a,b,v);
+hld.ask_path(a,b);
+---- subtree ----
+hld.change_root(rt);
+hld.upd_subtree(x,v);
+hld.ask_subtree(x);
 */
 
