@@ -1,4 +1,4 @@
-struct President_Tree
+struct Persistent_Segment_Tree
 {
 	#define type int
 	int root[MAX],ls[MAX<<5],rs[MAX<<5],tot,ql,qr,n;
@@ -6,6 +6,7 @@ struct President_Tree
 	void init(int _n)
 	{
 		n=_n;
+		root[0]=0;
 		ls[0]=rs[0]=v[0]=tot=0;
 	}
 	int copy_node(int x)
