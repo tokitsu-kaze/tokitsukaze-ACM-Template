@@ -1,29 +1,26 @@
-int prime[MAX],phi[MAX],tot;
-bool flag[MAX];
-void init(int n)  
-{  
-	int i,j,k;
-	tot=0;  
-	mem(flag,0);
-	phi[0]=0;
-	phi[1]=1;
-	for(i=2;i<=n;i++)  
-	{  
-		if(!flag[i])  
-		{  
-			prime[tot++]=i;  
+int p[MAX],phi[MAX],tot,prime[MAX];
+void init_phi(int n)
+{
+	int i,j;
+	tot=0;
+	memset(prime,0,sizeof prime);
+	prime[1]=phi[1]=1;
+	for(i=2;i<=n;i++)
+	{
+		if(!prime[i])
+		{
+			prime[i]=p[tot++]=i;
 			phi[i]=i-1;
-		}  
-		for(j=0;j<tot&&i*prime[j]<=n;j++)  
-		{  
-			k=i*prime[j];
-			flag[k]=1;
-			if(i%prime[j]==0)
-			{  
-				phi[k]=phi[i]*prime[j];
+		}
+		for(j=0;i*p[j]<=n;j++)
+		{
+			prime[i*p[j]]=p[j];
+			if(i%p[j]==0)
+			{
+				phi[i*p[j]]=phi[i]*p[j];
 				break;
 			}
-			else phi[k]=phi[i]*(prime[j]-1);
+			else phi[i*p[j]]=phi[i]*(p[j]-1);
 		}
 	}
 }

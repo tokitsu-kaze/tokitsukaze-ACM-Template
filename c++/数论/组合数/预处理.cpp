@@ -10,21 +10,21 @@ ll qpow(ll a,ll b)
 	return res;
 }
 ll inv(ll x){return qpow(x,mod-2);}
-ll fac[MAX],invfac[MAX];
+int fac[MAX],invfac[MAX];
 void init(int n)
 {
 	fac[0]=1;
-	for(int i=1;i<=n;i++) fac[i]=fac[i-1]*i%mod;
+	for(int i=1;i<=n;i++) fac[i]=1ll*fac[i-1]*i%mod;
 	invfac[n]=inv(fac[n]);
-	for(int i=n-1;~i;i--) invfac[i]=invfac[i+1]*(i+1)%mod;
+	for(int i=n-1;~i;i--) invfac[i]=1ll*invfac[i+1]*(i+1)%mod;
 }
-ll C(ll n,ll m)
+ll C(int n,int m)
 {
 	if(m>n||m<0||n<0) return 0;
-	return fac[n]*invfac[m]%mod*invfac[n-m]%mod;
+	return 1ll*fac[n]*invfac[m]%mod*invfac[n-m]%mod;
 }
-ll A(ll n,ll m)
+ll A(int n,int m)
 {
 	if(m>n||m<0||n<0) return 0;
-	return fac[n]*invfac[n-m]%mod;
+	return 1ll*fac[n]*invfac[n-m]%mod;
 }

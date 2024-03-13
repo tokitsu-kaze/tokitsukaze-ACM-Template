@@ -1,91 +1,121 @@
-const int S=20;
-mt19937 rd(time(0));
-ll mul2(ll a,ll b,ll p)
+struct Montgomery
 {
-	ll res=0;
-	while(b)
+	#define i64 int64_t
+	#define u64 uint64_t
+	#define u128 __uint128_t
+	u64 mod,R;
+	void set_mod(u64 p)
 	{
-		if(b&1) res=(res+a)%p;
-		a=(a+a)%p;
-		b>>=1;
+		mod=R=p;
+		for(int i=0;i<5;i++) R*=2-mod*R;
 	}
-	return res;
-}
-ll pow2(ll a,ll b,ll p)
+    u64 mul_add(u64 a,u64 b,u64 c)
+	{
+	    u128 d=u128(a)*b;
+		u64 e=c+mod+(d>>64);
+		u64 f=u64(d)*R;
+		u64 g=(u128(f)*mod)>>64;
+	    return e-g;
+	}
+    u64 mul(u64 a,u64 b) {return mul_add(a,b,0);}
+	#undef i64
+	#undef u64
+	#undef u128
+};
+// m.set_mod(p);
+ll qpow(ll a,ll b,ll p)
 {
 	ll res=1;
-	while(b)
+	while(b>0)
 	{
-		if(b&1) res=mul2(res,a,p);
-		a=mul2(a,a,p);
+		if(b&1) res=(__int128)res*a%p;
+		a=(__int128)a*a%p;
 		b>>=1;
 	}
 	return res;
 }
-int check(ll a,ll n,ll x,ll t)//一定是合数返回1,不一定返回0
+bool miller_rabin(ll n,const initializer_list<ll>& as)
 {
-	ll now,nex,i;
-	now=nex=pow2(a,x,n);
-	for(i=1;i<=t;i++)
+	int e=__builtin_ctzll(n-1);
+	return all_of(as.begin(),as.end(),[&](ll it)
 	{
-		now=mul2(now,now,n);
-		if(now==1&&nex!=1&&nex!=n-1) return 1;
-		nex=now;
-	}
-	if(now!=1) return 1;
-	return 0;
-}
-int Miller_Rabin(ll n)
-{
-	if(n<2) return 0;
-	if(n==2) return 1;
-	if((n&1)==0) return 0;
-	ll x,t,i;
-	x=n-1;
-	t=0;
-	while((x&1)==0) x>>=1,t++;
-	for(i=0;i<S;i++)
-	{
-		if(check(rd()%(n-1)+1,n,x,t)) return 0;
-	}
-	return 1;
-}
-ll Pollard_rho(ll x,ll c)
-{
-	ll i,k,g,t,y;
-	i=1;
-	k=2;
-	y=t=rd()%x;
-	while(1)
-	{
-		i++;
-		t=(mul2(t,t,x)+c)%x;
-		g=__gcd(y-t+x,x);
-		if(g!=1&&g!=x) return g;
-		if(y==t) return x;
-		if(i==k)
+		if(n<=it) return true;
+		ll z=qpow(it,(n-1)>>e,n);  // it^(t*2^e)
+		if(z==1||z==n-1) return true;
+		for(int i=0;i<e-1;i++)
 		{
-			y=t;
-			k+=k;
+			z=__int128(z)*z%n;
+			if(z==1) return false;
+			if(z==n-1) return true;
+		}
+		return false;
+	});
+}
+bool is_prime(ll n)
+{
+	if(n<=2) return n==2;
+	if(!(n&1)) return false;
+	if(n<4759123141LL) return miller_rabin(n,{2,7,61});
+	return miller_rabin(n,{2,325,9375,28178,450775,9780504,1795265022});
+}
+ll pollard_rho(ll n)
+{
+	Montgomery m;
+	m.set_mod(n);
+	if(!(n&1)) return 2;
+	int i,j,k;
+	ll q1,q2,g1,g2,w1,w2,x1,x2,y1,y2,z1,z2,g,c,x,z;
+    constexpr ll c1=1;
+    constexpr ll c2=2;
+    constexpr ll M=512;
+    w1=1,w2=2;
+retry:
+    z1=w1,z2=w2;
+    for(i=M;;i<<=1)
+	{
+	    x1=z1+n,x2=z2+n;
+	    for(j=0;j<i;j+=M)
+		{
+			y1=z1,y2=z2;
+		    q1=1,q2=2;
+		    for(k=0;k<M;k++)
+			{
+				z1=m.mul_add(z1,z1,c1);
+				z2=m.mul_add(z2,z2,c2);
+				q1=m.mul(q1,(x1-z1));
+				q2=m.mul(q2,(x2-z2));
+			}
+		    g=__gcd((ll)m.mul(q1,q2),n);
+		    if(g==1) continue;
+		    if(g!=n) return g;
+			g1=__gcd(q1,n);
+		    g2=__gcd(q2,n);
+		    if(g1!=1) c=c1,x=x1,z=y1,g=g1;
+		    else c=c2,x=x2,z=y2,g=g2;
+		    if(g==n)
+			{
+			    do{
+				    z=m.mul_add(z,z,c);
+				    g=__gcd(n,x-z);
+				}while(g==1);
+			}
+		    if(g!=n) return g;
+		    w1+=2,w2+=2;
+		    goto retry;
 		}
 	}
 }
-vector<ll> fac;
-void findfac(ll n)
+void find_fac(ll n,vector<ll>& res)
 {
-	if(Miller_Rabin(n))
-	{
-		fac.pb(n);
-		return;
-	}
-	ll t=n;
-	while(t>=n) t=Pollard_rho(t,rd()%(n-1)+1);
-	findfac(t);
-	findfac(n/t);
+	if(n<=1) return;
+    if(is_prime(n)) {res.push_back(n); return;}
+    ll p=pollard_rho(n);
+    find_fac(p,res);
+    find_fac(n/p,res);
 }
-void work(ll x)
+vector<ll> factorize(ll n)
 {
-	fac.clear();
-	findfac(x);
+    vector<ll> res;
+    find_fac(n,res);
+    return res;
 }
-

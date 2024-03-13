@@ -1,18 +1,20 @@
-struct SPFA
+struct Difference_Constraints
 {
 	#define type int
 	static const int inf=INF;
-	static const int N=;
+	static const int N=5005;
 	vector<pair<int,type> > mp[N];
 	type dis[N];
-	int n,vis[N],cnt[N];
+	int n,s,vis[N],cnt[N];
 	void init(int _n)
 	{
-		n=_n;
+		s=_n+1;
+		n=s;
 		for(int i=0;i<=n;i++) mp[i].clear();
+		
 	}
 	void add_edge(int x,int y,type v){mp[x].push_back({y,v});}
-	bool work(int s)
+	bool work()
 	{
 		int i,x,to;
 		type w;
@@ -22,8 +24,13 @@ struct SPFA
 			dis[i]=inf;
 			vis[i]=cnt[i]=0;
 		}
-		dis[s]=0;
+		for(i=1;i<=n;i++)
+		{
+			if(i==s) continue;
+			add_edge(s,i,0);
+		}
 		vis[s]=1;
+		dis[s]=0;
 		q.push(s);
 		while(!q.empty())
 		{
@@ -38,12 +45,7 @@ struct SPFA
 				{
 					dis[to]=dis[x]+w;
 					cnt[to]=cnt[x]+1;
-					if(cnt[to]>n)
-					{
-						// cnt is edge counts of current short path
-						// if cnt >= (sum of node), the graph exists negative ring
-						return false;
-					}
+					if(cnt[to]>n) return false;
 					if(!vis[to])
 					{
 						q.push(to);
@@ -55,4 +57,10 @@ struct SPFA
 		return true;
 	}
 	#undef type
-}spfa;
+}dfct;
+/*
+O(n*m)
+dfct.init(n);  x[1],x[2],...,x[n]
+dfct.add_edge(a,b,val); -> x[a]+val>=x[b]
+dfct.work();
+*/

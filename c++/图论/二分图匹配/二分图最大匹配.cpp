@@ -73,7 +73,7 @@ struct Bipartite_Matching
 	}
 }bpm;
 /*
-O(n*m)
+O(n*m) : n node,m edge
 bpm.init(n,m);
 bpm.add_edge(a,b); a:left,1-n   b:right,1-m
 */

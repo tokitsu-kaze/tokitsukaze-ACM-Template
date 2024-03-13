@@ -1,5 +1,9 @@
-struct node{type len,ha;}t[MAX<<2];
-node merge(node x,node y)
+struct node
+{
+	type len,ha;
+	void init(){len=ha=0;}
+}t[MAX<<2],null_node;
+node merge_node(node x,node y)
 {
 	node res;
 	res.len=x.len+y.len;

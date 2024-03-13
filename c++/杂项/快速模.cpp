@@ -1,42 +1,90 @@
-typedef long long i64;
-typedef unsigned long long u64;
-typedef __uint128_t u128;
-const int word_bits=sizeof(u64)*8;
-struct FastMod
+struct FAST_MOD  // Montgomery modular multiplication
 {
-	static u64 mod,inv,r2;
-	u64 x;
-	FastMod():x(0){}
-	FastMod(u64 n):x(init(n)){}
-	static u64 modulus(){return mod;}
-	static u64 init(u64 w){return reduce(u128(w)*r2);}
-	static void set_mod(u64 m)
+	#define mod_byte 64  // 32 or 64
+	
+#if mod_byte==32
+	#define itype int32_t
+	#define utype uint32_t
+	#define utype2 uint64_t
+#else
+	#define itype int64_t
+	#define utype uint64_t
+	#define utype2 __uint128_t
+#endif
+
+	static utype mod,r,r2;
+	utype x;
+	static utype init(utype x){return reduce(utype2(x)*r2);}
+	static utype get_mod(){return mod;}
+	static void set_mod(utype m)
 	{
-		mod=m;
-		assert(mod&1);
-		inv=m;
-		for(int i=0;i<5;i++) inv*=2-inv*m;
-		r2=-u128(m)%m;
+		mod=r=m;
+		assert((mod&1)&&m>2);
+		for(int i=0;i<5;i++) r*=2-r*m;
+		r2=-utype2(m)%m;
 	}
-	static u64 reduce(u128 x)
+	static utype reduce(utype2 x)
 	{
-		u64 y=u64(x>>word_bits)-u64((u128(u64(x)*inv)*mod)>>word_bits);
-		return i64(y)<0?y+mod:y;
+		utype y=utype(x>>mod_byte)-utype((utype2(utype(x)*r)*mod)>>mod_byte);
+		return itype(y)<0?y+mod:y;
 	}
-	FastMod& operator+=(FastMod rhs)
+	FAST_MOD():x(0){}
+	FAST_MOD(utype n):x(init(n)){}
+	FAST_MOD operator+(const FAST_MOD &a)const {return FAST_MOD(*this)+=a;}
+	FAST_MOD operator-(const FAST_MOD &a)const {return FAST_MOD(*this)-=a;}
+	FAST_MOD operator*(const FAST_MOD &a)const {return FAST_MOD(*this)*=a;}
+	FAST_MOD& operator+=(const FAST_MOD &a)
 	{
-		x+=rhs.x-mod;
-		if(i64(x)<0) x+=mod;
+		x+=a.x-mod;
+		if(itype(x)<0) x+=mod;
 		return *this;
 	}
-	FastMod operator+(FastMod rhs)const {return FastMod(*this)+=rhs;}
-	FastMod& operator*=(FastMod rhs)
+	FAST_MOD& operator-=(const FAST_MOD &a)
 	{
-		x=reduce(u128(x)*rhs.x);
+		x=x>=a.x?x-a.x:mod-a.x+x;
 		return *this;
 	}
-	FastMod operator*(FastMod rhs)const {return FastMod(*this)*=rhs;}
-	u64 get()const {return reduce(x);}
+	FAST_MOD& operator*=(const FAST_MOD &a)
+	{
+		x=reduce(utype2(x)*a.x);
+		return *this;
+	}
+	FAST_MOD& operator++()
+	{
+		x++;
+		if(x==mod) x=0;
+		return *this;
+	}
+	FAST_MOD& operator++(int)
+	{
+		x++;
+		if(x==mod) x=0;
+		return *this;
+	}
+	FAST_MOD& operator--()
+	{
+		if(x==0) x=get_mod();
+		x--;
+		return *this;
+	}
+	FAST_MOD& operator--(int)
+	{
+		if(x==0) x=get_mod();
+		x--;
+		return *this;
+	}
+//	friend bool operator<(const FAST_MOD& a,const FAST_MOD& b){return reduce(a.x)<reduce(b.x);}
+//	friend bool operator>(const FAST_MOD& a,const FAST_MOD& b){return reduce(a.x)>reduce(b.x);}
+	friend bool operator==(const FAST_MOD& a,const FAST_MOD& b){return a.x==b.x;}
+	friend bool operator!=(const FAST_MOD& a,const FAST_MOD& b){return a.x!=b.x;}
+	friend ostream &operator<<(ostream &os, const FAST_MOD &a){return os<<reduce(a.x);}
+	utype get_val()const {return reduce(x);}
 };
-u64 FastMod::mod,FastMod::inv,FastMod::r2;
-// FastMod::set_mod(p);
+utype FAST_MOD::mod,FAST_MOD::r,FAST_MOD::r2;
+#undef itype
+#undef utype
+#undef utype2
+typedef FAST_MOD mint;
+/*
+mint::set_mod(p);
+*/

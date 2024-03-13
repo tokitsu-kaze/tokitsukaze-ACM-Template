@@ -1,15 +1,16 @@
 struct Segment_Tree
 {
 	#define type int
+	static const type inf=INF;
 	#define ls (id<<1)
 	#define rs (id<<1|1)
+	int n,ql,qr,qop;
+	type a[MAX],tag[MAX<<2],qv;
 	struct node
 	{
 		type v;
 		void init(){}
 	}t[MAX<<2],null_node;
-	int n,ql,qr,qop;
-	type a[MAX],tag[MAX<<2],qv;
 	node merge_node(node x,node y)
 	{
 		node res;

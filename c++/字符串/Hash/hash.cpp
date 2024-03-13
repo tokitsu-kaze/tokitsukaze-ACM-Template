@@ -1,25 +1,59 @@
-mt19937_64 rd(time(0));
-struct hash_table
+namespace HASH
 {
-	ll seed,p;
-	ll Hash[MAX],tmp[MAX];
-	void set(ll _p)
+	#define type int
+	int m,k;
+	vector<type> sd,p;
+	vector<vector<type>> tmp;
+	void set(vector<type> _sd,vector<type> _p)
 	{
-		seed=rd()%_p;
+		sd=_sd;
 		p=_p;
+		assert(sd.size()==p.size());
+		k=sd.size();
 	}
-	void work(char *s,int n)
+	void init(int _m)
 	{
-		tmp[0]=1;
-		Hash[0]=0;
-		for(int i=1;i<=n;i++)
+		int i,j;
+		m=_m;
+		tmp.resize(k);
+		for(j=0;j<k;j++)
 		{
-			tmp[i]=tmp[i-1]*seed%p;
-			Hash[i]=(Hash[i-1]*seed+s[i])%p;//may need change
+			tmp[j].resize(m+1);
+			tmp[j][0]=1;
+			for(i=1;i<=m;i++) tmp[j][i]=1ll*tmp[j][i-1]*sd[j]%p[j];
 		}
 	}
-	ll get(int l,int r)
+	struct hash_table
 	{
-		return ((Hash[r]-Hash[l-1]*tmp[r-l+1])%p+p)%p;
-	}
-};
+		vector<vector<type>> ha;
+		void work(int *s,int n)
+		{
+			int i,j;
+			assert(n<=m);
+			ha.resize(k);
+			for(j=0;j<k;j++)
+			{
+				ha[j].resize(n+1);
+				ha[j][0]=0;
+				for(i=1;i<=n;i++) ha[j][i]=(1ll*ha[j][i-1]*sd[j]+s[i])%p[j];
+			}
+		}
+		vector<type> get(int l,int r)
+		{
+			vector<type> res(k);
+			for(int j=0;j<k;j++)
+			{
+				res[j]=(ha[j][r]-1ll*ha[j][l-1]*tmp[j][r-l+1])%p[j];
+				if(res[j]<0) res[j]+=p[j];
+			}
+			return res;
+		}
+	};
+	#undef type
+}
+HASH::hash_table haax,haay,habx,haby;
+/*
+HASH::set({131,233},{402653189,805306457});
+HASH::init(m);
+ha.work(s,n);   // n<=m
+*/

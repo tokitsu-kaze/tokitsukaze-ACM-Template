@@ -3,7 +3,7 @@ namespace NTT
 	const int g=3;
 	const int p=998244353;
 	int wn[35];
-	int pow2(int a,int b)
+	int qpow(int a,int b)
 	{
 		int res=1;
 		while(b>0)
@@ -17,7 +17,7 @@ namespace NTT
 	void getwn()
 	{
 		assert(p==mod);
-		for(int i=0;i<25;i++) wn[i]=pow2(g,(p-1)/(1LL<<i));
+		for(int i=0;i<25;i++) wn[i]=qpow(g,(p-1)/(1LL<<i));
 	}
 	void ntt(vector<int> &a,int len,int f)
 	{
@@ -45,7 +45,7 @@ namespace NTT
 		if(f)
 		{
 			for(i=1,j=len-1;i<j;i++,j--) swap(a[i],a[j]);
-			int inv=pow2(len,p-2);
+			int inv=qpow(len,p-2);
 			for(i=0;i<len;i++) a[i]=1ll*a[i]*inv%p;
 		}
 	}
