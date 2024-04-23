@@ -44,3 +44,6 @@ struct Manacher
 		return res;
 	}
 }la;
+/*
+la.work(s,n); // s[1..n]
+*/

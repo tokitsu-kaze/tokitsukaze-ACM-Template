@@ -37,7 +37,7 @@ struct Matrix
 		return res;
 	}
 };
-Matrix matpow2(Matrix a,ll b)
+Matrix matqpow(Matrix a,ll b)
 {
 	Matrix res(a.n);
 	res.init_identity_matrix();

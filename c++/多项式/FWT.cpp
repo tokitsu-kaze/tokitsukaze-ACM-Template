@@ -11,7 +11,7 @@ namespace FWT
 				for(int j=0;j<d;j++)
 				{  
 					ll x=a[i+j],y=a[i+j+d];
-					if(!v)
+					if(v==1)
 					{
 						if(f==1) a[i+j]=(x+y)%p,a[i+j+d]=(x-y+p)%p;//xor
 						else if(f==2) a[i+j]=(x+y)%p;//and
@@ -35,10 +35,10 @@ namespace FWT
 		for(len=1;len<n;len<<=1);
 		a.resize(len,0);
 		b.resize(len,0);
-		fwt(a,len,1,0);
-		fwt(b,len,1,0);
-		for(int i=0;i<len;i++) a[i]=1ll*a[i]*b[i]%p;
 		fwt(a,len,1,1);
+		fwt(b,len,1,1);
+		for(int i=0;i<len;i++) a[i]=1ll*a[i]*b[i]%p;
+		fwt(a,len,1,-1);
 		return a;
 	}
 	vector<int> AND(vector<int> a,vector<int> b)
@@ -48,10 +48,10 @@ namespace FWT
 		for(len=1;len<n;len<<=1);
 		a.resize(len,0);
 		b.resize(len,0);
-		fwt(a,len,2,0);
-		fwt(b,len,2,0);
-		for(int i=0;i<len;i++) a[i]=1ll*a[i]*b[i]%p;
 		fwt(a,len,2,1);
+		fwt(b,len,2,1);
+		for(int i=0;i<len;i++) a[i]=1ll*a[i]*b[i]%p;
+		fwt(a,len,2,-1);
 		return a;
 	}
 	vector<int> OR(vector<int> a,vector<int> b)
@@ -61,10 +61,10 @@ namespace FWT
 		for(len=1;len<n;len<<=1);
 		a.resize(len,0);
 		b.resize(len,0);
-		fwt(a,len,3,0);
-		fwt(b,len,3,0);
-		for(int i=0;i<len;i++) a[i]=1ll*a[i]*b[i]%p;
 		fwt(a,len,3,1);
+		fwt(b,len,3,1);
+		for(int i=0;i<len;i++) a[i]=1ll*a[i]*b[i]%p;
+		fwt(a,len,3,-1);
 		return a;
 	}
-};
+}

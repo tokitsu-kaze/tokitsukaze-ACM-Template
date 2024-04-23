@@ -15,18 +15,15 @@ struct Disjoint_Set_Union
 		if(pre[x]!=x) pre[x]=find(pre[x]);
 		return pre[x];
 	}
-	bool merge(int a,int b)
+	bool merge(int x,int y)
 	{
-		int ra,rb;
-		ra=find(a);
-		rb=find(b);
-		if(ra!=rb)
-		{
-			pre[ra]=rb;
-			sz[rb]+=sz[ra];
-			return 1;
-		}
-		return 0;
+		x=find(x);
+		y=find(y);
+		if(x==y) return 0;
+		if(sz[x]>sz[y]) swap(x,y);
+		pre[x]=y;
+		sz[y]+=sz[x];
+		return 1;
 	}
 }dsu;
 

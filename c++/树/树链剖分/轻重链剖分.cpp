@@ -64,7 +64,7 @@ struct Heavy_Light_Decomposition
 		{
 			if(dep[top[x]]<dep[top[y]]) swap(x,y);
 			x=fa[top[x]];
-	    }
+		}
 	    if(dep[x]>dep[y]) swap(x,y);
 	    return x;
 	}
@@ -74,7 +74,7 @@ struct Heavy_Light_Decomposition
 		{
 			if(fa[top[x]]==y) return top[x];
 			x=fa[top[x]];
-	    }
+		}
 	    return son[y];
 	}
 	//node
@@ -90,7 +90,7 @@ struct Heavy_Light_Decomposition
 			if(dep[top[x]]<dep[top[y]]) swap(x,y);
 			tr.upd(dfn[top[x]],dfn[x],v);
 			x=fa[top[x]];
-	    }
+		}
 	    if(dep[x]>dep[y]) swap(x,y);
 	    tr.upd(dfn[x],dfn[y],v);
 	}
@@ -102,7 +102,7 @@ struct Heavy_Light_Decomposition
 			if(dep[top[x]]<dep[top[y]]) swap(x,y);
 			res+=tr.ask(dfn[top[x]],dfn[x]);
 			x=fa[top[x]];
-	    }
+		}
 	    if(dep[x]>dep[y]) swap(x,y);
 	    res+=tr.ask(dfn[x],dfn[y]);
 	    return res;
@@ -130,7 +130,7 @@ struct Heavy_Light_Decomposition
 			if(dep[top[x]]<dep[top[y]]) swap(x,y);
 			tr.upd(dfn[top[x]],dfn[x],v);
 			x=fa[top[x]];
-	    }
+		}
 	    if(dep[x]>dep[y]) swap(x,y);
 	    if(x!=y) tr.upd(dfn[x]+1,dfn[y],v);
 	}
@@ -142,7 +142,7 @@ struct Heavy_Light_Decomposition
 			if(dep[top[x]]<dep[top[y]]) swap(x,y);
 			res+=tr.ask(dfn[top[x]],dfn[x]);
 			x=fa[top[x]];
-	    }  
+		}  
 	    if(dep[x]>dep[y]) swap(x,y);
 	    if(x!=y) res+=tr.ask(dfn[x]+1,dfn[y]);
 	    return res;
@@ -179,7 +179,7 @@ hld.add_edge(a,b,v=0);  a <-> b
 hld.work(rt);
 hld.lca(a,b);
 ---- node ----
-hld.init_node();
+hld.init_node(type *v);
 hld.upd_node(a,b,v);
 hld.ask_node(a,b);
 ---- path ----

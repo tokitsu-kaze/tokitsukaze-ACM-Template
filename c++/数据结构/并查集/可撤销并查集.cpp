@@ -17,21 +17,20 @@ struct Disjoint_Set_Union
 		while(x!=pre[x]) x=pre[x];
 		return x;
 	}
-	bool merge(int a,int b)
+	bool merge(int x,int y)
 	{
-		int ra,rb;
-		ra=find(a);
-		rb=find(b);
-		if(ra==rb) return 0;
-		if(sz[ra]>sz[rb]) swap(ra,rb);
-		pre[ra]=rb;
-		sz[rb]+=sz[ra];
-		st[top++]={ra,rb};
+		x=find(x);
+		y=find(y);
+		if(x==y) return 0;
+		if(sz[x]>sz[y]) swap(x,y);
+		pre[x]=y;
+		sz[y]+=sz[x];
+		st[top++]={x,y};
 		return 1;
 	}
 	void roll_back()
 	{
-		PII now=st[--top];
+		pair<int,int> now=st[--top];
 		pre[now.first]=now.first;
 		sz[now.second]-=sz[now.first];
 	}

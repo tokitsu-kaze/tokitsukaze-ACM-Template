@@ -1,75 +1,63 @@
 struct Trie
 {
 	#define type int
-	static const int mx=30;
-	int root,tot,nex[MAX*mx][2];
-	type cnt[MAX*mx];
+	static const int LOG=30;
+	static const int K=LOG+2;
+	int root,tot,nex[MAX*K][2],cnt[MAX*K];
 	int newnode()
 	{
+		tot++;
 		memset(nex[tot],0,sizeof nex[tot]);
 		cnt[tot]=0;
-		return tot++;
+		return tot;
 	}
 	void init()
 	{
-		memset(nex[0],0,sizeof nex[0]);
-		cnt[0]=0;
-		tot=1;
+		nex[0][0]=nex[0][1]=cnt[0]=tot=0;
 		root=newnode();
 	}
-	void upd(type x,type v)
+	void insert(type x)
 	{
 		int id,t,i;
 		id=root;
-		for(i=mx;~i;i--)
+		for(i=LOG;~i;i--)
 		{
+			cnt[id]++;
 			t=(x>>i)&1;
 			if(!nex[id][t]) nex[id][t]=newnode();
 			id=nex[id][t];
-			cnt[id]+=v;
 		}
-	}
-	type count(int x)
-	{
-		int id,t,i;
-		id=root;
-		for(i=mx;~i;i--)
-		{
-			t=(x>>i)&1;
-			if(!nex[id][t]) return 0;
-			id=nex[id][t];
-		}
-		return cnt[id];
+		cnt[id]++;
 	}
 	type ask_max(type x)
 	{
-		int id,t,i;
-		type res;
+		int id,i;
+		type res,t;
 		id=root;
 		res=0;
-		for(i=mx;~i;i--)
+		for(i=LOG;~i;i--)
 		{
 			t=(x>>i)&1;
 			if(nex[id][t^1]&&cnt[nex[id][t^1]]) t^=1;
 			res|=(t<<i);
 			id=nex[id][t];
 		}
-		return res;
+		return res^x;
 	}
 	type ask_min(type x)
 	{
-		int id,t,i;
-		type res;
+		int id,i;
+		type res,t;
 		id=root;
 		res=0;
-		for(i=mx;~i;i--)
+		for(i=LOG;~i;i--)
 		{
 			t=(x>>i)&1;
 			if(!nex[id][t]||!cnt[nex[id][t]]) t^=1;
 			res|=(t<<i);
 			id=nex[id][t];
 		}
-		return res;
+		return res^x;
 	}
 	#undef type
 }tr;
