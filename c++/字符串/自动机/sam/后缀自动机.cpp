@@ -2,36 +2,36 @@ struct Suffix_Automaton
 {
 	static const int N=MAX<<1;
 	static const int K=26;// char size: [0,25]
-	int tot,last,nex[N][K],fa[N],len[N],cnt[N],maxlen;
+	int tot,lst,nex[N][K],fa[N],len[N],cnt[N],maxlen,root;
 	int newnode()
 	{
 		tot++;
 		fa[tot]=len[tot]=cnt[tot]=0;
-		mem(nex[tot],0);
+		memset(nex[tot],0,sizeof nex[tot]);
 		return tot;
 	}
 	void init()
 	{
 		fa[0]=len[0]=cnt[0]=0;
-		mem(nex[0],0);
+		memset(nex[0],0,sizeof nex[0]);
 		tot=0;
 		maxlen=0;
-		last=newnode();
+		root=lst=newnode();
 	}
 	void add(int x)
 	{
 		int p,q,np,nq;
-		p=last;
-		np=last=newnode();
+		p=lst;
+		np=lst=newnode();
 		len[np]=len[p]+1;
 		maxlen=max(maxlen,len[np]);
-		cnt[last]=1;
+		cnt[lst]=1;
 		while(p&&!nex[p][x])
 		{
 			nex[p][x]=np;
 			p=fa[p];
 		}
-		if(p==0) fa[np]=1;
+		if(p==0) fa[np]=root;
 		else
 		{
 			q=nex[p][x];
@@ -104,4 +104,10 @@ struct Suffix_Automaton
 		}
 		return now;
 	}
-}sam;// sam.init();
+}sam;
+/*
+sam.init();
+sam.add(int x);
+sam.topsort();
+
+*/

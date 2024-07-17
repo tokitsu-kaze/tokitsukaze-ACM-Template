@@ -1,7 +1,7 @@
 struct AC_Automaton
 {
 	static const int K=;
-	int nex[MAX][K],fail[MAX],cnt[MAX],last[MAX];
+	int nex[MAX][K],fail[MAX],cnt[MAX],lst[MAX];
 	int root,tot,pos[MAX];
 	int getid(char c){return c-;}//may need change
 	int newnode()
@@ -43,8 +43,8 @@ struct AC_Automaton
 			q.pop();
 			
 			//suffix link
-			if(cnt[fail[now]]) last[now]=fail[now];
-			else last[now]=last[fail[now]];
+			if(cnt[fail[now]]) lst[now]=fail[now];
+			else lst[now]=lst[fail[now]];
 			
 			for(i=0;i<K;i++)
 			{
@@ -94,7 +94,7 @@ struct AC_Automaton
 				res+=cnt[tmp];
 				del.push_back({tmp,cnt[tmp]});
 				cnt[tmp]=-1;
-				tmp=last[tmp];
+				tmp=lst[tmp];
 			}
 		}
 		for(auto &it:del) cnt[it.first]=it.second;

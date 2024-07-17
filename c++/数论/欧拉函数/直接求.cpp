@@ -1,5 +1,5 @@
 //O(sqrt(n))
-int euler(int n)
+int get_phi(int n)
 {
 	int ans,i;
 	ans=n;

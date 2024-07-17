@@ -1,7 +1,7 @@
 struct Fenwick_Tree
 {
 	#define type int
-	type bit[MAX];
+	type bit[MAX],tmp[MAX];
 	int n;
 	void init(int _n)
 	{
@@ -11,10 +11,12 @@ struct Fenwick_Tree
 	void init(int _n,type *a)
 	{
 		n=_n;
+		tmp[0]=0;
 		for(int i=1;i<=n;i++)
 		{
-			a[i]+=a[i-1];
-			bit[i]=a[i]-a[i-lowbit(i)];
+			tmp[i]=a[i];
+			tmp[i]+=tmp[i-1];
+			bit[i]=tmp[i]-tmp[i-lowbit(i)];
 		}
 	}
 	int lowbit(int x){return x&(-x);}

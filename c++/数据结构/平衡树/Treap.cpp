@@ -115,6 +115,7 @@ struct Treap
 				id=t[id].ch[1];
 			}
 		}
+		return 0;
 	}
 	int count(type key)
 	{

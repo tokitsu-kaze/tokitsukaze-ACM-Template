@@ -7,13 +7,16 @@ struct Trie
 	int getid(char c){return c-'a';}
 	int newnode()
 	{
+		tot++;
 		memset(nex[tot],0,sizeof nex[tot]);
 		cnt[tot]=0;
-		return tot++;
+		return tot;
 	}
 	void init()
 	{
 		tot=0;
+		memset(nex[0],0,sizeof nex[0]);
+		cnt[0]=0;
 		root=newnode();
 	}
 	void insert(char *s,int n) // s[0..n-1]

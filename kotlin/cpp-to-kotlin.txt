@@ -12,6 +12,7 @@ a&b                          a and b
 a|b                          a or b
 a^b                          a xor b
 int gao(int a,int b)         fun gao(a:Int,b:Int):Int
+typeid(x).name               x::class
 ---------sort---------
 res.sortBy({it.fi})
 res.sortWith({it.fi},{it.se})
@@ -25,8 +26,12 @@ set<int> s;                  var s=TreeSet<Int>()
 s.insert                     s.add
 s.erase                      s.remove
 s.count                      s.contains
-s.begin                      s.first
-s.rbegin                     s.last
+s.begin                      s.first()
+s.rbegin                     s.last()
+s.lower_bound                s.ceiling
+s.upper_bound                s.ceiling(x+1)
+--s.lower_bound              s.floor(x-1)
+--s.upper_bound              s.floor
 set<pair<int,int>> s;        var s=TreeSet<Pair<Int,Int>>(compareBy({it.first},{it.second}))
 -----unordered_map-----
 unordered_map<int,int>       var mp:MutableMap<Int,Int> = mutableMapOf()
@@ -50,7 +55,9 @@ dq.back()                    dq.peekLast()
 dq.pop_back()                dq.pollLast()
 {dq.back(),dq.pop_back()}    dq.pollLast()
 ---------queue----------
+坑点：data class 要 nex=t.copy()
 queue<int> q;                var q=Queue<Int>()
+queue<node> q;               val q:Queue<node> = LinkedList()
 q.push()                     q.offer()
 q.front()                    q.peek()
 q.pop()                      q.poll()

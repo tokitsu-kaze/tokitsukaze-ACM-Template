@@ -553,7 +553,12 @@ struct bigint
 };
 bigint gcd(bigint a,bigint b)
 {
-	return b==0?a:gcd(b,a%b);
+	while(b!=0)
+	{
+		a%=b;
+		swap(a,b);
+	}
+	return a;
 }
 bigint lcm(bigint a,bigint b)
 {
