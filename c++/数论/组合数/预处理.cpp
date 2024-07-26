@@ -11,7 +11,7 @@ ll qpow(ll a,ll b)
 }
 ll inv(ll x){return qpow(x,mod-2);}
 int fac[MAX],invfac[MAX];
-void init(int n)
+void init_comb(int n)
 {
 	fac[0]=1;
 	for(int i=1;i<=n;i++) fac[i]=1ll*fac[i-1]*i%mod;

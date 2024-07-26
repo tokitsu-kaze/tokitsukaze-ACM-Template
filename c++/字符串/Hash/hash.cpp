@@ -26,7 +26,7 @@ namespace HASH
 	struct hash_table
 	{
 		vector<vector<type>> ha;
-		void work(int *s,int n)
+		void work(char *s,int n)
 		{
 			int i,j;
 			assert(n<=m);
@@ -51,7 +51,7 @@ namespace HASH
 	};
 	#undef type
 }
-HASH::hash_table haax,haay,habx,haby;
+HASH::hash_table ha;
 /*
 HASH::set({131,233},{402653189,805306457});
 HASH::init(m);

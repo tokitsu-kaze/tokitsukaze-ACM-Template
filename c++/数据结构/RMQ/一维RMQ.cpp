@@ -1,4 +1,4 @@
-struct RMQ
+struct ST_table
 {
 	#define type int
 	type v[MAX];

@@ -21,5 +21,6 @@ struct light_speed_pow
 }lsp;
 /*
 val^exp
-O(sqrt exp)-O(1)
+O(sqrt max_exp)-O(1)
+lsp.init(max_exp,val);
 */ 

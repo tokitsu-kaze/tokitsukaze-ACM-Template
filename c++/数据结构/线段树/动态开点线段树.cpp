@@ -94,7 +94,7 @@ struct Segment_Tree
 		if(!x||!y) return x+y;
 		if(l==r)
 		{
-			//
+			//merge info x <- y
 			delnode(y);
 			return x;
 		}
