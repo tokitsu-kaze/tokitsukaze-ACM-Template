@@ -89,7 +89,7 @@ struct AC_Automaton
 			t=getid(s[i]);
 			now=nex[now][t];
 			tmp=now;
-			while(tmp&&cnt[tmp]!=-1)
+			while(tmp!=root&&cnt[tmp]!=-1)
 			{
 				res+=cnt[tmp];
 				del.push_back({tmp,cnt[tmp]});

@@ -13,6 +13,7 @@ ll inv(ll x){return qpow(x,mod-2);}
 int fac[MAX],invfac[MAX];
 void init_comb(int n)
 {
+	assert(n<MAX);
 	fac[0]=1;
 	for(int i=1;i<=n;i++) fac[i]=1ll*fac[i-1]*i%mod;
 	invfac[n]=inv(fac[n]);
