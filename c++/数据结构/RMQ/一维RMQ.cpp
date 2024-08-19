@@ -1,12 +1,12 @@
 struct ST_table
 {
 	#define type int
-	type v[MAX];
-	int pmax(int a,int b){return v[a]>v[b]?a:b;}
-	int pmin(int a,int b){return v[a]<v[b]?a:b;}
-	int lg[MAX],bin[22];
-	int pmx[MAX][22],pmn[MAX][22];
-	type mx[MAX][22],mn[MAX][22];
+	static const int N=MAX;
+	static const int LOG=21;
+	type v[N];
+	int lg[N],bin[LOG],pmx[LOG][N],pmn[LOG][N];
+	int pmax(const int &a,const int &b){return v[a]>v[b]?a:b;}
+	int pmin(const int &a,const int &b){return v[a]<v[b]?a:b;}
 	void work(int n,type *a)
 	{
 		int i,j;
@@ -15,39 +15,28 @@ struct ST_table
 		for(i=1;i<=n;i++)
 		{
 			v[i]=a[i];
-			mx[i][0]=mn[i][0]=v[i];
-			pmx[i][0]=pmn[i][0]=i;
+			pmx[0][i]=pmn[0][i]=i;
 		}
 		for(j=1;1<<(j-1)<=n;j++)
 		{
 			for(i=1;i+bin[j]-1<=n;i++)
 			{
-				mx[i][j]=max(mx[i][j-1],mx[i+bin[j-1]][j-1]);
-				mn[i][j]=min(mn[i][j-1],mn[i+bin[j-1]][j-1]);
-				pmx[i][j]=pmax(pmx[i][j-1],pmx[i+bin[j-1]][j-1]);
-				pmn[i][j]=pmin(pmn[i][j-1],pmn[i+bin[j-1]][j-1]);
+				pmx[j][i]=pmax(pmx[j-1][i],pmx[j-1][i+bin[j-1]]);
+				pmn[j][i]=pmin(pmn[j-1][i],pmn[j-1][i+bin[j-1]]);
 			}
 		}
-	}
-	type ask_max(int l,int r)
-	{
-		int t=lg[r-l+1];
-		return max(mx[l][t],mx[r-bin[t]+1][t]);
-	}
-	type ask_min(int l,int r)
-	{
-		int t=lg[r-l+1];
-		return min(mn[l][t],mn[r-bin[t]+1][t]);
 	}
 	int ask_pmax(int l,int r)
 	{
 		int t=lg[r-l+1];
-		return pmax(pmx[l][t],pmx[r-bin[t]+1][t]);
+		return pmax(pmx[t][l],pmx[t][r-bin[t]+1]);
 	}
 	int ask_pmin(int l,int r)
 	{
 		int t=lg[r-l+1];
-		return pmin(pmn[l][t],pmn[r-bin[t]+1][t]);
+		return pmin(pmn[t][l],pmn[t][r-bin[t]+1]);
 	}
+	type ask_max(int l,int r){return v[ask_pmax(l,r)];}
+	type ask_min(int l,int r){return v[ask_pmin(l,r)];}
 	#undef type
 }rmq;

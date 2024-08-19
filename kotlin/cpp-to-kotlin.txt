@@ -61,6 +61,7 @@ queue<node> q;               val q:Queue<node> = LinkedList()
 q.push()                     q.offer()
 q.front()                    q.peek()
 q.pop()                      q.poll()
+q.empty()                    q.isEmpty()
 
 ---------------------------------------------
 */

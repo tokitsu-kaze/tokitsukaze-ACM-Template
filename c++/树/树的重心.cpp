@@ -1,27 +1,33 @@
 struct Tree_Centroid
 {
-	VI centroid;
-	int sz[MAX],w[MAX],n;
-	void dfs(VI *mp,int x,int fa)
+	vector<int> *mp;
+	int sz[MAX],mx[MAX],n;
+	void dfs(int x,int fa)
 	{
 		sz[x]=1;
-		w[x]=0;
-		for(int i=0;i<sz(mp[x]);i++)
+		mx[x]=0;
+		for(auto &to:mp[x])
 		{
-			int to=mp[x][i];
 			if(to==fa) continue;
-			dfs(mp,to,x);
+			dfs(to,x);
 			sz[x]+=sz[to];
-			w[x]=max(w[x],sz[to]);
+			mx[x]=max(mx[x],sz[to]);
 		}
-		w[x]=max(w[x],n-sz[x]);
-		if(w[x]<=n/2) centroid.pb(x);
+		mx[x]=max(mx[x],n-sz[x]);
 	}
-	VI get_tree_centroid(int _n,VI *mp,int root)
+	vector<int> get_tree_centroid(int _n,vector<int> *_mp,int root)
 	{
+		int i,mn;
 		n=_n;
-		centroid.clear();
-		dfs(mp,root,0);
-		return centroid;
+		mp=_mp;
+		dfs(root,-1);
+		vector<int> res;
+		mn=n+1;
+		for(i=1;i<=n;i++) mn=min(mn,mx[i]);
+		for(i=1;i<=n;i++)
+		{
+			if(mx[i]==mn) res.push_back(i);
+		}
+		return res;
 	}
 }trct;

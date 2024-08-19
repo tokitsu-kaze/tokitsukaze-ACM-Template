@@ -1,6 +1,6 @@
 namespace exLucas
 {
-	ll pow2(ll a,ll b,ll p)
+	ll qpow(ll a,ll b,ll p)
 	{
 		ll res=1;
 		while(b>0)
@@ -11,6 +11,32 @@ namespace exLucas
 		}
 		return res;
 	}
+	ll qmul(ll a,ll b,ll p)
+	{
+		ll res=0;
+		while(b>0)
+		{
+			if(b&1) res=(res+a)%p;
+			a=(a+a)%p;
+			b>>=1;
+		}
+		return res;
+	}
+	ll exgcd(ll a,ll b,ll &x,ll &y)
+	{
+		if(b==0)
+		{
+			x=1;
+			y=0;
+			return a;
+		}
+		ll g,tmp;
+		g=exgcd(b,a%b,x,y);
+		tmp=x;
+		x=y;
+		y=tmp-a/b*y;
+		return g;
+	}
 	ll inv(ll a,ll p)
 	{
 		ll g,x,y,res;
@@ -19,37 +45,54 @@ namespace exLucas
 		assert(res!=-1);
 		return res;
 	}
-	map<ll,pair<VL,VL> > mp;
-	map<PLL,VL > fac;
-	void init(VL mod_list)
+	ll CRT(vector<ll> a,vector<ll> m)
+	{
+		int i,n;
+		ll p,mi,res,invmi;
+		n=a.size();
+		p=1;
+		res=0;
+		for(i=0;i<n;i++) a[i]=(a[i]%m[i]+m[i])%m[i];
+		for(i=0;i<n;i++) p*=m[i];
+		for(i=0;i<n;i++)
+		{
+			mi=p/m[i];
+			invmi=inv(mi,m[i]);
+			res=(res+qmul(a[i]*mi,invmi,p))%p;
+	    }
+	    return res;
+	}
+	map<ll,pair<vector<ll>,vector<ll>>> mp;
+	map<pair<ll,ll>,vector<ll>> fac;
+	void init(vector<ll> mod_list)
 	{
 		ll i,j,p;
 		mp.clear();
 		fac.clear();
-		for(auto mod_i:mod_list)
+		for(auto &mod_i:mod_list)
 		{
 			p=mod_i;
-			VL a,b;
+			vector<ll> a,b;
 			for(i=2;i*i<=p;i++)
 			{
 				if(p%i) continue;
-				b.pb(1LL);
-				while(p%i==0) b[sz(b)-1]*=i,p/=i;
-				a.pb(i);
+				b.push_back(1LL);
+				while(p%i==0) b[b.size()-1]*=i,p/=i;
+				a.push_back(i);
 			}
-			if(p>1) a.pb(p),b.pb(p);
-			mp[mod_i]=MP(a,b);
-			for(i=0;i<sz(a);i++)
+			if(p>1) a.push_back(p),b.push_back(p);
+			mp[mod_i]={a,b};
+			for(i=0;i<a.size();i++)
 			{
-				if(fac.count(MP(a[i],b[i]))) continue;
-				VL fac_tmp=VL(b[i]+1);
+				if(fac.count({a[i],b[i]})) continue;
+				vector<ll> fac_tmp(b[i]+1);
 				fac_tmp[0]=1;
 				for(j=1;j<=b[i];j++)
 				{
 					if(j%a[i]) fac_tmp[j]=fac_tmp[j-1]*j%b[i];
 					else fac_tmp[j]=fac_tmp[j-1];
 				}
-				fac[MP(a[i],b[i])]=fac_tmp;
+				fac[{a[i],b[i]}]=fac_tmp;
 			}
 		}
 	}
@@ -57,13 +100,13 @@ namespace exLucas
 	{
 		if(!n) return 1LL;
 		ll res=1;
-		assert(fac.count(MP(x,p)));
-		res=res*fac[MP(x,p)][p-1]%p;
-		res=pow2(res,n/p,p);
-		res=res*fac[MP(x,p)][n%p]%p;
+		assert(fac.count({x,p}));
+		res=res*fac[{x,p}][p-1]%p;
+		res=qpow(res,n/p,p);
+		res=res*fac[{x,p}][n%p]%p;
 		return res*cal_fac(n/x,x,p)%p;
 	}
-	ll multilucas(ll n,ll m,ll x,ll p)
+	ll comb(ll n,ll m,ll x,ll p)
 	{
 		if(m>n) return 0;
 		ll i,cnt;
@@ -71,7 +114,7 @@ namespace exLucas
 		for(i=n;i;i/=x) cnt+=i/x;
 		for(i=m;i;i/=x) cnt-=i/x;
 		for(i=n-m;i;i/=x) cnt-=i/x;
-		return pow2(x,cnt,p)*             \
+		return qpow(x,cnt,p)*             \
 			   cal_fac(n,x,p)%p*          \
 			   inv(cal_fac(m,x,p),p)%p*   \
 			   inv(cal_fac(n-m,x,p),p)%p;
@@ -80,13 +123,21 @@ namespace exLucas
 	{
 		if(m>n||m<0||n<0) return 0;
 		ll i,res;
-		VL a,b,resa;
+		vector<ll> a,b,resa;
 		assert(mp.count(p));
-		a=mp[p].fi;
-		b=mp[p].se;
-		for(i=0;i<sz(a);i++) resa.pb(multilucas(n,m,a[i],b[i]));
-		res=exCRT::excrt(resa,b);
+		a=mp[p].first;
+		b=mp[p].second;
+		for(i=0;i<a.size();i++) resa.push_back(comb(n,m,a[i],b[i]));
+		res=CRT(resa,b);
 		assert(res!=-1);
 		return res;
 	}
-};//exLucas::init(VL{}); 
+};
+/*
+mod=p1^k1 * p2^k2 * ...
+init: O(sqrt(mod)+sum{p^k})
+C(n,m,mod): O(log)
+
+exLucas::init({mod}); //init mod list
+exLucas::C(n,m,mod);
+*/

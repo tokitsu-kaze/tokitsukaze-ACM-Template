@@ -43,7 +43,7 @@ struct Dijkstra
 				if(dis[to]>dis[t.id]+w)
 				{
 					dis[to]=dis[t.id]+w;
-					if(!vis[to]) q.push({to,dis[to]}); 
+					if(!vis[to]) q.push({to,dis[to]});
 				}
 			}
 		}
