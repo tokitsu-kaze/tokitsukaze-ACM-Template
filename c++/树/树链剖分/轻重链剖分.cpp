@@ -2,7 +2,6 @@ struct Heavy_Light_Decomposition
 {
 	#define type int
 	struct edge{int a,b;type v;};
-	struct node{int to;type w;};
 	vector<int> mp[MAX];
 	vector<edge> e;
 	int dep[MAX],fa[MAX],sz[MAX],son[MAX];

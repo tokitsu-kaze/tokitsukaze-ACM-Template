@@ -2,7 +2,7 @@ class Fenwick_Tree <T:Number> (var n:Int)
 {
 	var bit=LongArray(n+1){0}
 	fun lowbit(x:Int):Int{return x and (-x)}
-	fun insert(xx:Int,qv:T)
+	fun upd(xx:Int,qv:T)
 	{
 		var x=xx
         var v=qv.toLong()

@@ -18,6 +18,7 @@ res.sortBy({it.fi})
 res.sortWith({it.fi},{it.se})
 --------vector--------
 vector<int> res;             var res=mutableListOf<Int>()
+res.back                     res.last()
 res.push_back                res.add
 res.pop_back                 removeLast
 vector<int> mp[n];           var mp=Array(n){mutableListOf<Int>()}

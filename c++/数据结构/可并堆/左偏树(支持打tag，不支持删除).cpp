@@ -1,4 +1,4 @@
-struct leftist_tree
+struct Leftist_Tree
 {
 	#define type ll
 	struct node

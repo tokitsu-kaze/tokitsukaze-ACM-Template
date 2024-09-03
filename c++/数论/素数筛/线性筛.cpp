@@ -1,6 +1,6 @@
 //x is a prime if prime[x]==x(x>=2)
 int p[MAX],tot,prime[MAX];
-void init(int n)
+void init_prime(int n)
 {
 	int i,j;
 	tot=0;

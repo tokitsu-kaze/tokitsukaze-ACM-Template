@@ -13,7 +13,7 @@ class Discretization<T:Number>()
 		}
 		a=tmp
 	}
-	fun get_pos(x:T):Int{return lower_bound_pos<Long>(a,0,a.size-1,x.toLong())+1}
+	fun get_pos(x:T):Int{return upper_bound_pos(a,x.toLong())}
 	fun get_val(pos:Int):T {return a[pos-1] as T}
 	fun size():Int{return a.size}
 }

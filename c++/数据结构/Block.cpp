@@ -1,57 +1,84 @@
 struct Block
 {
 	#define type int
-	static const int N=;
-	static const int size=sqrt(N);
-	static const int num=N/size+1;
-	
-	void init()
+	static const int N=MAX;
+	static const int SZ=sqrt(N);
+	static const int B=N/SZ+10;
+	int n,bl[B],br[B],bid[N];
+	type a[N],sum[B],tag[B];
+	void build(int _n)
 	{
-		
-	}
-	void point_modify(int x,type v)
-	{
-	    int id=(x-1)/size+1;
-	    int pos=x%size;
-		
-	}
-	void block_modify(int id,type v)
-	{
-		
-	}
-	type point_query(int x)
-	{
-	    int id=(x-1)/size+1;
-	    int pos=x%size;
-		
-	}
-	type block_query(int id)
-	{
-		
-	}
-	void upd(int l,int r,type x)
-	{
-	    while(l<=r&&r%blocks!=0) point_modify(r,x),r--;
-	    while(l<=r&&l%blocks!=1) point_modify(l,x),l++;
-	    while(l<=r)
+		int i,j,id;
+		n=_n;
+		id=0;
+		for(i=1;i<=n;i+=SZ)
 		{
-		    int id=(l-1)/size+1;
-		    block_modify(id,x);
-		    l+=size;
+			bl[++id]=i;
+			br[id]=min(n,i+SZ-1);
+			tag[id]=0;
+			for(j=bl[id];j<=br[id];j++)
+			{
+				bid[j]=id;
+				
+			}
 		}
+	}
+	void pushdown(int id)
+	{
+		int i;
+		if(tag[id])
+		{
+			
+		}
+	}
+	void upd_point(int x,type v)
+	{
+		
+	}
+	void upd_block(int id,type v)
+	{
+		
+	}
+	void upd(int l,int r,type v)
+	{
+		int i;
+	    if(bid[l]==bid[r])
+	    {
+	    	pushdown(bid[l]);
+	    	for(i=l;i<=r;i++) upd_point(i,v);
+	    	return;
+		}
+		pushdown(bid[l]);
+		pushdown(bid[r]);
+		for(i=l;i<=br[bid[l]];i++) upd_point(i,v);
+		for(i=bl[bid[r]];i<=r;i++) upd_point(i,v);
+		for(i=bid[l]+1;i<=bid[r]-1;i++) upd_block(i,v);
+	}
+	type res;
+	void ask_point(int x)
+	{
+		
+	}
+	void ask_block(int id)
+	{
+		
 	}
 	type ask(int l,int r)
 	{
-	    type ans=0;
-	    while(l<=r&&r%blocks!=0) ans+=point_query(r),r--;
-	    while(l<=r&&l%blocks!=1) ans+=point_query(l),l++;
-	    while(l<=r)
-		{
-		    int id=(l-1)/size+1;
-		    ans+=block_query(id);
-		    l+=size;
+	    int i;
+	    res=0;
+	    if(bid[l]==bid[r])
+	    {
+	    	pushdown(bid[l]);
+	    	for(i=l;i<=r;i++) ask_point(i);
+	    	return res;
 		}
-	    return ans;
+		pushdown(bid[l]);
+		pushdown(bid[r]);
+		for(i=l;i<=br[bid[l]];i++) ask_point(i);
+		for(i=bl[bid[r]];i<=r;i++) ask_point(i);
+		for(i=bid[l]+1;i<=bid[r]-1;i++) ask_block(i);
+		return res;
 	}
 	#undef type
 }blk;
