@@ -3,7 +3,7 @@ struct Strongly_Connected_Components
 	int scc_cnt,tot;
 	int low[MAX],dfn[MAX],col[MAX],sz[MAX];
 	int st[MAX],top,flag[MAX];
-	vector<int> mp[MAX];
+	vector<int> *mp;
 	void dfs(int x)
 	{
 		int tmp;
@@ -34,11 +34,8 @@ struct Strongly_Connected_Components
 	void work(int n,vector<int> *_mp)
 	{
 		int i;
-		for(i=1;i<=n;i++)
-		{
-			col[i]=sz[i]=flag[i]=0;
-			mp[i]=_mp[i];
-		}
+		mp=_mp;
+		for(i=1;i<=n;i++) col[i]=sz[i]=flag[i]=0;
 		scc_cnt=top=tot=0;
 		for(i=1;i<=n;i++)
 		{

@@ -29,7 +29,6 @@ struct Disjoint_Set_Union
 struct Kruskal_Tree
 {
 	#define type int
-	#define inf INF
 	struct edge{int x,y;type w;};
 	vector<edge> e;
 	void init(){e.clear();}
@@ -62,5 +61,4 @@ struct Kruskal_Tree
 		return rt;
 	}
 	#undef type
-	#undef inf
 }krsk;
