@@ -3,8 +3,8 @@ class Segment_Tree<T:Number>()
 	class node<Long>(){
 		var v=0L
 	}
-	var t=Array<node<Long>>(MAX shl 2){node()}
-	var tag=LongArray(MAX shl 2)
+	var t=Array<node<Long>>(1){node()}
+	var tag=LongArray(1)
 	var n:Int=0
 	var ql:Int=0
 	var qr:Int=0
@@ -44,11 +44,13 @@ class Segment_Tree<T:Number>()
 	{
 		if(l>=ql&&r<=qr)
 		{
-			if(qop==1){
+			if(qop==1)
+			{
 				tag[id]+=qv
 				t[id].v+=qv
 			}
-			else{
+			else
+			{
 				t[id].v=max(t[id].v,qv)
 			}
 			return
@@ -69,8 +71,15 @@ class Segment_Tree<T:Number>()
 		return merge(query(l,mid,id shl 1),
                      query(mid+1,r,id shl 1 or 1))
 	}
-	fun build(_n:Int){n=_n;build(1,n,1)}
-	fun upd(l:Int,r:Int,v:T,op:Int){
+	fun build(_n:Int)
+	{
+		n=_n;
+		t=Array<node<Long>>((n+5) shl 2){node()}
+		tag=LongArray((n+5) shl 2)
+		build(1,n,1)
+	}
+	fun upd(l:Int,r:Int,v:T,op:Int)
+	{
 		if(l>r) return
 		ql=l
 		qr=r
@@ -78,7 +87,8 @@ class Segment_Tree<T:Number>()
 		qop=op
 		update(1,n,1)
 	}
-	fun ask(l:Int,r:Int):T{
+	fun ask(l:Int,r:Int):T
+	{
 		if(l>r) return 0 as T
 		ql=l
 		qr=r

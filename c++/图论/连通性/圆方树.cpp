@@ -1,53 +1,55 @@
 struct Round_Square_Tree
 {
-	int tot,n;
+	int tot,id,bcc_cnt;
 	int low[MAX],dfn[MAX];
 	int st[MAX],top;
-	void dfs(int x,int fa,vector<int> *mp,vector<int> *g)
+	vector<int> *mp,*g;
+	void dfs(int x,int fa)
 	{
-		int to,i,tmp;
+		int i,tmp,k;
 		st[top++]=x;
 		low[x]=dfn[x]=++tot;
 		for(auto &to:mp[x])
 		{
 			if(!dfn[to])
 			{
-				dfs(to,x,mp,g);
+				dfs(to,x);
 				low[x]=min(low[x],low[to]);
 				if(low[to]==dfn[x])
 				{
-					n++;
+					id++;
 					while(top)
 					{
 						tmp=st[--top];
-						g[tmp].push_back(n);
-						g[n].push_back(tmp);
-						if(tmp==x)
-						{
-							top++;
-							break;
-						}
+						g[tmp].push_back(id);
+						g[id].push_back(tmp);
+						if(tmp==to) break;
 					}
+					g[x].push_back(id);
+					g[id].push_back(x);
 				}
 			}
 			else low[x]=min(low[x],dfn[to]);
 		}
 	}
-	int build_tree(int _n,vector<int> *mp,vector<int> *g)
+	int build(int n,vector<int> *_mp,vector<int> *_g)
 	{
 		int i;
-		n=_n;
-		for(i=1;i<=n;i++) low[i]=dfn[i]=0;
-		for(i=1;i<=(n<<1);i++) g[i].clear();
+		mp=_mp;
+		g=_g;
+		for(i=0;i<=n;i++) low[i]=dfn[i]=0;
+		for(i=0;i<=(n<<1);i++) g[i].clear();
 		top=tot=0;
+		id=n;
 		for(i=1;i<=n;i++)
 		{
-			if(!dfn[i]) dfs(i,i,mp,g);
+			if(!dfn[i]) dfs(i,i);
 		}
-		return n;
+		bcc_cnt=id-n;
+		return id;
 	}
 }rst;
 /*
 vector<int> mp[MAX],g[MAX<<1];
-tot=rst.build_tree(n,mp,g);
+tot=rst.build(n,mp,g);
 */

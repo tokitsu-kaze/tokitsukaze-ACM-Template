@@ -1,7 +1,7 @@
 struct SPFA
 {
 	#define type int
-	static const int inf=INF;
+	static const type inf=INF;
 	static const int N=;
 	vector<pair<int,type> > mp[N];
 	type dis[N];

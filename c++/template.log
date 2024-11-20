@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2023.12.6)  7 DEC 2023 15:50
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2023.12.6)  2 NOV 2024 10:04
 entering extended mode
 **template.tex
 (D:\Github\tokitsukaze-ACM-Template\c++\template.tex
@@ -988,9 +988,11 @@ pt
 
 [1
 
-])
+] [2])
 \tf@toc=\write3
- [2]
+ [3
+
+]
 Requested font "[lmroman12-bold]:mapping=tex-text" at 12.0pt
  -> D:/CTEX/MiKTeX/fonts/opentype/public/lm/lmroman12-bold.otf
 Requested font "[lmroman9-regular]:mapping=tex-text" at 9.0pt
@@ -1006,17 +1008,17 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Package xeCJK Warning: Unknown CJK family `hei' is ignored.
-Use \setCJKfamilyfont to define a CJK family. on input line 81.
+Use \setCJKfamilyfont to define a CJK family. on input line 78.
 
 [1
 
 ] (D:\Github\tokitsukaze-ACM-Template\c++\字符串/hash/hash.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\字符串/hash/good_hash_prime.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\字符串/hash/hash_map.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\字符串/hash/BKDRHash.cpp [2])
+(D:\Github\tokitsukaze-ACM-Template\c++\字符串/hash/hash_map.cpp [2])
+(D:\Github\tokitsukaze-ACM-Template\c++\字符串/hash/BKDRHash.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\字符串/Manacher/Manacher-插字符.c
 pp) (D:\Github\tokitsukaze-ACM-Template\c++\字符串/Manacher/Manacher-不插�
-��符.cpp)
+��符.cpp [3])
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -1028,57 +1030,175 @@ pp) (D:\Github\tokitsukaze-ACM-Template\c++\字符串/Manacher/Manacher-不插�
 Requested font "SimHei/ICU:script=latn;language=DFLT;mapping=tex-text;" at 12.0
 pt
  -> C:/Windows/Fonts/simhei.ttf
-
+ (D:\Github\tokitsukaze-ACM-Template\c++\字符串/后缀数组/倍增sa.cpp
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [3]
-(D:\Github\tokitsukaze-ACM-Template\c++\字符串/后缀数组/倍增sa.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\字符串/后缀数组/sais.cpp
-[4]) (D:\Github\tokitsukaze-ACM-Template\c++\字符串/自动机/AC自动机.cp
-p
+ [4])
+(D:\Github\tokitsukaze-ACM-Template\c++\字符串/后缀数组/sais.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\字符串/自动机/AC自动机.cpp
+[5]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [5])
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
+)
 (D:\Github\tokitsukaze-ACM-Template\c++\字符串/自动机/大字符集AC自�
-�机.cpp
-Underfull \vbox (badness 1975) has occurred while \output is active []
-
- [6])
-(D:\Github\tokitsukaze-ACM-Template\c++\字符串/自动机/后缀自动机.cpp
-
+�机.cpp [6]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7])
+)
 (D:\Github\tokitsukaze-ACM-Template\c++\字符串/自动机/回文自动机.cpp
-
+[7]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8])
+)
 (D:\Github\tokitsukaze-ACM-Template\c++\字符串/自动机/序列自动机.cpp
-) (D:\Github\tokitsukaze-ACM-Template\c++\字符串/最小表示法/最小表�
-�法.cpp) (D:\Github\tokitsukaze-ACM-Template\c++\字符串/最小表示法/最
-大表示法.cpp) (D:\Github\tokitsukaze-ACM-Template\c++\字符串/shift_and.c
-pp [9]) (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/离散化.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/RMQ/一维RMQ.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/RMQ/二维RMQ.cpp [10])
+) (D:\Github\tokitsukaze-ACM-Template\c++\字符串/自动机/KMP自动机.cpp
+[8]) (D:\Github\tokitsukaze-ACM-Template\c++\字符串/自动机/后缀自动�
+�.cpp
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+ [9])
+(D:\Github\tokitsukaze-ACM-Template\c++\字符串/自动机/广义后缀自动�
+��.cpp
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
+ [10])
+(D:\Github\tokitsukaze-ACM-Template\c++\字符串/最小表示法/最小表示�
+��.cpp) (D:\Github\tokitsukaze-ACM-Template\c++\字符串/最小表示法/最�
+�表示法.cpp) (D:\Github\tokitsukaze-ACM-Template\c++\字符串/shift_and.cpp
+) [11] (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/离散化.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/RMQ/一维RMQ.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/RMQ/二维RMQ.cpp [12])
 (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/单调队列.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/并查集/并查集.cpp
-[11]) (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/并查集/map实现�
-��查集.cpp) (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/并查集/�
-�撤销并查集.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/并查集/并查集.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/并查集/map实现并查�
+��.cpp [13]) (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/并查集/可
+撤销并查集.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/树状数组/一维单点B
-IT.cpp [12]) (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/树状数组/
+IT.cpp [14]) (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/树状数组/
 一维区间BIT.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/树状数组/二维单点B
-IT.cpp) [13] (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/线段树/线
+IT.cpp) [15] (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/线段树/线
 段树.cpp) (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/线段树/动�
-��开点线段树.cpp
+��开点线段树.cpp [16]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [17])
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/线段树/区间查询最�
+��子段和.cpp) (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/线段树
+/矩形面积并.cpp
+Underfull \vbox (badness 1975) has occurred while \output is active []
+
+ [18]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19])
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/线段树/线段树维护h
+ash.cpp) (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/平衡树/Treap.c
+pp
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [20]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [21])
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/平衡树/Splay维护序�
+�.cpp
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [22]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+)
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/平衡树/FHQ-Treap维护�
+��列.cpp [23]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [24])
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/平衡树/pbds.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/字典树/trie.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/字典树/01trie.cpp
+[25]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+)
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/可持久化/可持久化�
+��段树.cpp [26])
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/可持久化/可持久化0
+1trie.cpp
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [27])
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/可持久化/可持久化�
+��组.cpp)
+Underfull \vbox (badness 3612) has occurred while \output is active []
+
+ [28]
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/可持久化/可持久化�
+��查集.cpp
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [29])
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/树套树/线段树套线�
+��树.cpp
+Overfull \hbox (13.46608pt too wide) in paragraph at lines 69--70
+[][][][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [30])
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/树套树/线段树套trea
+p.cpp
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [31]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [32]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [33])
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/树套树/树状数组套t
+reap.cpp
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [34]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [35]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+)
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/李超树.cpp [36]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+)
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/kd-tree.cpp
 Requested font "[SIMFANG.TTF]" at 9.0pt
  -> C:/Windows/Fonts/SIMFANG.TTF
 Requested font "[SIMFANG.TTF]/ICU" at 9.0pt
@@ -1116,111 +1236,21 @@ Requested font "[SIMFANG.TTF]/I/I/ICU" at 9.0pt
 .................................................
 Requested font "[SIMFANG.TTF]/ICU:mapping=tex-text;" at 9.0pt
  -> C:/Windows/Fonts/SIMFANG.TTF
- [14]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/线段树/线段树分裂�
-��并.cpp [15])
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/线段树/区间查询最�
-��子段和.cpp [16])
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/线段树/矩形面积并.
-cpp
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [17]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/平衡树/Treap.cpp
-[18]
+ [37]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [19]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/平衡树/Splay维护序�
-�.cpp [20]
+ [38]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [21]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/平衡树/pbds.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/字典树/trie.cpp
-[22]) (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/字典树/01trie.cpp
-) (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/可持久化/可持久�
-�线段树.cpp [23]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/树套树/线段树套线�
-��树.cpp [24]
-Overfull \hbox (13.46608pt too wide) in paragraph at lines 69--70
-[][][][] 
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/树套树/线段树套trea
-p.cpp [25]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [26]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [27]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/树套树/树状数组套t
-reap.cpp [28]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [29]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [30])
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/李超树.cpp
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [31])
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/kd-tree.cpp
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [32]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [33])
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/pbds可并堆.cpp
+ [39])
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/可并堆/pbds可并堆.cp
+p
 Invalid UTF-8 byte or sequence at line 4 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 4 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 4 replaced by U+FFFD.
@@ -1230,7 +1260,16 @@ Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
 LT;mapping=tex-text;mapping=;!
 Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
 LT;mapping=tex-text;mapping=;!
-)
+) (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/可并堆/左偏树支�
+�打tag,不支持删除.cpp
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [40])
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/可并堆/左偏树支持�
+��除,不支持打tag.cpp
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [41])
 (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/k叉哈夫曼树.tex)
 (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/k叉哈夫曼树.cpp
 Invalid UTF-8 byte or sequence at line 9 replaced by U+FFFD.
@@ -1254,72 +1293,81 @@ T;mapping=tex-text;mapping=;!
 Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
 LT;mapping=tex-text;mapping=;!
 )
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/笛卡尔树.tex) [34]
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/笛卡尔树.tex) [42]
 (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/笛卡尔树.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/析合树.tex
 File: div-com1.png Graphic file (type QTm)
 
 <use  "div-com1.png" >)
-Overfull \hbox (33.7788pt too wide) in paragraph at lines 1--192
+Overfull \hbox (33.7788pt too wide) in paragraph at lines 1--209
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--192
+Underfull \hbox (badness 10000) in paragraph at lines 1--209
 
  []
 
 (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/析合树.cpp
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [35]
+ [43]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [36])
+ [44])
 (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/莫队算法.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/ODT.cpp [37])
+(D:\Github\tokitsukaze-ACM-Template\c++\数据结构/ODT.cpp [45])
 (D:\Github\tokitsukaze-ACM-Template\c++\数据结构/Block.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\树/LCA/倍增LCA.cpp [38])
+(D:\Github\tokitsukaze-ACM-Template\c++\树/LCA/倍增LCA轻便版.cpp [46])
 (D:\Github\tokitsukaze-ACM-Template\c++\树/LCA/RMQ维护欧拉序求LCA.cpp
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [39])
+ [47])
 (D:\Github\tokitsukaze-ACM-Template\c++\树/树链剖分/轻重链剖分.cpp
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [40]
+ [48]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [49])
+(D:\Github\tokitsukaze-ACM-Template\c++\树/树的重心.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\树/树上倍增.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\树/树hash.cpp [50])
+(D:\Github\tokitsukaze-ACM-Template\c++\树/虚树.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\树/树分治/点分治.cpp [51]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
-(D:\Github\tokitsukaze-ACM-Template\c++\树/树的重心.cpp [41])
-(D:\Github\tokitsukaze-ACM-Template\c++\树/树hash.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\树/虚树.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\树/Link-Cut-Tree.cpp [42]
+(D:\Github\tokitsukaze-ACM-Template\c++\树/Link-Cut-Tree.cpp [52]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [43]
+ [53]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
 (D:\Github\tokitsukaze-ACM-Template\c++\图论/链式前向星.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\图论/最短路/dijkstra.cpp [44])
-(D:\Github\tokitsukaze-ACM-Template\c++\图论/最短路/spfa.cpp
+(D:\Github\tokitsukaze-ACM-Template\c++\图论/最短路/dijkstra.cpp [54])
+(D:\Github\tokitsukaze-ACM-Template\c++\图论/最短路/spfa.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\图论/最短路/floyd求最小环.cpp
+[55]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [45])
-(D:\Github\tokitsukaze-ACM-Template\c++\图论/最短路/floyd求最小环.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\图论/最短路/Johnson.cpp [46]
+)
+(D:\Github\tokitsukaze-ACM-Template\c++\图论/最短路/Johnson.cpp [56]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
 (D:\Github\tokitsukaze-ACM-Template\c++\图论/最短路/同余最短路.cpp
-[47]
+[57]
 Invalid UTF-8 byte or sequence at line 53 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 53 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 53 replaced by U+FFFD.
@@ -1358,15 +1406,15 @@ Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
 LT;mapping=tex-text;mapping=;!
 Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
 LT;mapping=tex-text;mapping=;!
+) (D:\Github\tokitsukaze-ACM-Template\c++\图论/最小生成树/kruskal.cpp) (
+D:\Github\tokitsukaze-ACM-Template\c++\图论/最小生成树/kruskal重构树.
+cpp [58]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 )
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-(D:\Github\tokitsukaze-ACM-Template\c++\图论/最小生成树/kruskal.cpp
-[48]) (D:\Github\tokitsukaze-ACM-Template\c++\图论/最小生成树/kruskal重
-构树.cpp) (D:\Github\tokitsukaze-ACM-Template\c++\图论/最小生成树/prim
-.cpp [49]) (D:\Github\tokitsukaze-ACM-Template\c++\图论/二分图匹配/二�
-�图最大匹配.cpp
+(D:\Github\tokitsukaze-ACM-Template\c++\图论/最小生成树/prim.cpp
+[59]) (D:\Github\tokitsukaze-ACM-Template\c++\图论/二分图匹配/二分图�
+��大匹配.cpp
 Invalid UTF-8 byte or sequence at line 2 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 2 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 2 replaced by U+FFFD.
@@ -1499,12 +1547,9 @@ Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
 LT;mapping=tex-text;mapping=;!
 Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
 LT;mapping=tex-text;mapping=;!
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [50])
+)
 (D:\Github\tokitsukaze-ACM-Template\c++\图论/二分图匹配/二分图最大�
-��完美匹配.cpp
+��完美匹配.cpp [60]
 Invalid UTF-8 byte or sequence at line 17 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 17 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 17 replaced by U+FFFD.
@@ -1741,7 +1786,6 @@ LT;mapping=tex-text;mapping=;!
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [51]
 Invalid UTF-8 byte or sequence at line 101 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 101 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 101 replaced by U+FFFD.
@@ -1794,439 +1838,82 @@ Missing character: There is no ޽ in font Consolas/ICU:script=latn;language=DFL
 T;mapping=tex-text;mapping=;!
 Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
 LT;mapping=tex-text;mapping=;!
-)
-(D:\Github\tokitsukaze-ACM-Template\c++\图论/最大流/dinic.cpp
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [52])
+ [61])
+(D:\Github\tokitsukaze-ACM-Template\c++\图论/最大流/dinic.cpp)
+Underfull \vbox (badness 3612) has occurred while \output is active []
+
+ [62]
 (D:\Github\tokitsukaze-ACM-Template\c++\图论/最大流/有源汇上下界网�
 ��流.cpp
+Underfull \vbox (badness 1975) has occurred while \output is active []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [53]
+ [63]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
 (D:\Github\tokitsukaze-ACM-Template\c++\图论/费用流/spfa费用流.cpp
-[54]
+[64]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
 (D:\Github\tokitsukaze-ACM-Template\c++\图论/费用流/dijkstra费用流-dij�
-��h.cpp [55]
+��h.cpp [65])
+(D:\Github\tokitsukaze-ACM-Template\c++\图论/费用流/dijkstra费用流-spfa
+求h.cpp
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-)
-(D:\Github\tokitsukaze-ACM-Template\c++\图论/费用流/dijkstra费用流-spfa
-求h.cpp [56]
+ [66]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
 (D:\Github\tokitsukaze-ACM-Template\c++\图论/连通性/强连通分量.cpp
-[57]) (D:\Github\tokitsukaze-ACM-Template\c++\图论/连通性/边双连通分�
-��.cpp
+[67]) (D:\Github\tokitsukaze-ACM-Template\c++\图论/连通性/边双连通分�
+��.cpp)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [58])
-(D:\Github\tokitsukaze-ACM-Template\c++\图论/连通性/圆方树.cpp
-Invalid UTF-8 byte or sequence at line 15 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 15 replaced by U+FFFD.
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no ڵ in font Consolas/ICU:script=latn;language=DFL
-T;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Invalid UTF-8 byte or sequence at line 16 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 16 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 16 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 16 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 16 replaced by U+FFFD.
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Invalid UTF-8 byte or sequence at line 17 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 17 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 17 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 17 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 17 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 17 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 17 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 17 replaced by U+FFFD.
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no ڽ in font Consolas/ICU:script=latn;language=DFL
-T;mapping=tex-text;mapping=;!
-Missing character: There is no ڵ in font Consolas/ICU:script=latn;language=DFL
-T;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Invalid UTF-8 byte or sequence at line 18 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 18 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 18 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 18 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 18 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 18 replaced by U+FFFD.
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Invalid UTF-8 byte or sequence at line 19 replaced by U+FFFD.
-Missing character: There is no ݹ in font Consolas/ICU:script=latn;language=DFL
-T;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Invalid UTF-8 byte or sequence at line 20 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 20 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 20 replaced by U+FFFD.
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Invalid UTF-8 byte or sequence at line 21 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 21 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 21 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 21 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 21 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 21 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 21 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 21 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 21 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 21 replaced by U+FFFD.
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no ־ in font Consolas/ICU:script=latn;language=DFL
-T;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Invalid UTF-8 byte or sequence at line 22 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 22 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 22 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 22 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 22 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 22 replaced by U+FFFD.
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Invalid UTF-8 byte or sequence at line 24 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 24 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 24 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 24 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 24 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 24 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 24 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 24 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 24 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 24 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 24 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 24 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 24 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 24 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 24 replaced by U+FFFD.
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Invalid UTF-8 byte or sequence at line 31 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 31 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 31 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 31 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 31 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 31 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 31 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 31 replaced by U+FFFD.
-Missing character: There is no ע in font Consolas/ICU:script=latn;language=DFL
-T;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no ߣ in font Consolas/ICU:script=latn;language=DFL
-T;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Invalid UTF-8 byte or sequence at line 37 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 37 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 37 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 37 replaced by U+FFFD.
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Invalid UTF-8 byte or sequence at line 47 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 47 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 47 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 47 replaced by U+FFFD.
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Invalid UTF-8 byte or sequence at line 51 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 51 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 51 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 51 replaced by U+FFFD.
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Invalid UTF-8 byte or sequence at line 54 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 54 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 54 replaced by U+FFFD.
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Invalid UTF-8 byte or sequence at line 57 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 57 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 57 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 57 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 57 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 57 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 57 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 57 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 57 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 57 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 57 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 57 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 57 replaced by U+FFFD.
-Missing character: There is no ע in font Consolas/ICU:script=latn;language=DFL
-T;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no ⵽ in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no ؼ in font Consolas/ICU:script=latn;language=DFL
-T;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-)
-(D:\Github\tokitsukaze-ACM-Template\c++\图论/团/最大团.cpp [59]
+ [68]
+(D:\Github\tokitsukaze-ACM-Template\c++\图论/连通性/点双连通分量.cpp
+) (D:\Github\tokitsukaze-ACM-Template\c++\图论/连通性/圆方树.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\图论/团/最大团.cpp [69]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
-(D:\Github\tokitsukaze-ACM-Template\c++\图论/团/极大团计数.cpp [60])
+(D:\Github\tokitsukaze-ACM-Template\c++\图论/团/极大团计数.cpp [70])
 (D:\Github\tokitsukaze-ACM-Template\c++\图论/拓扑排序.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\图论/2-sat/2-sat输出任意解.cpp
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [61]
+[71]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
 (D:\Github\tokitsukaze-ACM-Template\c++\图论/2-sat/2-sat字典序最小解.cp
-p [62]) (D:\Github\tokitsukaze-ACM-Template\c++\图论/支配树.cpp
+p [72]) (D:\Github\tokitsukaze-ACM-Template\c++\图论/支配树.cpp
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [63])
-(D:\Github\tokitsukaze-ACM-Template\c++\图论/最小斯坦纳树.cpp)
+ [73])
+(D:\Github\tokitsukaze-ACM-Template\c++\图论/最小斯坦纳树.cpp
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [64]
+ [74])
 (D:\Github\tokitsukaze-ACM-Template\c++\数论/素数筛/埃筛.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\数论/素数筛/线性筛.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\数论/素数筛/区间筛.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\数论/逆元/exgcd求逆元.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\数论/逆元/线性预处理.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\数论/扩展欧几里得/exgcd.cpp
-[65]) (D:\Github\tokitsukaze-ACM-Template\c++\数论/扩展欧几里得/ax+by=c
-.cpp
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Invalid UTF-8 byte or sequence at line 4 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 4 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 4 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 4 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 4 replaced by U+FFFD.
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
-LT;mapping=tex-text;mapping=;!
-) (D:\Github\tokitsukaze-ACM-Template\c++\数论/中国剩余定理/CRT.cpp) (D
-:\Github\tokitsukaze-ACM-Template\c++\数论/中国剩余定理/exCRT.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\数论/组合数/打表.cpp [66])
-(D:\Github\tokitsukaze-ACM-Template\c++\数论/组合数/预处理.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\数论/组合数/Lucas定理.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\数论/组合数/exLucas.cpp
-Underfull \vbox (badness 1975) has occurred while \output is active []
-
- [67])
-(D:\Github\tokitsukaze-ACM-Template\c++\数论/欧拉函数.tex)
-(D:\Github\tokitsukaze-ACM-Template\c++\数论/欧拉函数/直接求.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\数论/欧拉函数/线性筛.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\数论/莫比乌斯函数.cpp [68])
-(D:\Github\tokitsukaze-ACM-Template\c++\数论/Berlekamp-Massey.cpp
+[75] (D:\Github\tokitsukaze-ACM-Template\c++\数论/扩展欧几里得/exgcd.cp
+p) (D:\Github\tokitsukaze-ACM-Template\c++\数论/扩展欧几里得/ax+by=c.cp
+p) (D:\Github\tokitsukaze-ACM-Template\c++\数论/中国剩余定理/CRT.cpp
+[76]) (D:\Github\tokitsukaze-ACM-Template\c++\数论/中国剩余定理/exCRT.c
+pp) (D:\Github\tokitsukaze-ACM-Template\c++\数论/欧拉函数.tex)
+(D:\Github\tokitsukaze-ACM-Template\c++\数论/欧拉函数/直接求.cpp
+[77]) (D:\Github\tokitsukaze-ACM-Template\c++\数论/欧拉函数/线性筛.cpp
+) (D:\Github\tokitsukaze-ACM-Template\c++\数论/莫比乌斯函数.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\数论/Berlekamp-Massey.cpp [78]
 Invalid UTF-8 byte or sequence at line 50 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 50 replaced by U+FFFD.
 Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
@@ -2240,18 +1927,24 @@ LT;mapping=tex-text;mapping=;!
 Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
 LT;mapping=tex-text;mapping=;!
 )
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [69]
 (D:\Github\tokitsukaze-ACM-Template\c++\数论/exBSGS.cpp
 Invalid UTF-8 byte or sequence at line 1 replaced by U+FFFD.
 Missing character: There is no � in font Consolas/ICU:script=latn;language=DF
 LT;mapping=tex-text;mapping=;!
 )
 (D:\Github\tokitsukaze-ACM-Template\c++\数论/Miller_Rabin+Pollard_rho.cpp
+[79]
+Overfull \hbox (8.51784pt too wide) in paragraph at lines 59--60
+[][] 
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [70])
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [80])
 (D:\Github\tokitsukaze-ACM-Template\c++\数论/第二类Stirling数.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\数论/原根.tex
 Missing character: There is no ≡ in font [lmroman10-regular]:mapping=tex-text
@@ -2259,73 +1952,81 @@ Missing character: There is no ≡ in font [lmroman10-regular]:mapping=tex-text
 Missing character: There is no ≡ in font [lmroman10-regular]:mapping=tex-text
 !
 )
-Underfull \hbox (badness 10000) in paragraph at lines 1--331
+Underfull \hbox (badness 10000) in paragraph at lines 1--346
 
  []
 
 (D:\Github\tokitsukaze-ACM-Template\c++\数论/原根.cpp
-Underfull \vbox (badness 5490) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [71])
+ [81])
 (D:\Github\tokitsukaze-ACM-Template\c++\数论/二次剩余.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\多项式/FFT.cpp [72])
+(D:\Github\tokitsukaze-ACM-Template\c++\组合数学/组合数/公式预处理.
+cpp) (D:\Github\tokitsukaze-ACM-Template\c++\组合数学/组合数/杨辉三�
+�递推.cpp [82]) (D:\Github\tokitsukaze-ACM-Template\c++\组合数学/卢卡�
+�定理/Lucas.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\组合数学/卢卡斯定理/exLucas.cp
+p
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-(D:\Github\tokitsukaze-ACM-Template\c++\多项式/NTT.cpp [73])
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-(D:\Github\tokitsukaze-ACM-Template\c++\多项式/FWT.cpp [74])
-(D:\Github\tokitsukaze-ACM-Template\c++\多项式/拉格朗日插值.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\矩阵/矩阵类.cpp [75])
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-(D:\Github\tokitsukaze-ACM-Template\c++\矩阵/高斯消元/浮点数方程组.
-cpp [76]) (D:\Github\tokitsukaze-ACM-Template\c++\矩阵/高斯消元/异或方
-程组.cpp)
-Underfull \vbox (badness 3612) has occurred while \output is active []
-
- [77]
-(D:\Github\tokitsukaze-ACM-Template\c++\矩阵/单纯形.cpp
-Underfull \vbox (badness 1975) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [78])
-(D:\Github\tokitsukaze-ACM-Template\c++\矩阵/线性基/线性基.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\矩阵/线性基/带删除线性基.cpp
-[79]
+ [83]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
+(D:\Github\tokitsukaze-ACM-Template\c++\组合数学/卡特兰数公式.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\多项式/FFT.cpp [84])
+(D:\Github\tokitsukaze-ACM-Template\c++\多项式/NTT.cpp
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [85])
+(D:\Github\tokitsukaze-ACM-Template\c++\多项式/FWT.cpp
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [86])
+(D:\Github\tokitsukaze-ACM-Template\c++\多项式/拉格朗日插值.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\矩阵/矩阵类.cpp [87])
+(D:\Github\tokitsukaze-ACM-Template\c++\矩阵/高斯消元/浮点数方程组.
+cpp
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [88])
+(D:\Github\tokitsukaze-ACM-Template\c++\矩阵/高斯消元/异或方程组.cpp
+) (D:\Github\tokitsukaze-ACM-Template\c++\矩阵/高斯消元/同余方程组.c
+pp [89]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+)
+(D:\Github\tokitsukaze-ACM-Template\c++\矩阵/线性基/线性基.cpp [90])
+(D:\Github\tokitsukaze-ACM-Template\c++\矩阵/线性基/带删除线性基.cpp
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [91])
 (D:\Github\tokitsukaze-ACM-Template\c++\博弈/sg函数.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\博弈/结论.tex)
-Underfull \hbox (badness 10000) in paragraph at lines 1--365
+Underfull \hbox (badness 10000) in paragraph at lines 1--393
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--365
+Underfull \hbox (badness 10000) in paragraph at lines 1--393
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--365
+Underfull \hbox (badness 10000) in paragraph at lines 1--393
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--365
+Underfull \hbox (badness 10000) in paragraph at lines 1--393
 
  []
 
-[80] (D:\Github\tokitsukaze-ACM-Template\c++\dp/LIS.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\dp/LIS.cpp [92])
 (D:\Github\tokitsukaze-ACM-Template\c++\dp/LPS.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\dp/数位dp.cpp) [81]
-(D:\Github\tokitsukaze-ACM-Template\c++\杂项/FastIO.cpp
+(D:\Github\tokitsukaze-ACM-Template\c++\dp/数位dp.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\杂项/FastIO.cpp [93]
 Overfull \hbox (119.88246pt too wide) in paragraph at lines 67--68
 [][][][][] 
  []
@@ -2333,34 +2034,36 @@ Overfull \hbox (119.88246pt too wide) in paragraph at lines 67--68
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [82])
+)
 (D:\Github\tokitsukaze-ACM-Template\c++\杂项/快速乘.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\杂项/快速模.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\杂项/快速模.cpp [94]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+)
 (D:\Github\tokitsukaze-ACM-Template\c++\杂项/xor_sum.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\杂项/约瑟夫环kth.cpp [83])
+(D:\Github\tokitsukaze-ACM-Template\c++\杂项/约瑟夫环kth.cpp [95])
 (D:\Github\tokitsukaze-ACM-Template\c++\杂项/判断星期几.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\杂项/整数三分.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\杂项/tree_and_prufer.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\杂项/网格整数点正方形个数.c
-pp) (D:\Github\tokitsukaze-ACM-Template\c++\杂项/模拟退火.cpp [84]
+pp) (D:\Github\tokitsukaze-ACM-Template\c++\杂项/模拟退火.cpp [96]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
-(D:\Github\tokitsukaze-ACM-Template\c++\杂项/kth_FibString.cpp [85])
+(D:\Github\tokitsukaze-ACM-Template\c++\杂项/kth_FibString.cpp [97])
 (D:\Github\tokitsukaze-ACM-Template\c++\杂项/光速幂.cpp)
 (D:\Github\tokitsukaze-ACM-Template\c++\杂项/倍增求等比数列和.cpp)
-(D:\Github\tokitsukaze-ACM-Template\c++\附录/NTT常用模数.tex) [86]
-(D:\Github\tokitsukaze-ACM-Template\c++\附录/线性基求交.cpp) [87
-
-]
+(D:\Github\tokitsukaze-ACM-Template\c++\杂项/矩阵旋转90度.cpp)
+(D:\Github\tokitsukaze-ACM-Template\c++\附录/NTT常用模数.tex) [98]
+(D:\Github\tokitsukaze-ACM-Template\c++\附录/线性基求交.cpp) [99]
 (D:\Github\tokitsukaze-ACM-Template\c++\template.aux) ) 
 Here is how much of TeX's memory you used:
- 19741 strings out of 430478
- 379337 string characters out of 3191502
- 729100 words of memory out of 3000000
- 22165 multiletter control sequences out of 15000+200000
+ 19962 strings out of 430478
+ 382764 string characters out of 3191502
+ 782100 words of memory out of 3000000
+ 22343 multiletter control sequences out of 15000+200000
  7816 words of font info for 67 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,12n,97p,841b,1639s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 57i,12n,97p,841b,1651s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on template.pdf (90 pages).
+Output written on template.pdf (103 pages).

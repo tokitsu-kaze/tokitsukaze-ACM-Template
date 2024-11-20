@@ -1,27 +1,27 @@
-ï»¿\documentclass[a4paper,twocolumn]{article}
+\documentclass[a4paper,twocolumn]{article}
 \usepackage[UTF8]{ctex}
 \usepackage{setspace}
 \usepackage{amsmath, amsthm}
 \usepackage{listings,xcolor}
-\usepackage{geometry} % è®¾ç½®é¡µè¾¹è·
+\usepackage{geometry} % ÉèÖÃÒ³±ß¾à
 \usepackage{fontspec}
 \usepackage{graphicx}
-\usepackage{fancyhdr} % è‡ªå®šä¹‰é¡µçœ‰é¡µè„š
-\setsansfont{Consolas} % è®¾ç½®è‹±æ–‡å­—ä½“
-\setmonofont[Mapping={}]{Consolas} % è‹±æ–‡å¼•å·ä¹‹ç±»çš„æ­£å¸¸æ˜¾ç¤ºï¼Œç›¸å½“äºè®¾ç½®è‹±æ–‡å­—ä½“
-\geometry{left=1cm,right=1cm,top=2cm,bottom=0.5cm} % é¡µè¾¹è·
+\usepackage{fancyhdr} % ×Ô¶¨ÒåÒ³Ã¼Ò³½Å
+\setsansfont{Consolas} % ÉèÖÃÓ¢ÎÄ×ÖÌå
+\setmonofont[Mapping={}]{Consolas} % Ó¢ÎÄÒıºÅÖ®ÀàµÄÕı³£ÏÔÊ¾£¬Ïàµ±ÓÚÉèÖÃÓ¢ÎÄ×ÖÌå
+\geometry{left=1cm,right=1cm,top=2cm,bottom=0.5cm} % Ò³±ß¾à
 \setlength{\columnsep}{30pt}
-% \setlength\columnseprule{0.4pt} % åˆ†å‰²çº¿
-%==============================å¸¸ç”¨å®åŒ…ã€ç¯å¢ƒ==============================%
+% \setlength\columnseprule{0.4pt} % ·Ö¸îÏß
+%==============================³£ÓÃºê°ü¡¢»·¾³==============================%
 
-%==============================é¡µçœ‰ã€é¡µè„šã€ä»£ç æ ¼å¼è®¾ç½®==============================%
-% é¡µçœ‰ã€é¡µè„šè®¾ç½®
+%==============================Ò³Ã¼¡¢Ò³½Å¡¢´úÂë¸ñÊ½ÉèÖÃ==============================%
+% Ò³Ã¼¡¢Ò³½ÅÉèÖÃ
 \pagestyle{fancy}
 % \lhead{CUMTB}
 \lhead{\CJKfamily{hei} ACM-ICPC Template by tokitsukaze}
 \chead{}
 % \rhead{Page \thepage}
-\rhead{\CJKfamily{hei} ç¬¬ \thepage é¡µ}
+\rhead{\CJKfamily{hei} µÚ \thepage Ò³}
 \lfoot{}
 \cfoot{}
 \rfoot{}
@@ -63,293 +63,375 @@
 \end{titlepage}
 \newpage
 \pagestyle{empty}
-\renewcommand{\contentsname}{ç›®å½•}
+\renewcommand{\contentsname}{Ä¿Â¼}
 \tableofcontents
 \newpage\clearpage
 \newpage
 \pagestyle{fancy}
 \setcounter{page}{1}
 
-\section{å­—ç¬¦ä¸²}
+\section{×Ö·û´®}
 \subsection{KMP}
 \subsubsection{KMP}
-\lstinputlisting{å­—ç¬¦ä¸²/KMP/KMP.cpp}
+\lstinputlisting{×Ö·û´®/KMP/KMP.cpp}
 \subsubsection{exKMP}
-\lstinputlisting{å­—ç¬¦ä¸²/KMP/exKMP.cpp}
-\subsection{Hash}
+\lstinputlisting{×Ö·û´®/KMP/exKMP.cpp}
+\subsection{hash}
 \subsubsection{hash}
-\lstinputlisting{å­—ç¬¦ä¸²/Hash/hash.cpp}
+\lstinputlisting{×Ö·û´®/hash/hash.cpp}
+\subsubsection{good\_hash\_prime}
+\lstinputlisting{×Ö·û´®/hash/good_hash_prime.cpp}
 \subsubsection{hash\_map}
-\lstinputlisting{å­—ç¬¦ä¸²/Hash/hash_map.cpp}
+\lstinputlisting{×Ö·û´®/hash/hash_map.cpp}
 \subsubsection{BKDRHash}
-\lstinputlisting{å­—ç¬¦ä¸²/Hash/BKDRHash.cpp}
+\lstinputlisting{×Ö·û´®/hash/BKDRHash.cpp}
 \subsection{Manacher}
-\subsubsection{æ’å­—ç¬¦}
-\lstinputlisting{å­—ç¬¦ä¸²/Manacher/Manacher-æ’å­—ç¬¦.cpp}
-\subsubsection{ä¸æ’å­—ç¬¦}
-\lstinputlisting{å­—ç¬¦ä¸²/Manacher/Manacher-ä¸æ’å­—ç¬¦.cpp}
-\subsection{åç¼€æ•°ç»„}
-\subsubsection{å€å¢sa}
-\lstinputlisting{å­—ç¬¦ä¸²/åç¼€æ•°ç»„/å€å¢sa.cpp}
+\subsubsection{²å×Ö·û}
+\lstinputlisting{×Ö·û´®/Manacher/Manacher-²å×Ö·û.cpp}
+\subsubsection{²»²å×Ö·û}
+\lstinputlisting{×Ö·û´®/Manacher/Manacher-²»²å×Ö·û.cpp}
+\subsection{ºó×ºÊı×é}
+\subsubsection{±¶Ôösa}
+\lstinputlisting{×Ö·û´®/ºó×ºÊı×é/±¶Ôösa.cpp}
 \subsubsection{SA-IS}
-\lstinputlisting{å­—ç¬¦ä¸²/åç¼€æ•°ç»„/sais.cpp}
-\subsection{è‡ªåŠ¨æœº}
-\subsubsection{ACè‡ªåŠ¨æœº}
-\lstinputlisting{å­—ç¬¦ä¸²/è‡ªåŠ¨æœº/ACè‡ªåŠ¨æœº.cpp}
-\subsubsection{åç¼€è‡ªåŠ¨æœº}
-\lstinputlisting{å­—ç¬¦ä¸²/è‡ªåŠ¨æœº/åç¼€è‡ªåŠ¨æœº.cpp}
-\subsubsection{å›æ–‡è‡ªåŠ¨æœº}
-\lstinputlisting{å­—ç¬¦ä¸²/è‡ªåŠ¨æœº/å›æ–‡è‡ªåŠ¨æœº.cpp}
-\subsubsection{åºåˆ—è‡ªåŠ¨æœº}
-\lstinputlisting{å­—ç¬¦ä¸²/è‡ªåŠ¨æœº/åºåˆ—è‡ªåŠ¨æœº.cpp}
-\subsection{æœ€å°è¡¨ç¤ºæ³•}
-\subsubsection{æœ€å°è¡¨ç¤ºæ³•}
-\lstinputlisting{å­—ç¬¦ä¸²/æœ€å°è¡¨ç¤ºæ³•/æœ€å°è¡¨ç¤ºæ³•.cpp}
-\subsubsection{æœ€å¤§è¡¨ç¤ºæ³•}
-\lstinputlisting{å­—ç¬¦ä¸²/æœ€å°è¡¨ç¤ºæ³•/æœ€å¤§è¡¨ç¤ºæ³•.cpp}
-\section{æ•°æ®ç»“æ„}
+\lstinputlisting{×Ö·û´®/ºó×ºÊı×é/sais.cpp}
+\subsection{×Ô¶¯»ú}
+\subsubsection{AC×Ô¶¯»ú}
+\lstinputlisting{×Ö·û´®/×Ô¶¯»ú/AC×Ô¶¯»ú.cpp}
+\subsubsection{´ó×Ö·û¼¯AC×Ô¶¯»ú}
+\lstinputlisting{×Ö·û´®/×Ô¶¯»ú/´ó×Ö·û¼¯AC×Ô¶¯»ú.cpp}
+\subsubsection{»ØÎÄ×Ô¶¯»ú}
+\lstinputlisting{×Ö·û´®/×Ô¶¯»ú/»ØÎÄ×Ô¶¯»ú.cpp}
+\subsubsection{ĞòÁĞ×Ô¶¯»ú}
+\lstinputlisting{×Ö·û´®/×Ô¶¯»ú/ĞòÁĞ×Ô¶¯»ú.cpp}
+\subsubsection{KMP×Ô¶¯»ú}
+\lstinputlisting{×Ö·û´®/×Ô¶¯»ú/KMP×Ô¶¯»ú.cpp}
+\subsubsection{ºó×º×Ô¶¯»ú}
+\lstinputlisting{×Ö·û´®/×Ô¶¯»ú/ºó×º×Ô¶¯»ú.cpp}
+\subsubsection{¹ãÒåºó×º×Ô¶¯»ú}
+\lstinputlisting{×Ö·û´®/×Ô¶¯»ú/¹ãÒåºó×º×Ô¶¯»ú.cpp}
+\subsection{×îĞ¡±íÊ¾·¨}
+\subsubsection{×îĞ¡±íÊ¾·¨}
+\lstinputlisting{×Ö·û´®/×îĞ¡±íÊ¾·¨/×îĞ¡±íÊ¾·¨.cpp}
+\subsubsection{×î´ó±íÊ¾·¨}
+\lstinputlisting{×Ö·û´®/×îĞ¡±íÊ¾·¨/×î´ó±íÊ¾·¨.cpp}
+\subsection{shift\_and}
+\lstinputlisting{×Ö·û´®/shift_and.cpp}
+\section{Êı¾İ½á¹¹}
+\subsection{ÀëÉ¢»¯}
+\lstinputlisting{Êı¾İ½á¹¹/ÀëÉ¢»¯.cpp}
 \subsection{RMQ}
-\subsubsection{ä¸€ç»´RMQ}
-\lstinputlisting{æ•°æ®ç»“æ„/RMQ/ä¸€ç»´RMQ.cpp}
-\subsubsection{äºŒç»´RMQ}
-\lstinputlisting{æ•°æ®ç»“æ„/RMQ/äºŒç»´RMQ.cpp}
-\subsection{å•è°ƒé˜Ÿåˆ—}
-\lstinputlisting{æ•°æ®ç»“æ„/å•è°ƒé˜Ÿåˆ—.cpp}
-\subsection{LCA}
-\subsubsection{å€å¢LCA}
-\lstinputlisting{æ•°æ®ç»“æ„/LCA/å€å¢LCA.cpp}
-\subsubsection{RMQç»´æŠ¤æ¬§æ‹‰åºæ±‚LCA}
-\lstinputlisting{æ•°æ®ç»“æ„/LCA/RMQç»´æŠ¤æ¬§æ‹‰åºæ±‚LCA.cpp}
-\subsection{è½»é‡é“¾å‰–åˆ†}
-\begin{spacing}{1.5}
-\input{æ•°æ®ç»“æ„/è½»é‡é“¾å‰–åˆ†.tex}
-\end{spacing}
-\lstinputlisting{æ•°æ®ç»“æ„/è½»é‡é“¾å‰–åˆ†.cpp}
-\subsection{å¹¶æŸ¥é›†}
-\subsubsection{å¹¶æŸ¥é›†}
-\lstinputlisting{æ•°æ®ç»“æ„/å¹¶æŸ¥é›†/å¹¶æŸ¥é›†.cpp}
-\subsubsection{mapå®ç°å¹¶æŸ¥é›†}
-\lstinputlisting{æ•°æ®ç»“æ„/å¹¶æŸ¥é›†/mapå®ç°å¹¶æŸ¥é›†.cpp}
-\subsubsection{å¯æ’¤é”€å¹¶æŸ¥é›†}
-\lstinputlisting{æ•°æ®ç»“æ„/å¹¶æŸ¥é›†/å¯æ’¤é”€å¹¶æŸ¥é›†.cpp}
-\subsection{æ ‘çŠ¶æ•°ç»„}
-\subsubsection{ä¸€ç»´å•ç‚¹BIT}
-\lstinputlisting{æ•°æ®ç»“æ„/æ ‘çŠ¶æ•°ç»„/ä¸€ç»´å•ç‚¹BIT.cpp}
-\subsubsection{ä¸€ç»´åŒºé—´BIT}
-\lstinputlisting{æ•°æ®ç»“æ„/æ ‘çŠ¶æ•°ç»„/ä¸€ç»´åŒºé—´BIT.cpp}
-\subsubsection{äºŒç»´å•ç‚¹BIT}
-\lstinputlisting{æ•°æ®ç»“æ„/æ ‘çŠ¶æ•°ç»„/äºŒç»´å•ç‚¹BIT.cpp}
-\subsection{çº¿æ®µæ ‘}
-\subsubsection{çº¿æ®µæ ‘}
-\lstinputlisting{æ•°æ®ç»“æ„/çº¿æ®µæ ‘/çº¿æ®µæ ‘.cpp}
-\subsubsection{åŠ¨æ€å¼€ç‚¹çº¿æ®µæ ‘}
-\lstinputlisting{æ•°æ®ç»“æ„/çº¿æ®µæ ‘/åŠ¨æ€å¼€ç‚¹çº¿æ®µæ ‘.cpp}
-\subsubsection{çº¿æ®µæ ‘å¥—çº¿æ®µæ ‘}
-\lstinputlisting{æ•°æ®ç»“æ„/çº¿æ®µæ ‘/çº¿æ®µæ ‘å¥—çº¿æ®µæ ‘.cpp}
-\subsubsection{çº¿æ®µæ ‘åˆ†è£‚åˆå¹¶}
-\lstinputlisting{æ•°æ®ç»“æ„/çº¿æ®µæ ‘/çº¿æ®µæ ‘åˆ†è£‚åˆå¹¶.cpp}
-\subsection{ä¸»å¸­æ ‘}
-\lstinputlisting{æ•°æ®ç»“æ„/ä¸»å¸­æ ‘.cpp}
-\subsection{æè¶…æ ‘}
-\lstinputlisting{æ•°æ®ç»“æ„/æè¶…æ ‘.cpp}
-\subsection{å¹³è¡¡æ ‘}
+\subsubsection{Ò»Î¬RMQ}
+\lstinputlisting{Êı¾İ½á¹¹/RMQ/Ò»Î¬RMQ.cpp}
+\subsubsection{¶şÎ¬RMQ}
+\lstinputlisting{Êı¾İ½á¹¹/RMQ/¶şÎ¬RMQ.cpp}
+\subsection{µ¥µ÷¶ÓÁĞ}
+\lstinputlisting{Êı¾İ½á¹¹/µ¥µ÷¶ÓÁĞ.cpp}
+\subsection{²¢²é¼¯}
+\subsubsection{²¢²é¼¯}
+\lstinputlisting{Êı¾İ½á¹¹/²¢²é¼¯/²¢²é¼¯.cpp}
+\subsubsection{mapÊµÏÖ²¢²é¼¯}
+\lstinputlisting{Êı¾İ½á¹¹/²¢²é¼¯/mapÊµÏÖ²¢²é¼¯.cpp}
+\subsubsection{¿É³·Ïú²¢²é¼¯}
+\lstinputlisting{Êı¾İ½á¹¹/²¢²é¼¯/¿É³·Ïú²¢²é¼¯.cpp}
+\subsection{Ê÷×´Êı×é}
+\subsubsection{Ò»Î¬µ¥µãBIT}
+\lstinputlisting{Êı¾İ½á¹¹/Ê÷×´Êı×é/Ò»Î¬µ¥µãBIT.cpp}
+\subsubsection{Ò»Î¬Çø¼äBIT}
+\lstinputlisting{Êı¾İ½á¹¹/Ê÷×´Êı×é/Ò»Î¬Çø¼äBIT.cpp}
+\subsubsection{¶şÎ¬µ¥µãBIT}
+\lstinputlisting{Êı¾İ½á¹¹/Ê÷×´Êı×é/¶şÎ¬µ¥µãBIT.cpp}
+\subsection{Ïß¶ÎÊ÷}
+\subsubsection{Ïß¶ÎÊ÷}
+\lstinputlisting{Êı¾İ½á¹¹/Ïß¶ÎÊ÷/Ïß¶ÎÊ÷.cpp}
+\subsubsection{¶¯Ì¬¿ªµãÏß¶ÎÊ÷}
+\lstinputlisting{Êı¾İ½á¹¹/Ïß¶ÎÊ÷/¶¯Ì¬¿ªµãÏß¶ÎÊ÷.cpp}
+\subsubsection{Çø¼ä²éÑ¯×î´ó×Ó¶ÎºÍ}
+\lstinputlisting{Êı¾İ½á¹¹/Ïß¶ÎÊ÷/Çø¼ä²éÑ¯×î´ó×Ó¶ÎºÍ.cpp}
+\subsubsection{¾ØĞÎÃæ»ı²¢}
+\lstinputlisting{Êı¾İ½á¹¹/Ïß¶ÎÊ÷/¾ØĞÎÃæ»ı²¢.cpp}
+\subsubsection{Ïß¶ÎÊ÷Î¬»¤hash}
+\lstinputlisting{Êı¾İ½á¹¹/Ïß¶ÎÊ÷/Ïß¶ÎÊ÷Î¬»¤hash.cpp}
+\subsection{Æ½ºâÊ÷}
 \subsubsection{Treap}
-\lstinputlisting{æ•°æ®ç»“æ„/å¹³è¡¡æ ‘/Treap.cpp}
-\subsection{å­—å…¸æ ‘}
+\lstinputlisting{Êı¾İ½á¹¹/Æ½ºâÊ÷/Treap.cpp}
+\subsubsection{SplayÎ¬»¤ĞòÁĞ}
+\lstinputlisting{Êı¾İ½á¹¹/Æ½ºâÊ÷/SplayÎ¬»¤ĞòÁĞ.cpp}
+\subsubsection{FHQ-TreapÎ¬»¤ĞòÁĞ}
+\lstinputlisting{Êı¾İ½á¹¹/Æ½ºâÊ÷/FHQ-TreapÎ¬»¤ĞòÁĞ.cpp}
+\subsubsection{pbds}
+\lstinputlisting{Êı¾İ½á¹¹/Æ½ºâÊ÷/pbds.cpp}
+\subsection{×ÖµäÊ÷}
 \subsubsection{trie}
-\lstinputlisting{æ•°æ®ç»“æ„/å­—å…¸æ ‘/trie.cpp}
+\lstinputlisting{Êı¾İ½á¹¹/×ÖµäÊ÷/trie.cpp}
 \subsubsection{01trie}
-\lstinputlisting{æ•°æ®ç»“æ„/å­—å…¸æ ‘/01trie.cpp}
+\lstinputlisting{Êı¾İ½á¹¹/×ÖµäÊ÷/01trie.cpp}
+\subsection{¿É³Ö¾Ã»¯}
+\subsubsection{¿É³Ö¾Ã»¯Ïß¶ÎÊ÷}
+\lstinputlisting{Êı¾İ½á¹¹/¿É³Ö¾Ã»¯/¿É³Ö¾Ã»¯Ïß¶ÎÊ÷.cpp}
+\subsubsection{¿É³Ö¾Ã»¯01trie}
+\lstinputlisting{Êı¾İ½á¹¹/¿É³Ö¾Ã»¯/¿É³Ö¾Ã»¯01trie.cpp}
+\subsubsection{¿É³Ö¾Ã»¯Êı×é}
+\lstinputlisting{Êı¾İ½á¹¹/¿É³Ö¾Ã»¯/¿É³Ö¾Ã»¯Êı×é.cpp}
+\subsubsection{¿É³Ö¾Ã»¯²¢²é¼¯}
+\lstinputlisting{Êı¾İ½á¹¹/¿É³Ö¾Ã»¯/¿É³Ö¾Ã»¯²¢²é¼¯.cpp}
+\subsection{Ê÷Ì×Ê÷}
+\subsubsection{Ïß¶ÎÊ÷Ì×Ïß¶ÎÊ÷}
+\lstinputlisting{Êı¾İ½á¹¹/Ê÷Ì×Ê÷/Ïß¶ÎÊ÷Ì×Ïß¶ÎÊ÷.cpp}
+\subsubsection{Ïß¶ÎÊ÷Ì×treap}
+\lstinputlisting{Êı¾İ½á¹¹/Ê÷Ì×Ê÷/Ïß¶ÎÊ÷Ì×treap.cpp}
+\subsubsection{Ê÷×´Êı×éÌ×treap}
+\lstinputlisting{Êı¾İ½á¹¹/Ê÷Ì×Ê÷/Ê÷×´Êı×éÌ×treap.cpp}
+\subsection{Àî³¬Ê÷}
+\lstinputlisting{Êı¾İ½á¹¹/Àî³¬Ê÷.cpp}
 \subsection{kd-tree}
-\lstinputlisting{æ•°æ®ç»“æ„/kd-tree.cpp}
-\subsection{è™šæ ‘}
-\lstinputlisting{æ•°æ®ç»“æ„/è™šæ ‘.cpp}
-\subsection{pbdså¯å¹¶å †}
-\lstinputlisting{æ•°æ®ç»“æ„/pbdså¯å¹¶å †.cpp}
-\subsection{kå‰å“ˆå¤«æ›¼æ ‘}
+\lstinputlisting{Êı¾İ½á¹¹/kd-tree.cpp}
+\subsection{¿É²¢¶Ñ}
+\subsubsection{pbds¿É²¢¶Ñ}
+\lstinputlisting{Êı¾İ½á¹¹/¿É²¢¶Ñ/pbds¿É²¢¶Ñ.cpp}
+\subsubsection{×óÆ«Ê÷\(Ö§³Ö´òtag,²»Ö§³ÖÉ¾³ı\)}
+\lstinputlisting{Êı¾İ½á¹¹/¿É²¢¶Ñ/×óÆ«Ê÷\(Ö§³Ö´òtag,²»Ö§³ÖÉ¾³ı\).cpp}
+\subsubsection{×óÆ«Ê÷\(Ö§³ÖÉ¾³ı,²»Ö§³Ö´òtag\)}
+\lstinputlisting{Êı¾İ½á¹¹/¿É²¢¶Ñ/×óÆ«Ê÷\(Ö§³ÖÉ¾³ı,²»Ö§³Ö´òtag\).cpp}
+\subsection{k²æ¹ş·òÂüÊ÷}
 \begin{spacing}{1.5}
-\input{æ•°æ®ç»“æ„/kå‰å“ˆå¤«æ›¼æ ‘.tex}
+\input{Êı¾İ½á¹¹/k²æ¹ş·òÂüÊ÷.tex}
 \end{spacing}
-\lstinputlisting{æ•°æ®ç»“æ„/kå‰å“ˆå¤«æ›¼æ ‘.cpp}
-\subsection{ç¬›å¡å°”æ ‘}
+\lstinputlisting{Êı¾İ½á¹¹/k²æ¹ş·òÂüÊ÷.cpp}
+\subsection{µÑ¿¨¶ûÊ÷}
 \begin{spacing}{1.5}
-\input{æ•°æ®ç»“æ„/ç¬›å¡å°”æ ‘.tex}
+\input{Êı¾İ½á¹¹/µÑ¿¨¶ûÊ÷.tex}
 \end{spacing}
-\lstinputlisting{æ•°æ®ç»“æ„/ç¬›å¡å°”æ ‘.cpp}
-\subsection{æåˆæ ‘}
+\lstinputlisting{Êı¾İ½á¹¹/µÑ¿¨¶ûÊ÷.cpp}
+\subsection{ÎöºÏÊ÷}
 \begin{spacing}{1.5}
-\input{æ•°æ®ç»“æ„/æåˆæ ‘.tex}
+\input{Êı¾İ½á¹¹/ÎöºÏÊ÷.tex}
 \end{spacing}
-\lstinputlisting{æ•°æ®ç»“æ„/æåˆæ ‘.cpp}
-\section{å›¾è®º}
-\subsection{é“¾å¼å‰å‘æ˜Ÿ}
-\lstinputlisting{å›¾è®º/é“¾å¼å‰å‘æ˜Ÿ.cpp}
-\subsection{æœ€çŸ­è·¯}
+\lstinputlisting{Êı¾İ½á¹¹/ÎöºÏÊ÷.cpp}
+\subsection{Äª¶ÓËã·¨}
+\lstinputlisting{Êı¾İ½á¹¹/Äª¶ÓËã·¨.cpp}
+\subsection{ODT}
+\lstinputlisting{Êı¾İ½á¹¹/ODT.cpp}
+\subsection{·Ö¿é}
+\lstinputlisting{Êı¾İ½á¹¹/Block.cpp}
+\section{Ê÷}
+\subsection{LCA}
+\subsubsection{±¶ÔöLCA}
+\lstinputlisting{Ê÷/LCA/±¶ÔöLCA.cpp}
+\subsubsection{RMQÎ¬»¤Å·À­ĞòÇóLCA}
+\lstinputlisting{Ê÷/LCA/RMQÎ¬»¤Å·À­ĞòÇóLCA.cpp}
+\subsection{Ê÷Á´ÆÊ·Ö}
+\subsubsection{ÇáÖØÁ´ÆÊ·Ö}
+\lstinputlisting{Ê÷/Ê÷Á´ÆÊ·Ö/ÇáÖØÁ´ÆÊ·Ö.cpp}
+\subsection{Ê÷µÄÖØĞÄ}
+\lstinputlisting{Ê÷/Ê÷µÄÖØĞÄ.cpp}
+\subsection{Ê÷ÉÏ±¶Ôö}
+\lstinputlisting{Ê÷/Ê÷ÉÏ±¶Ôö.cpp}
+\subsection{Ê÷hash}
+\lstinputlisting{Ê÷/Ê÷hash.cpp}
+\subsection{ĞéÊ÷}
+\lstinputlisting{Ê÷/ĞéÊ÷.cpp}
+\subsection{Ê÷·ÖÖÎ}
+\subsubsection{µã·ÖÖÎ}
+\lstinputlisting{Ê÷/Ê÷·ÖÖÎ/µã·ÖÖÎ.cpp}
+\subsection{Link-Cut-Tree}
+\lstinputlisting{Ê÷/Link-Cut-Tree.cpp}
+\section{Í¼ÂÛ}
+\subsection{Á´Ê½Ç°ÏòĞÇ}
+\lstinputlisting{Í¼ÂÛ/Á´Ê½Ç°ÏòĞÇ.cpp}
+\subsection{×î¶ÌÂ·}
 \subsubsection{dijkstra}
-\lstinputlisting{å›¾è®º/æœ€çŸ­è·¯/dijkstra.cpp}
+\lstinputlisting{Í¼ÂÛ/×î¶ÌÂ·/dijkstra.cpp}
 \subsubsection{spfa}
-\lstinputlisting{å›¾è®º/æœ€çŸ­è·¯/spfa.cpp}
-\subsubsection{floydæ±‚æœ€å°ç¯}
-\lstinputlisting{å›¾è®º/æœ€çŸ­è·¯/floydæ±‚æœ€å°ç¯.cpp}
-\subsection{æœ€å°ç”Ÿæˆæ ‘}
+\lstinputlisting{Í¼ÂÛ/×î¶ÌÂ·/spfa.cpp}
+\subsubsection{floydÇó×îĞ¡»·}
+\lstinputlisting{Í¼ÂÛ/×î¶ÌÂ·/floydÇó×îĞ¡»·.cpp}
+\subsubsection{Johnson}
+\lstinputlisting{Í¼ÂÛ/×î¶ÌÂ·/Johnson.cpp}
+\subsubsection{Í¬Óà×î¶ÌÂ·}
+\lstinputlisting{Í¼ÂÛ/×î¶ÌÂ·/Í¬Óà×î¶ÌÂ·.cpp}
+\subsection{×îĞ¡Éú³ÉÊ÷}
 \subsubsection{kruskal}
-\lstinputlisting{å›¾è®º/æœ€å°ç”Ÿæˆæ ‘/kruskal.cpp}
+\lstinputlisting{Í¼ÂÛ/×îĞ¡Éú³ÉÊ÷/kruskal.cpp}
+\subsubsection{kruskalÖØ¹¹Ê÷}
+\lstinputlisting{Í¼ÂÛ/×îĞ¡Éú³ÉÊ÷/kruskalÖØ¹¹Ê÷.cpp}
 \subsubsection{prim}
-\lstinputlisting{å›¾è®º/æœ€å°ç”Ÿæˆæ ‘/prim.cpp}
-\subsection{äºŒåˆ†å›¾åŒ¹é…}
-\subsubsection{åŒˆç‰™åˆ©ç®—æ³•}
-\lstinputlisting{å›¾è®º/äºŒåˆ†å›¾åŒ¹é…/åŒˆç‰™åˆ©ç®—æ³•.cpp}
-\subsubsection{äºŒåˆ†å›¾å¸¦æƒåŒ¹é…}
-\lstinputlisting{å›¾è®º/äºŒåˆ†å›¾åŒ¹é…/äºŒåˆ†å›¾å¸¦æƒåŒ¹é….cpp}
-\subsection{æœ€å¤§æµ}
+\lstinputlisting{Í¼ÂÛ/×îĞ¡Éú³ÉÊ÷/prim.cpp}
+\subsection{¶ş·ÖÍ¼Æ¥Åä}
+\subsubsection{¶ş·ÖÍ¼×î´óÆ¥Åä}
+\lstinputlisting{Í¼ÂÛ/¶ş·ÖÍ¼Æ¥Åä/¶ş·ÖÍ¼×î´óÆ¥Åä.cpp}
+\subsubsection{¶ş·ÖÍ¼×î´óÈ¨ÍêÃÀÆ¥Åä}
+\lstinputlisting{Í¼ÂÛ/¶ş·ÖÍ¼Æ¥Åä/¶ş·ÖÍ¼×î´óÈ¨ÍêÃÀÆ¥Åä.cpp}
+\subsection{×î´óÁ÷}
 \subsubsection{dinic}
-\lstinputlisting{å›¾è®º/æœ€å¤§æµ/dinic.cpp}
-\subsubsection{ISAP}
-\lstinputlisting{å›¾è®º/æœ€å¤§æµ/ISAP.cpp}
-\subsubsection{high-level-preflow-push}
-\lstinputlisting{å›¾è®º/æœ€å¤§æµ/high-level-preflow-push.cpp}
-\subsection{æœ€å°è´¹ç”¨æœ€å¤§æµ}
-\subsubsection{spfaè´¹ç”¨æµ}
-\lstinputlisting{å›¾è®º/æœ€å°è´¹ç”¨æœ€å¤§æµ/spfaè´¹ç”¨æµ.cpp}
-\subsection{å¼ºè¿é€šåˆ†é‡}
-\lstinputlisting{å›¾è®º/å¼ºè¿é€šåˆ†é‡.cpp}
-\subsection{åŒè”é€šåˆ†é‡}
-\subsubsection{è¾¹åŒè¿é€š}
-\lstinputlisting{å›¾è®º/åŒè”é€šåˆ†é‡/è¾¹åŒè¿é€š.cpp}
-\subsection{å›¢}
-\subsubsection{æœ€å¤§å›¢}
-\lstinputlisting{å›¾è®º/å›¢/æœ€å¤§å›¢.cpp}
-\subsubsection{æå¤§å›¢è®¡æ•°}
-\lstinputlisting{å›¾è®º/å›¢/æå¤§å›¢è®¡æ•°.cpp}
-\subsection{æ‹“æ‰‘æ’åº}
-\lstinputlisting{å›¾è®º/æ‹“æ‰‘æ’åº.cpp}
+\lstinputlisting{Í¼ÂÛ/×î´óÁ÷/dinic.cpp}
+\subsubsection{ÓĞÔ´»ãÉÏÏÂ½çÍøÂçÁ÷}
+\lstinputlisting{Í¼ÂÛ/×î´óÁ÷/ÓĞÔ´»ãÉÏÏÂ½çÍøÂçÁ÷.cpp}
+\subsection{·ÑÓÃÁ÷}
+\subsubsection{spfa·ÑÓÃÁ÷}
+\lstinputlisting{Í¼ÂÛ/·ÑÓÃÁ÷/spfa·ÑÓÃÁ÷.cpp}
+\subsubsection{dijkstra·ÑÓÃÁ÷(dijÇóh)}
+\lstinputlisting{Í¼ÂÛ/·ÑÓÃÁ÷/dijkstra·ÑÓÃÁ÷-dijÇóh.cpp}
+\subsubsection{dijkstra·ÑÓÃÁ÷(spfaÇóh)}
+\lstinputlisting{Í¼ÂÛ/·ÑÓÃÁ÷/dijkstra·ÑÓÃÁ÷-spfaÇóh.cpp}
+\subsection{Á¬Í¨ĞÔ}
+\subsubsection{Ç¿Á¬Í¨·ÖÁ¿}
+\lstinputlisting{Í¼ÂÛ/Á¬Í¨ĞÔ/Ç¿Á¬Í¨·ÖÁ¿.cpp}
+\subsubsection{±ßË«Á¬Í¨·ÖÁ¿}
+\lstinputlisting{Í¼ÂÛ/Á¬Í¨ĞÔ/±ßË«Á¬Í¨·ÖÁ¿.cpp}
+\subsubsection{µãË«Á¬Í¨·ÖÁ¿}
+\lstinputlisting{Í¼ÂÛ/Á¬Í¨ĞÔ/µãË«Á¬Í¨·ÖÁ¿.cpp}
+\subsubsection{Ô²·½Ê÷}
+\lstinputlisting{Í¼ÂÛ/Á¬Í¨ĞÔ/Ô²·½Ê÷.cpp}
+\subsection{ÍÅ}
+\subsubsection{×î´óÍÅ}
+\lstinputlisting{Í¼ÂÛ/ÍÅ/×î´óÍÅ.cpp}
+\subsubsection{¼«´óÍÅ¼ÆÊı}
+\lstinputlisting{Í¼ÂÛ/ÍÅ/¼«´óÍÅ¼ÆÊı.cpp}
+\subsection{ÍØÆËÅÅĞò}
+\lstinputlisting{Í¼ÂÛ/ÍØÆËÅÅĞò.cpp}
 \subsection{2-sat}
-\subsubsection{2-satè¾“å‡ºä»»æ„è§£}
-\lstinputlisting{å›¾è®º/2-sat/2-satè¾“å‡ºä»»æ„è§£.cpp}
-\subsubsection{2-satå­—å…¸åºæœ€å°è§£}
-\lstinputlisting{å›¾è®º/2-sat/2-satå­—å…¸åºæœ€å°è§£.cpp}
-\subsection{æ”¯é…æ ‘}
-\lstinputlisting{å›¾è®º/æ”¯é…æ ‘.cpp}
-\section{æ•°è®º}
-\subsection{ç´ æ•°ç­›}
-\subsubsection{åŸƒç­›}
-\lstinputlisting{æ•°è®º/ç´ æ•°ç­›/åŸƒç­›.cpp}
-\subsubsection{çº¿æ€§ç­›}
-\lstinputlisting{æ•°è®º/ç´ æ•°ç­›/çº¿æ€§ç­›.cpp}
-\subsubsection{åŒºé—´ç­›}
-\lstinputlisting{æ•°è®º/ç´ æ•°ç­›/åŒºé—´ç­›.cpp}
-\subsection{æ‰©å±•æ¬§å‡ é‡Œå¾—}
+\subsubsection{2-satÊä³öÈÎÒâ½â}
+\lstinputlisting{Í¼ÂÛ/2-sat/2-satÊä³öÈÎÒâ½â.cpp}
+\subsubsection{2-sat×ÖµäĞò×îĞ¡½â}
+\lstinputlisting{Í¼ÂÛ/2-sat/2-sat×ÖµäĞò×îĞ¡½â.cpp}
+\subsection{Ö§ÅäÊ÷}
+\lstinputlisting{Í¼ÂÛ/Ö§ÅäÊ÷.cpp}
+\subsection{×îĞ¡Ë¹Ì¹ÄÉÊ÷}
+\lstinputlisting{Í¼ÂÛ/×îĞ¡Ë¹Ì¹ÄÉÊ÷.cpp}
+\section{ÊıÂÛ}
+\subsection{ËØÊıÉ¸}
+\subsubsection{°£É¸}
+\lstinputlisting{ÊıÂÛ/ËØÊıÉ¸/°£É¸.cpp}
+\subsubsection{ÏßĞÔÉ¸}
+\lstinputlisting{ÊıÂÛ/ËØÊıÉ¸/ÏßĞÔÉ¸.cpp}
+\subsubsection{Çø¼äÉ¸}
+\lstinputlisting{ÊıÂÛ/ËØÊıÉ¸/Çø¼äÉ¸.cpp}
+\subsection{ÄæÔª}
+\subsubsection{exgcdÇóÄæÔª}
+\lstinputlisting{ÊıÂÛ/ÄæÔª/exgcdÇóÄæÔª.cpp}
+\subsubsection{ÏßĞÔÔ¤´¦Àí}
+\lstinputlisting{ÊıÂÛ/ÄæÔª/ÏßĞÔÔ¤´¦Àí.cpp}
+\subsection{À©Õ¹Å·¼¸ÀïµÃ}
 \subsubsection{exgcd}
-\lstinputlisting{æ•°è®º/æ‰©å±•æ¬§å‡ é‡Œå¾—/exgcd.cpp}
+\lstinputlisting{ÊıÂÛ/À©Õ¹Å·¼¸ÀïµÃ/exgcd.cpp}
 \subsubsection{ax+by=c}
-\lstinputlisting{æ•°è®º/æ‰©å±•æ¬§å‡ é‡Œå¾—/ax+by=c.cpp}
-\subsubsection{exgcdæ±‚é€†å…ƒ}
-\lstinputlisting{æ•°è®º/æ‰©å±•æ¬§å‡ é‡Œå¾—/exgcdæ±‚é€†å…ƒ.cpp}
-\subsection{ä¸­å›½å‰©ä½™å®šç†}
+\lstinputlisting{ÊıÂÛ/À©Õ¹Å·¼¸ÀïµÃ/ax+by=c.cpp}
+\subsection{ÖĞ¹úÊ£Óà¶¨Àí}
 \subsubsection{CRT}
-\lstinputlisting{æ•°è®º/ä¸­å›½å‰©ä½™å®šç†/CRT.cpp}
+\lstinputlisting{ÊıÂÛ/ÖĞ¹úÊ£Óà¶¨Àí/CRT.cpp}
 \subsubsection{exCRT}
-\lstinputlisting{æ•°è®º/ä¸­å›½å‰©ä½™å®šç†/exCRT.cpp}
-\subsection{ç»„åˆæ•°}
-\subsubsection{æ‰“è¡¨}
-\lstinputlisting{æ•°è®º/ç»„åˆæ•°/æ‰“è¡¨.cpp}
-\subsubsection{é¢„å¤„ç†}
-\lstinputlisting{æ•°è®º/ç»„åˆæ•°/é¢„å¤„ç†.cpp}
-\subsubsection{Lucaså®šç†}
-\lstinputlisting{æ•°è®º/ç»„åˆæ•°/Lucaså®šç†.cpp}
-\subsection{æ¬§æ‹‰å‡½æ•°}
+\lstinputlisting{ÊıÂÛ/ÖĞ¹úÊ£Óà¶¨Àí/exCRT.cpp}
+\subsection{Å·À­º¯Êı}
 \begin{spacing}{1.5}
-\input{æ•°è®º/æ¬§æ‹‰å‡½æ•°.tex}
+\input{ÊıÂÛ/Å·À­º¯Êı.tex}
 \end{spacing}
-\subsubsection{ç›´æ¥æ±‚}
-\lstinputlisting{æ•°è®º/æ¬§æ‹‰å‡½æ•°/ç›´æ¥æ±‚.cpp}
-\subsubsection{çº¿æ€§ç­›}
-\lstinputlisting{æ•°è®º/æ¬§æ‹‰å‡½æ•°/çº¿æ€§ç­›.cpp}
-\subsection{è«æ¯”ä¹Œæ–¯å‡½æ•°}
-\lstinputlisting{æ•°è®º/è«æ¯”ä¹Œæ–¯å‡½æ•°.cpp}
+\subsubsection{Ö±½ÓÇó}
+\lstinputlisting{ÊıÂÛ/Å·À­º¯Êı/Ö±½ÓÇó.cpp}
+\subsubsection{ÏßĞÔÉ¸}
+\lstinputlisting{ÊıÂÛ/Å·À­º¯Êı/ÏßĞÔÉ¸.cpp}
+\subsection{Äª±ÈÎÚË¹º¯Êı}
+\lstinputlisting{ÊıÂÛ/Äª±ÈÎÚË¹º¯Êı.cpp}
 \subsection{Berlekamp-Massey}
-\lstinputlisting{æ•°è®º/Berlekamp-Massey.cpp}
+\lstinputlisting{ÊıÂÛ/Berlekamp-Massey.cpp}
 \subsection{exBSGS}
-\lstinputlisting{æ•°è®º/exBSGS.cpp}
+\lstinputlisting{ÊıÂÛ/exBSGS.cpp}
 \subsection{Miller\_Rabin+Pollard\_rho}
-\lstinputlisting{æ•°è®º/Miller_Rabin+Pollard_rho.cpp}
-\subsection{ç¬¬äºŒç±»Stirlingæ•°}
-\lstinputlisting{æ•°è®º/ç¬¬äºŒç±»Stirlingæ•°.cpp}
-\subsection{åŸæ ¹}
+\lstinputlisting{ÊıÂÛ/Miller_Rabin+Pollard_rho.cpp}
+\subsection{µÚ¶şÀàStirlingÊı}
+\lstinputlisting{ÊıÂÛ/µÚ¶şÀàStirlingÊı.cpp}
+\subsection{Ô­¸ù}
 \begin{spacing}{1.5}
-\input{æ•°è®º/åŸæ ¹.tex}
+\input{ÊıÂÛ/Ô­¸ù.tex}
 \end{spacing}
-\lstinputlisting{æ•°è®º/åŸæ ¹.cpp}
-\subsection{äºŒæ¬¡å‰©ä½™}
-\lstinputlisting{æ•°è®º/äºŒæ¬¡å‰©ä½™.cpp}
-\section{å¤šé¡¹å¼}
+\lstinputlisting{ÊıÂÛ/Ô­¸ù.cpp}
+\subsection{¶ş´ÎÊ£Óà}
+\lstinputlisting{ÊıÂÛ/¶ş´ÎÊ£Óà.cpp}
+\section{×éºÏÊıÑ§}
+\subsection{×éºÏÊı}
+\subsubsection{¹«Ê½Ô¤´¦Àí}
+\lstinputlisting{×éºÏÊıÑ§/×éºÏÊı/¹«Ê½Ô¤´¦Àí.cpp}
+\subsubsection{Ñî»ÔÈı½ÇµİÍÆ}
+\lstinputlisting{×éºÏÊıÑ§/×éºÏÊı/Ñî»ÔÈı½ÇµİÍÆ.cpp}
+\subsection{Â¬¿¨Ë¹¶¨Àí}
+\subsubsection{Lucas}
+\lstinputlisting{×éºÏÊıÑ§/Â¬¿¨Ë¹¶¨Àí/Lucas.cpp}
+\subsubsection{exLucas}
+\lstinputlisting{×éºÏÊıÑ§/Â¬¿¨Ë¹¶¨Àí/exLucas.cpp}
+\subsection{¿¨ÌØÀ¼Êı¹«Ê½}
+\lstinputlisting{×éºÏÊıÑ§/¿¨ÌØÀ¼Êı¹«Ê½.cpp}
+\section{¶àÏîÊ½}
 \subsection{FFT}
-\lstinputlisting{å¤šé¡¹å¼/FFT.cpp}
+\lstinputlisting{¶àÏîÊ½/FFT.cpp}
 \subsection{NTT}
-\lstinputlisting{å¤šé¡¹å¼/NTT.cpp}
+\lstinputlisting{¶àÏîÊ½/NTT.cpp}
 \subsection{FWT}
-\lstinputlisting{å¤šé¡¹å¼/FWT.cpp}
-\subsection{æ‹‰æ ¼æœ—æ—¥æ’å€¼}
-\lstinputlisting{å¤šé¡¹å¼/æ‹‰æ ¼æœ—æ—¥æ’å€¼.cpp}
-\section{çŸ©é˜µ}
-\subsection{çŸ©é˜µç±»}
-\lstinputlisting{çŸ©é˜µ/çŸ©é˜µç±».cpp}
-\subsection{é«˜æ–¯æ¶ˆå…ƒ}
-\subsubsection{åŒä½™æ–¹ç¨‹}
-\lstinputlisting{çŸ©é˜µ/é«˜æ–¯æ¶ˆå…ƒ/åŒä½™æ–¹ç¨‹.cpp}
-\subsubsection{åŒä½™æ–¹ç¨‹mod=2}
-\lstinputlisting{çŸ©é˜µ/é«˜æ–¯æ¶ˆå…ƒ/åŒä½™æ–¹ç¨‹mod=2.cpp}
-\subsection{å•çº¯å½¢}
-\lstinputlisting{çŸ©é˜µ/å•çº¯å½¢.cpp}
-\subsection{çº¿æ€§åŸº}
-\lstinputlisting{çŸ©é˜µ/çº¿æ€§åŸº.cpp}
-\section{åšå¼ˆ}
-\subsection{SGå‡½æ•°}
+\lstinputlisting{¶àÏîÊ½/FWT.cpp}
+\subsection{À­¸ñÀÊÈÕ²åÖµ}
+\lstinputlisting{¶àÏîÊ½/À­¸ñÀÊÈÕ²åÖµ.cpp}
+\section{¾ØÕó}
+\subsection{¾ØÕóÀà}
+\lstinputlisting{¾ØÕó/¾ØÕóÀà.cpp}
+\subsection{¸ßË¹ÏûÔª}
+\subsubsection{¸¡µãÊı·½³Ì×é}
+\lstinputlisting{¾ØÕó/¸ßË¹ÏûÔª/¸¡µãÊı·½³Ì×é.cpp}
+\subsubsection{Òì»ò·½³Ì×é}
+\lstinputlisting{¾ØÕó/¸ßË¹ÏûÔª/Òì»ò·½³Ì×é.cpp}
+\subsubsection{Í¬Óà·½³Ì×é}
+\lstinputlisting{¾ØÕó/¸ßË¹ÏûÔª/Í¬Óà·½³Ì×é.cpp}
+\subsection{ÏßĞÔ»ù}
+\subsubsection{ÏßĞÔ»ù}
+\lstinputlisting{¾ØÕó/ÏßĞÔ»ù/ÏßĞÔ»ù.cpp}
+\subsubsection{´øÉ¾³ıÏßĞÔ»ù}
+\lstinputlisting{¾ØÕó/ÏßĞÔ»ù/´øÉ¾³ıÏßĞÔ»ù.cpp}
+\section{²©ŞÄ}
+\subsection{sgº¯Êı}
+\lstinputlisting{²©ŞÄ/sgº¯Êı.cpp}
+\subsection{½áÂÛ}
 \begin{spacing}{1.5}
-\input{åšå¼ˆ/SGå‡½æ•°.tex}
-\end{spacing}
-\subsubsection{sgè¡¨}
-\lstinputlisting{åšå¼ˆ/SGå‡½æ•°/sgè¡¨.cpp}
-\subsubsection{è®°å¿†åŒ–æœç´¢æ±‚sgå‡½æ•°}
-\lstinputlisting{åšå¼ˆ/SGå‡½æ•°/è®°å¿†åŒ–æœç´¢æ±‚sgå‡½æ•°.cpp}
-\subsection{ç»“è®º}
-\begin{spacing}{1.5}
-\input{åšå¼ˆ/ç»“è®º.tex}
+\input{²©ŞÄ/½áÂÛ.tex}
 \end{spacing}
 \section{dp}
 \subsection{LIS}
 \lstinputlisting{dp/LIS.cpp}
 \subsection{LPS}
 \lstinputlisting{dp/LPS.cpp}
-\subsection{æ•°ä½dp}
-\lstinputlisting{dp/æ•°ä½dp.cpp}
-\section{æ‚é¡¹}
+\subsection{ÊıÎ»dp}
+\lstinputlisting{dp/ÊıÎ»dp.cpp}
+\section{ÔÓÏî}
 \subsection{FastIO}
-\lstinputlisting{æ‚é¡¹/FastIO.cpp}
-\subsection{O(1)å¿«é€Ÿä¹˜}
-\lstinputlisting{æ‚é¡¹/å¿«é€Ÿä¹˜.cpp}
-\subsection{å¿«é€Ÿæ¨¡}
-\lstinputlisting{æ‚é¡¹/å¿«é€Ÿæ¨¡.cpp}
+\lstinputlisting{ÔÓÏî/FastIO.cpp}
+\subsection{O(1)¿ìËÙ³Ë}
+\lstinputlisting{ÔÓÏî/¿ìËÙ³Ë.cpp}
+\subsection{¿ìËÙÄ£}
+\lstinputlisting{ÔÓÏî/¿ìËÙÄ£.cpp}
 \subsection{xor\_sum(1,n)}
-\lstinputlisting{æ‚é¡¹/xor_sum.cpp}
-\subsection{çº¦ç‘Ÿå¤«ç¯kth}
-\lstinputlisting{æ‚é¡¹/çº¦ç‘Ÿå¤«ç¯kth.cpp}
-\subsection{åˆ¤æ–­æ˜ŸæœŸå‡ }
-\lstinputlisting{æ‚é¡¹/åˆ¤æ–­æ˜ŸæœŸå‡ .cpp}
-\subsection{ç¦»æ•£åŒ–}
-\lstinputlisting{æ‚é¡¹/ç¦»æ•£åŒ–.cpp}
-\subsection{ç½‘æ ¼æ•´æ•°ç‚¹æ­£æ–¹å½¢ä¸ªæ•°}
-\lstinputlisting{æ‚é¡¹/ç½‘æ ¼æ•´æ•°ç‚¹æ­£æ–¹å½¢ä¸ªæ•°.cpp}
-\subsection{æ¨¡æ‹Ÿé€€ç«}
-\lstinputlisting{æ‚é¡¹/æ¨¡æ‹Ÿé€€ç«.cpp}
-\subsection{çŸ©å½¢é¢ç§¯å¹¶}
-\lstinputlisting{æ‚é¡¹/çŸ©å½¢é¢ç§¯å¹¶.cpp}
-\subsection{ç»´æŠ¤ä¸åŒé¢œè‰²æœ€å€¼å’Œæ¬¡å€¼}
-\lstinputlisting{æ‚é¡¹/ç»´æŠ¤ä¸åŒé¢œè‰²æœ€å€¼å’Œæ¬¡å€¼.cpp}
-\subsection{std1}
-\lstinputlisting{æ‚é¡¹/std1.cpp}
-\subsection{std2}
-\lstinputlisting{æ‚é¡¹/std2.cpp}
-\section{é™„å½•
-}
+\lstinputlisting{ÔÓÏî/xor_sum.cpp}
+\subsection{Ô¼Éª·ò»·kth}
+\lstinputlisting{ÔÓÏî/Ô¼Éª·ò»·kth.cpp}
+\subsection{ÅĞ¶ÏĞÇÆÚ¼¸}
+\lstinputlisting{ÔÓÏî/ÅĞ¶ÏĞÇÆÚ¼¸.cpp}
+\subsection{ÕûÊıÈı·Ö}
+\lstinputlisting{ÔÓÏî/ÕûÊıÈı·Ö.cpp}
+\subsection{ÓĞ¸ùÊ÷ÓëpruferĞòÁĞµÄ×ª»»}
+\lstinputlisting{ÔÓÏî/tree_and_prufer.cpp}
+\subsection{Íø¸ñÕûÊıµãÕı·½ĞÎ¸öÊı}
+\lstinputlisting{ÔÓÏî/Íø¸ñÕûÊıµãÕı·½ĞÎ¸öÊı.cpp}
+\subsection{Ä£ÄâÍË»ğ}
+\lstinputlisting{ÔÓÏî/Ä£ÄâÍË»ğ.cpp}
+\subsection{ì³²¨ÄÇÆõ01´®µÄµÚk¸ö×Ö·û}
+\lstinputlisting{ÔÓÏî/kth_FibString.cpp}
+\subsection{¹âËÙÃİ}
+\lstinputlisting{ÔÓÏî/¹âËÙÃİ.cpp}
+\subsection{±¶ÔöÇóµÈ±ÈÊıÁĞºÍ}
+\lstinputlisting{ÔÓÏî/±¶ÔöÇóµÈ±ÈÊıÁĞºÍ.cpp}
+\subsection{¾ØÕóĞı×ª90¶È}
+\lstinputlisting{ÔÓÏî/¾ØÕóĞı×ª90¶È.cpp}
+\section{¸½Â¼}
+\subsection{NTT³£ÓÃÄ£Êı}
+\begin{spacing}{1.5}
+\input{¸½Â¼/NTT³£ÓÃÄ£Êı.tex}
+\end{spacing}
+\subsection{ÏßĞÔ»ùÇó½»}
+\lstinputlisting{¸½Â¼/ÏßĞÔ»ùÇó½».cpp}
 \end{document}

@@ -1,5 +1,6 @@
 fun lower_bound_pos(a:MutableList<Long>,target:Long):Int
 {
+	if(a.size==0) return 0
 	var l=0
 	var r=a.size-1
 	var mid:Int
@@ -14,6 +15,7 @@ fun lower_bound_pos(a:MutableList<Long>,target:Long):Int
 }
 fun upper_bound_pos(a:MutableList<Long>,target:Long):Int
 {
+	if(a.size==0) return 0
 	var l=0
 	var r=a.size-1
 	var mid:Int

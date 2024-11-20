@@ -1,3 +1,5 @@
 <LIS> <LIS.cpp>
 <LPS> <LPS.cpp>
 <数位dp> <数位dp.cpp>
+<斜率优化> <斜率优化.cpp>
+<sosdp(高维前缀和)> <sosdp(高维前缀和).cpp>

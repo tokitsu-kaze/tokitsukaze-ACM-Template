@@ -7,7 +7,7 @@ struct Edge_Biconnected_Component
 	vector<pair<int,int>> bridge;
 	void dfs(int x,int fa)
 	{
-		int to,i,tmp,k;
+		int i,tmp,k;
 		st[top++]=x;
 		low[x]=dfn[x]=++tot;
 		k=0;

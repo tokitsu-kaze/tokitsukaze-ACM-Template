@@ -57,7 +57,6 @@ dq.pop_back()                dq.pollLast()
 {dq.back(),dq.pop_back()}    dq.pollLast()
 ---------queue----------
 坑点：data class 要 nex=t.copy()
-queue<int> q;                var q=Queue<Int>()
 queue<node> q;               val q:Queue<node> = LinkedList()
 q.push()                     q.offer()
 q.front()                    q.peek()
