@@ -1,23 +1,25 @@
 struct Cartesian_Tree
 {
-	int l[MAX],r[MAX],vis[MAX],stk[MAX];
-	int build(int *a,int n)
+	int ls[MAX],rs[MAX],vis[MAX],st[MAX],top;
+	int build_tree(int n,int *a)
 	{
-		int i,top=0;
-		for(i=1;i<=n;i++) l[i]=r[i]=vis[i]=0;
+		int i,k;
+		top=0;
+		for(i=1;i<=n;i++) ls[i]=rs[i]=vis[i]=0;
 		for(i=1;i<=n;i++)
 		{
-			int k=top;
-			while(k>0&&a[stk[k-1]]>a[i]) k--;
-			if(k) r[stk[k-1]]=i;
-			if(k<top) l[i]=stk[k];
-			stk[k++]=i;
+			k=top;
+			while(k>0&&a[st[k-1]]>a[i]) k--;
+			if(k) rs[st[k-1]]=i;
+			if(k<top) ls[i]=st[k];
+			st[k++]=i;
 			top=k;
 		}
-		for(i=1;i<=n;i++) vis[l[i]]=vis[r[i]]=1;
+		for(i=1;i<=n;i++) vis[ls[i]]=vis[rs[i]]=1;
 		for(i=1;i<=n;i++)
 		{
 			if(!vis[i]) return i;
 		}
+		return -1;
 	}
 }ct;

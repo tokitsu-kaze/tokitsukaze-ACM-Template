@@ -1,9 +1,9 @@
 struct Edge_Biconnected_Component
 {
 	int bcc_cnt,tot;
-	int low[MAX],dfn[MAX],col[MAX];
-	int st[MAX],top;
-	vector<int> mp[MAX];
+	int low[MAX],dfn[MAX];
+	int st[MAX],top,col[MAX];
+	vector<int> *mp;
 	vector<pair<int,int>> bridge;
 	void dfs(int x,int fa)
 	{
@@ -39,11 +39,8 @@ struct Edge_Biconnected_Component
 	void work(int n,vector<int> *_mp)
 	{
 		int i;
-		for(i=1;i<=n;i++)
-		{
-			low[i]=dfn[i]=0;
-			mp[i]=_mp[i];
-		}
+		mp=_mp;
+		for(i=1;i<=n;i++) low[i]=dfn[i]=col[i]=0;
 		bcc_cnt=top=tot=0;
 		bridge.clear();
 		for(i=1;i<=n;i++)
