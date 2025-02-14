@@ -66,5 +66,25 @@ struct Trie
 		}
 		return res^x;
 	}
+	type count_y(type x,type limt) // count y: x xor y <= limt
+	{
+		int id,i;
+		type res,t;
+		if(!root[rt]) return 0;
+		id=root[rt];
+		res=0;
+		for(i=LOG;~i;i--)
+		{
+			t=(x>>i)&1;
+			if((limt>>i)&1)
+			{
+				res+=cnt[ch[id][t]];
+				id=ch[id][t^1];
+			}
+			else id=ch[id][t];
+		}
+		res+=cnt[id];
+		return res;
+	}
 	#undef type
 }tr;

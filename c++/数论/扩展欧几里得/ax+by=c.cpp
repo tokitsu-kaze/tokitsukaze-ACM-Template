@@ -34,6 +34,8 @@ ll linear_equation(ll a,ll b,ll c,ll &x,ll &y)
 }
 /*
 xa+yb=c
+a,b,c > 0
+if a,b,c is 0  ->  a,b,c = mod
 
 get x,y and x>0 is min
 have solution: c%gcd(a,b)==0
