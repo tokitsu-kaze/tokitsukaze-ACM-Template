@@ -55,8 +55,8 @@ struct Kruskal_Tree
 			w[rt]=it.w;
 			mp[rt].push_back(x);
 			mp[rt].push_back(y);
-			dsu.merge(x,rt);
-			dsu.merge(y,rt);
+			dsu.merge(x,rt,true);
+			dsu.merge(y,rt,true);
 		}
 		return rt;
 	}

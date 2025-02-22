@@ -6,7 +6,7 @@ void init_comb(int n,int m)
 	for(i=1;i<=n;i++)
 	{
 		comb[i][0]=1;
-		for(j=1;j<=i;j++)
+		for(j=1;j<=min(i,m);j++)
 		{
 			comb[i][j]=comb[i-1][j]+comb[i-1][j-1];
 			if(comb[i][j]>=mod) comb[i][j]-=mod;
