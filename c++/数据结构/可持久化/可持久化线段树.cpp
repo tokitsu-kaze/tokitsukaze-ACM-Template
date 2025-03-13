@@ -11,7 +11,7 @@ struct Persistent_Segment_Tree
 	}
 	int copy_node(int x)
 	{
-		tot++;
+		++tot;
 		ls[tot]=ls[x];
 		rs[tot]=rs[x];
 		v[tot]=v[x];
