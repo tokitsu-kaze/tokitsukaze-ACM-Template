@@ -86,6 +86,7 @@ struct Dinic
 		}
 		return res;
 	}
+	type min_cut(int s,int t){return max_flow(s,t);}
 	#undef type
 }dc; 
 /*

@@ -1,7 +1,19 @@
 struct Gauss
 {
 	const double eps=1e-7;
-	double mp[][];
+	static const int N=;
+	double mp[N][N];
+	void init()
+	{
+		int i,j;
+		for(i=0;i<N;i++)
+		{
+			for(j=0;j<N;j++)
+			{
+				mp[i][j]=0;
+			}
+		}
+	}
 	int gauss(int n,int m)
 	{
 		int i,j,k,pos,r;

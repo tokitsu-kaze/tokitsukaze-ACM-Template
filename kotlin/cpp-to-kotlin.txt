@@ -38,6 +38,7 @@ set<pair<int,int>> s;        var s=TreeSet<Pair<Int,Int>>(compareBy({it.first},{
 unordered_map<int,int>       var mp:MutableMap<Int,Int> = mutableMapOf()
 mp[x]++                      mp[x]=(mp[x]?:0)+1
 sum+=mp[x]                   sum+=mp[x]?:0
+mp.count(x)                  mp.containsKey(x)
 -----priority_queue-----
 struct node{int a;}          data class node(var a:Int)
 priority_queue<node> q;      var q=PriorityQueue<node>(compareBy({it.a}))
