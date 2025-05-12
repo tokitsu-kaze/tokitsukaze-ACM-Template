@@ -1,5 +1,5 @@
-while(l<r)  
-{  
+while(l<r)
+{
 	lm=l+(r-l)/3;
 	rm=r-(r-l)/3;
 	tl=cal(lm);

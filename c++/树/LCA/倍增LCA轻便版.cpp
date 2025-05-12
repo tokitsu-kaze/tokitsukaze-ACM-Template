@@ -16,7 +16,7 @@ struct LCA
 			dfs(to,x);
 		}
 	}
-	void work(int root,vector<int> *_mp)
+	void work(int n,int root,vector<int> *_mp)
 	{
 		mp=_mp;
 		for(int j=0;j<LOG;j++) fa[j][0]=0;
