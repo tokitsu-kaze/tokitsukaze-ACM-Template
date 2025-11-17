@@ -151,13 +151,13 @@ struct Heavy_Light_Decomposition
 	void upd_subtree(int x,type v)
 	{
 		if(x==rt) tr.upd(1,n,v);
-		if(dfn[rt]>=dfn[x]&&dfn[rt]<=dfn[x]+sz[x]-1)
+		else if(dfn[rt]>=dfn[x]&&dfn[rt]<=dfn[x]+sz[x]-1)
 		{
 			x=find_yson_toward_x(rt,x);
 			tr.upd(1,dfn[x]-1,v);
 			tr.upd(dfn[x]+sz[x],n,v);
 		}
-		tr.upd(dfn[x],dfn[x]+sz[x]-1,v);
+		else tr.upd(dfn[x],dfn[x]+sz[x]-1,v);
 	}
 	type ask_subtree(int x)
 	{

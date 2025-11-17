@@ -23,26 +23,22 @@ struct Fenwick_Tree
 	type get(int x)
 	{
 		type res=0;
-		while(x)
-		{
-			res+=bit[x];
-			x-=lowbit(x);
-		}
+		for(;x;x-=lowbit(x)) res+=bit[x];
 		return res;
 	}
 	void upd(int x,type v)
 	{
-		while(x<=n)
-		{
-			bit[x]+=v;
-			x+=lowbit(x);
-		}
+		for(;x<=n;x+=lowbit(x)) bit[x]+=v;
 	}
 	type ask(int l,int r)
 	{
 		if(l>r) return 0;
 		if(l-1<=0) return get(r);
 		return get(r)-get(l-1);
+	}
+	void clear(int x)
+	{
+		for(;x<=n;x+=lowbit(x)) bit[x]=0;
 	}
 	#undef type
 }tr;

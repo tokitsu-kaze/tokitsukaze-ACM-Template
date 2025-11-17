@@ -5,8 +5,8 @@ struct Treap
 	struct node
 	{
 		int ch[2],fix,sz,cnt;
-		type v;
-		node(){}
+		type v,sum;
+		node(){sum=0;}
 		node(type x,int _sz)
 		{
 			v=x;
@@ -28,6 +28,7 @@ struct Treap
 	void pushup(int id)  
 	{  
 		t[id].sz=t[t[id].ch[0]].sz+t[t[id].ch[1]].sz+t[id].cnt;
+		t[id].sum=t[t[id].ch[0]].sum+t[t[id].ch[1]].sum+t[id].v*t[id].cnt;
 	}
 	void rotate(int &id,int k)
 	{
@@ -46,7 +47,11 @@ struct Treap
 			t[id]=node(v,cnt);
 			return;
 		}
-		if(t[id].v==v) t[id].cnt+=cnt;
+		if(t[id].v==v)
+		{
+			t[id].cnt+=cnt;
+			t[id].sum+=t[id].v*cnt;
+		}
 		else
 		{
 			int tmp=(v>t[id].v);
@@ -64,6 +69,7 @@ struct Treap
 			if(t[id].cnt>cnt)
 			{
 				t[id].cnt-=cnt;
+				t[id].sum-=t[id].v*cnt;
 				pushup(id);
 				return;
 			}
@@ -112,6 +118,30 @@ struct Treap
 			else
 			{
 				k-=t[t[id].ch[0]].sz+t[id].cnt;
+				id=t[id].ch[1];
+			}
+		}
+		return 0;
+	}
+	type kth_sum(int k)//k small
+	{
+		type res=0;
+		int id=root[rt];
+		if(id==0) return 0;
+		while(id)
+		{
+			if(t[t[id].ch[0]].sz>=k) id=t[id].ch[0];
+			else if(t[t[id].ch[0]].sz+t[id].cnt>=k)
+			{
+				res+=t[t[id].ch[0]].sum;
+				k-=t[t[id].ch[0]].sz;
+				res+=t[id].v*k;
+				return res;
+			}
+			else
+			{
+				k-=t[t[id].ch[0]].sz+t[id].cnt;
+				res+=t[t[id].ch[0]].sum+t[id].v*t[id].cnt;
 				id=t[id].ch[1];
 			}
 		}
@@ -178,6 +208,7 @@ tr.erase(x);
 tr.count(x);
 tr.order_of_key(x); // rank
 tr.find_by_order(k); // kth
+tr.kth_sum(k); // sum{1..kth}
 tr.find_pre(x);
 tr.find_nex(x);
 tr.upper_bound_count(x); //the count <=key

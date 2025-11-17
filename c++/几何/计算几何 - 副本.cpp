@@ -1,7 +1,7 @@
 //Èý·Ö 
-while(r-l>eps)  
-{  
-	rm=(l+r)/2;  
+while(r-l>eps)
+{
+	rm=(l+r)/2;
 	lm=(rm+r)/2;
 	tl=cal(lm);
 	tr=cal(rm);

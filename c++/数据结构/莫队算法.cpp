@@ -23,7 +23,7 @@ struct MO_Algorithm
 	void work()
 	{
 		int i,l,r,sq;
-		sq=n/sqrt(q);
+		sq=sqrt(n);
 		sort(qst.begin(),qst.end(),[&](query_info a,query_info b){
 			if(a.l/sq!=b.l/sq) return a.l/sq<b.l/sq;
 			if((a.l/sq)&1) return a.r>b.r;

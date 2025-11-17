@@ -25,6 +25,8 @@ struct FHQ_Treap
 		tot=0;
 		t[0].sz=0;
 		t[0].ls=t[0].rs=0;
+		t[0].v=;
+		revtag[0]=0;
 	}
 	int newnode(type v)
 	{
@@ -47,6 +49,19 @@ struct FHQ_Treap
 			revtag[ls]^=revtag[id];
 			revtag[rs]^=revtag[id];
 			revtag[id]=0;
+		}
+		if(tag[id])
+		{
+			int ls=t[id].ls;
+			int rs=t[id].rs;
+			if(ls)
+			{
+				
+			}
+			if(rs)
+			{
+				
+			}
 		}
 	}
 	int build(vector<type> &a)
@@ -145,3 +160,7 @@ struct FHQ_Treap
 	int size(){return t[rt].sz;}
 	#undef type
 }tr;
+/*
+tr.init();
+tr.insert(pos,a) // pos,pos+1,...,pos+a.size-1
+*/

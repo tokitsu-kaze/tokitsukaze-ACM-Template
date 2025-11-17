@@ -1,5 +1,5 @@
 var comb=Array(1002){IntArray(1002)}
-fun init(n:Int,m:Int)
+fun init_comb(n:Int,m:Int)
 {
 	comb[0][0]=1;
 	for(i in 1..n)

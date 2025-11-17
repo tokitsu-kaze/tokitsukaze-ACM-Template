@@ -9,9 +9,10 @@ struct Segment_Tree
 	}t[MAX*LOG],null_node;
 	int root[MAX],ls[MAX*LOG],rs[MAX*LOG],rt,tot,qop;
 	int st[MAX*LOG],top;
-	type ql,qr,qv,n,tag[MAX*LOG];
+	int ql,qr,n;
+	type qv,tag[MAX*LOG];
 	Segment_Tree &operator[](const int _rt){this->rt=_rt;return *this;}
-	void init(type _n)
+	void init(int _n)
 	{
 		n=_n;
 		rt=1;
@@ -38,7 +39,7 @@ struct Segment_Tree
 		return res;
 	}
 	void pushup(int id){t[id]=merge_node(t[ls[id]],t[rs[id]]);}
-	void pushdown(type l,type r,int id)
+	void pushdown(int l,int r,int id)
 	{
 		if(!tag[id]) return;
 		if(!ls[id]) ls[id]=newnode();
@@ -47,7 +48,7 @@ struct Segment_Tree
 		
 		tag[id]=0;
 	}
-	void update(type l,type r,int &id)
+	void update(int l,int r,int &id)
 	{
 		if(!id) id=newnode();
 		if(l>=ql&&r<=qr)
@@ -56,22 +57,22 @@ struct Segment_Tree
 			return;
 		}
 		pushdown(l,r,id);
-		type mid=(l+r)>>1;
+		int mid=(l+r)>>1;
 		if(ql<=mid) update(l,mid,ls[id]);
 		if(qr>mid) update(mid+1,r,rs[id]);
 		pushup(id);
 	}
-	node query(type l,type r,int id)
+	node query(int l,int r,int id)
 	{
 		if(!id) return null_node;
 		if(l>=ql&&r<=qr) return t[id];
 		pushdown(l,r,id);
-		type mid=(l+r)>>1;
+		int mid=(l+r)>>1;
 		if(qr<=mid) return query(l,mid,ls[id]);
 		if(ql>mid) return query(mid+1,r,rs[id]);
 		return merge_node(query(l,mid,ls[id]),query(mid+1,r,rs[id]));
 	}
-	int split(type l,type r,int &id)
+	int split(int l,int r,int &id)
 	{
 		int x;
 		if(!id) return 0;
@@ -81,6 +82,7 @@ struct Segment_Tree
 			id=0;
 			return x;
 		}
+		pushdown(l,r,id);
 		x=newnode();
 		int mid=(l+r)>>1;
 		if(ql<=mid) ls[x]=split(l,mid,ls[id]);
@@ -89,7 +91,7 @@ struct Segment_Tree
 		pushup(id);
 		return x;
 	}
-	int merge(type l,type r,int x,int y)
+	int merge(int l,int r,int x,int y)
 	{
 		if(!x||!y) return x+y;
 		if(l==r)
@@ -98,14 +100,16 @@ struct Segment_Tree
 			delnode(y);
 			return x;
 		}
-		type mid=(l+r)>>1;
+		pushdown(l,r,x);
+		pushdown(l,r,y);
+		int mid=(l+r)>>1;
 		ls[x]=merge(l,mid,ls[x],ls[y]);
 		rs[x]=merge(mid+1,r,rs[x],rs[y]);
 		pushup(x);
 		delnode(y);
 		return x;
 	}
-	void split_segtree(type l,type r,int new_tree)
+	void split_segtree(int l,int r,int new_tree)
 	{
 		ql=l;
 		qr=r;
@@ -116,14 +120,14 @@ struct Segment_Tree
 		root[rt]=merge(1,n,root[rt],root[y]);
 		root[y]=0;
 	}
-	void upd(type l,type r,type v)
+	void upd(int l,int r,type v)
 	{
 		ql=l;
 		qr=r;
 		qv=v;
 		update(1,n,root[rt]);
 	}
-	type ask(type l,type r)
+	type ask(int l,int r)
 	{
 		ql=l;
 		qr=r;
