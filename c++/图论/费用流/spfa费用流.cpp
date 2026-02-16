@@ -21,13 +21,13 @@ struct MCMF
 		for(int i=0;i<=n;i++) mp[i].clear();
 		edge.clear();
 	}
-	void add_edge(int from,int to,type cap,type cost=0)
+	void add_edge(int from,int to,type cap,type cost)
 	{
-		edge.pb(node(from,to,cap,0,cost));
-		edge.pb(node(to,from,0,0,-cost));
+		edge.push_back(node(from,to,cap,0,cost));
+		edge.push_back(node(to,from,0,0,-cost));
 		int m=edge.size();
-		mp[from].pb(m-2);
-		mp[to].pb(m-1);
+		mp[from].push_back(m-2);
+		mp[to].push_back(m-1);
 	}
 	bool spfa(type& flow,type& cost)
 	{
@@ -79,7 +79,7 @@ struct MCMF
 		s=_s;
 		t=_t;
 		while(spfa(flow,cost));
-		return MP(cost,flow);
+		return {cost,flow};
 	}
 	#undef type
 	#undef inf

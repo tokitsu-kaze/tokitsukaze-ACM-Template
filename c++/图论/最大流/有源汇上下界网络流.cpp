@@ -9,7 +9,7 @@ struct Dinic
 		type cap,flow;
 		node(int u,int v,type c,type f):from(u),to(v),cap(c),flow(f){}
 	};
-	int n,s,t,s1,t1;
+	int n,m,s,t,s1,t1;
 	vector<node> edge;
 	vector<int> mp[N];
 	int vis[N],dist[N],id[N];
@@ -34,7 +34,7 @@ struct Dinic
 		edge.push_back(node(to,from,0,0));
 		in[to]+=lcap;
 		out[from]+=lcap;
-		int m=edge.size();
+		m=edge.size();
 		mp[from].push_back(m-2);
 		mp[to].push_back(m-1);
 	}
@@ -94,7 +94,7 @@ struct Dinic
 		}
 		return res;
 	}
-	type min_flow(int _s,int _t)
+	type work(int _s,int _t)
 	{
 		int i;
 		s=s1;
@@ -109,62 +109,33 @@ struct Dinic
 		for(i=0;i<mp[s].size();i++)
 		{
 			node &e=edge[mp[s][i]];
-			if(e.cap-e.flow!=0) return -1;
+			if(e.cap-e.flow!=0) return -inf;
 		}
 		s=_s;
 		t=_t;
-		type res;
-		for(i=0;i<mp[t].size();i++)
-		{
-			node &e=edge[mp[t][i]];
-			if(e.to==s)
-			{
-				res=e.flow;
-				e.flow=edge[mp[t][i]^1].flow=0;
-				e.cap=edge[mp[t][i]^1].cap=0;
-			}
-		}
-		res-=dinic(t,s);
+		type res=edge[m-2].flow;
+		edge[m-2].flow=edge[m-1].flow=0;
+		edge[m-2].cap=edge[m-1].cap=0;
 		return res;
 	}
 	type max_flow(int _s,int _t)
 	{
-		int i;
-		s=s1;
-		t=t1;
-		for(i=0;i<s1;i++)
-		{
-			if(in[i]>out[i]) add_edge(s,i,0,in[i]-out[i]);
-			else if(in[i]<out[i]) add_edge(i,t,0,out[i]-in[i]);
-		}
-		add_edge(_t,_s,0,inf);
-		dinic(s,t);
-		for(i=0;i<mp[s].size();i++)
-		{
-			node &e=edge[mp[s][i]];
-			if(e.cap-e.flow!=0) return -1;
-		}
-		s=_s;
-		t=_t;
-		type res;
-		for(i=0;i<mp[t].size();i++)
-		{
-			node &e=edge[mp[t][i]];
-			if(e.to==s)
-			{
-				res=e.flow;
-				e.flow=edge[mp[t][i]^1].flow=0;
-				e.cap=edge[mp[t][i]^1].cap=0;
-			}
-		}
-		res+=dinic(s,t);
-		return res;
+		type res=work(_s,_t);
+		if(res==-inf) return -inf;
+		return res+dinic(_s,_t);
+	}
+	type min_flow(int _s,int _t)
+	{
+		type res=work(_s,_t);
+		if(res==-inf) return -inf;
+		return res-dinic(_t,_s);
 	}
 	#undef type
 }dc; 
 /*
 dc.init(n);
 dc.add_edge(a,b,lcap,rcap); a,b: 1~n
-dc.min_flow(s,t);
 dc.max_flow(s,t);
+dc.min_flow(s,t);
+return -inf: no solution
 */

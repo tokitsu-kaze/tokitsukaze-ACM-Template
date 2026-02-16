@@ -2,7 +2,7 @@ struct Difference_Constraints
 {
 	#define type int
 	static const int inf=INF;
-	static const int N=5005;
+	static const int N=;
 	vector<pair<int,type> > mp[N];
 	type dis[N];
 	int n,s,vis[N],cnt[N];
@@ -11,7 +11,6 @@ struct Difference_Constraints
 		s=_n+1;
 		n=s;
 		for(int i=0;i<=n;i++) mp[i].clear();
-		
 	}
 	void add_edge(int x,int y,type v){mp[x].push_back({y,v});}
 	bool work()

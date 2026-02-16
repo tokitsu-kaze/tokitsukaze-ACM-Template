@@ -12,7 +12,7 @@ struct Strongly_Connected_Components
 		low[x]=dfn[x]=++tot;
 		for(auto &to:mp[x])
 		{
-			if(!dfn[to])
+			if(!dfn[to]) // dfn must be cleared
 			{
 				dfs(to);
 				low[x]=min(low[x],low[to]);
@@ -35,7 +35,7 @@ struct Strongly_Connected_Components
 	{
 		int i;
 		mp=_mp;
-		for(i=1;i<=n;i++) col[i]=sz[i]=flag[i]=0;
+		for(i=1;i<=n;i++) col[i]=sz[i]=flag[i]=dfn[i]=0;
 		scc_cnt=top=tot=0;
 		for(i=1;i<=n;i++)
 		{

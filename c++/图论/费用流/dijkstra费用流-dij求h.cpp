@@ -21,7 +21,7 @@ struct MCMF_dij
 		for(int i=0;i<=n;i++) mp[i].clear();
 		edge.clear();
 	}
-	void add_edge(int from,int to,type cap,type cost=0)
+	void add_edge(int from,int to,type cap,type cost)
 	{
 		edge.push_back(node(from,to,cap,cost));
 		edge.push_back(node(to,from,0,-cost));

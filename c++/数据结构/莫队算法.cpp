@@ -32,20 +32,20 @@ struct MO_Algorithm
 		l=1;
 		r=0;
 		res=0;
-		for(auto &q:qst)
+		for(auto &qq:qst)
 		{
-			while(l>q.l) add(--l);
-			while(r<q.r) add(++r);
-			while(l<q.l) del(l++);
-			while(r>q.r) del(r--);
-			ans[q.id]=res;
+			while(l>qs.l) add(--l);
+			while(r<qs.r) add(++r);
+			while(l<qs.l) del(l++);
+			while(r>qs.r) del(r--);
+			ans[qs.id]=res;
 		}
 	}
 	#undef type
 }mo;
 /*
-O(n*sqrt(n))
+O(n*sqrt(q))
 mo.init(n,q);
-mo.add_qst(l,r,id);
+mo.add_qst({l,r,id});
 mo.work();
 */

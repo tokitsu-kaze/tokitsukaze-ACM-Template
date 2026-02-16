@@ -39,4 +39,4 @@ struct ST_table
 	type ask_max(int l,int r){return v[ask_pmax(l,r)];}
 	type ask_min(int l,int r){return v[ask_pmin(l,r)];}
 	#undef type
-}rmq;
+}st;

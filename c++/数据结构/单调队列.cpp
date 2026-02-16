@@ -9,7 +9,7 @@ struct Monotone_queue
 		l[0]=r[0]=0;
 		l[1]=r[1]=0;
 	}
-	void insert(type x,int pos)
+	void insert(int pos,type x)
 	{
 		while(r[0]-l[0]&&v[r[0]-1][0]>=x) r[0]--;
 		v[r[0]][0]=x;
