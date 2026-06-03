@@ -1,8 +1,11 @@
 const val LOG=20
+var mp=Array(1){mutableListOf<Int>()}
 var fa=Array(1){IntArray(1)}
+var dep=IntArray(1)
 fun dfs(x:Int,pre:Int)
 {
 	fa[0][x]=pre
+	dep[x]=dep[pre]+1
 	for(i in 1..LOG-1) fa[i][x]=fa[i-1][fa[i-1][x]]
 	for(to in mp[x])
 	{

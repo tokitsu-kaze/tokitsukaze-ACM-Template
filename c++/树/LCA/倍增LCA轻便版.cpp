@@ -46,6 +46,7 @@ struct LCA
 		}
 		return fa[0][x];
 	}
+	int get_len(int a,int b){return dep[a]+dep[b]-2*dep[lca(a,b)];}
 }lca;
 /*
 O(nlogn)-O(logn)

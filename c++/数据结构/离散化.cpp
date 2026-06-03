@@ -6,7 +6,7 @@ struct Discretization
 	void init(){a.clear();}
 	void add(type x){a.push_back(x);}
 	void work(){sort(all(a));a.resize(unique(all(a))-a.begin());}
-	int get_pos(type x){return lower_bound(all(a),x)-a.begin()+1;}
+	int get_pos(type x){return upper_bound(all(a),x)-a.begin();} // <= x
 	type get_val(int pos){return a[pos-1];}
 	int size(){return a.size();}
 	#undef type

@@ -6,10 +6,10 @@ struct Treap
 	{
 		int ch[2],fix,sz,cnt;
 		type v,sum;
-		node(){sum=0;}
+		node(){}
 		node(type x,int _sz)
 		{
-			v=x;
+			v=sum=x;
 			fix=rand();
 			sz=cnt=_sz;
 			ch[0]=ch[1]=0;

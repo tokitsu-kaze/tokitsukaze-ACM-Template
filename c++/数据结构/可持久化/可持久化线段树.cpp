@@ -46,8 +46,9 @@ struct Persistent_Segment_Tree
 		if(tmp>=k) return kth_small(l,mid,ls[id],ls[pre],k);
 		else return kth_small(mid+1,r,rs[id],rs[pre],k-tmp);
 	}
-	void update_ver(int now_ver,int pre_ver,int pos,type v)
+	void create_ver(int now_ver,int pre_ver,int pos,type v)
 	{
+		root[now_ver]=0;
 		ql=qr=pos;
 		qv=v;
 		update(1,n,root[now_ver],root[pre_ver]);
@@ -56,10 +57,13 @@ struct Persistent_Segment_Tree
 	{
 		root[now_ver]=root[pre_ver];
 	}
-	void create_ver(int now_ver,int pre_ver,int pos,type v)
+	void update_ver(int now_ver,int pos,type v)
 	{
+		int now_root=root[now_ver];
 		root[now_ver]=0;
-		update_ver(now_ver,pre_ver,pos,v);
+		ql=qr=pos;
+		qv=v;
+		update(1,n,root[now_ver],now_root);
 	}
 	int ask_kth_small(int l,int r,int k)
 	{
@@ -79,6 +83,7 @@ struct Persistent_Segment_Tree
 tr.init(n);
 tr.create_ver(now_ver,pre_ver,pos,v);
 tr.copy_ver(now_ver,pre_ver);
+tr.update_ver(now_ver,pos,v);
 tr.ask_kth_small(l,r,k);
 tr.ask_valsum(l,r,val_l,val_r);
 */

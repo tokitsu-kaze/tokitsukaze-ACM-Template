@@ -6,10 +6,11 @@ struct Dijkstra
 	{
 		int id;
 		type v;
-		friend bool operator <(node a,node b){return a.v>b.v;}
+		friend bool operator < (node a,node b){return a.v>b.v;}
 	};
+	struct edge{int to;type w;};
 	static const int N=MAX;
-	vector<node> mp[N];
+	vector<edge> mp[N];
 	type dis[N];
 	int n,vis[N];
 	void init(int _n)
@@ -38,12 +39,12 @@ struct Dijkstra
 			vis[t.id]=1;// this node has already been extended
 			for(auto &it:mp[t.id])
 			{
-				to=it.id;
-				w=it.v;
+				to=it.to;
+				w=it.w;
 				if(dis[to]>dis[t.id]+w)
 				{
 					dis[to]=dis[t.id]+w;
-					if(!vis[to]) q.push({to,dis[to]});
+					q.push({to,dis[to]});
 				}
 			}
 		}

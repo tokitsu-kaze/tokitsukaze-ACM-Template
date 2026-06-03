@@ -1,4 +1,3 @@
-const ll mod=1e9+7;
 struct Matrix
 {
 	#define type ll
@@ -30,10 +29,9 @@ struct Matrix
 		{
 			for(i=0;i<n;i++)
 			{
-				if(!c[i][k]) continue;
 				for(j=0;j<n;j++)
 				{
-					res.c[i][j]=(res.c[i][j]+1LL*c[i][k]*b.c[k][j])%mod;
+					res.c[i][j]=min(res.c[i][j],c[i][k]+b.c[k][j]);
 				}
 			}
 		}
@@ -50,17 +48,5 @@ struct Matrix
 			}
 		}
 	}
+	#undef type
 };
-Matrix matqpow(Matrix a,ll b)
-{
-	Matrix res(a.n);
-	res.init_identity_matrix(1);
-	while(b)
-	{
-		if(b&1) res=res*a;
-		a=a*a;
-		b>>=1;
-	}
-	return res;
-}
-

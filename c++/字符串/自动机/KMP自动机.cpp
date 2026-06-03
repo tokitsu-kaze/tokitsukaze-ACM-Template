@@ -2,7 +2,7 @@ struct KMP_Automaton
 {
 	#define type char
 	static const int K=;
-	int nex[MAX],len,lst[MAX][K];
+	int nex[MAX],len,fail[MAX][K];
 	type t[MAX];
 	int get_id(char c){return c-;} //may need change
 	void get_next(type *s,int n)
@@ -19,11 +19,11 @@ struct KMP_Automaton
 			if(t[j+1]==s[i]) j++;
 			nex[i]=j;
 		}
-		memset(lst[0],0,sizeof lst[0]);
-		for(i=1;i<=len;i++)
+		memset(fail[0],0,sizeof fail[0]);
+		for(i=0;i<=len;i++)
 		{
-			for(k=0;k<K;k++) lst[i][k]=lst[nex[i]][k];
-			if(i+1<=len) lst[i][get_id(s[i+1])]=i;
+			for(k=0;k<K;k++) fail[i][k]=fail[nex[i]][k];
+			if(i+1<=len) fail[i][get_id(s[i+1])]=i;
 		}
 	}
 	vector<int> match(type *s,int n)
@@ -32,7 +32,7 @@ struct KMP_Automaton
 		vector<int> res;
 		for(i=1,j=0;i<=n;i++)
 		{
-			j=lst[j][get_id(s[i])];
+			j=fail[j][get_id(s[i])];
 			if(t[j+1]==s[i]) j++;
 			if(j==len)
 			{
@@ -42,9 +42,24 @@ struct KMP_Automaton
 		}
 		return res;
 	}
+	Matrix get_mat()
+	{
+		int i,j,to;
+		Matrix a(len,0);
+		for(i=0;i<len;i++)
+		{
+			for(j=0;j<K;j++)
+			{
+				to=fail[i][j];
+				if(get_id(t[to+1])==j) to++;
+				a.c[i][to]++;
+			}
+		}
+		return a;
+	}
 	#undef type
-}kmp;
+}kmpam;
 /*
-kmp.get_next(t,len); // t[1..len]
-kmp.match(s,n); // s[1..n] return all pos t in s 
+kmpam.get_next(t,len); // t[1..len]
+kmpam.match(s,n); // s[1..n] return all pos t in s 
 */

@@ -31,4 +31,4 @@ namespace DIGDP
 		return dfs(tot-1,1,0,1);
 	}
 }
-	
+

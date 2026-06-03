@@ -16,6 +16,7 @@ struct Manacher
 				//palindrome substring s[i-p[i]-1,i+p[i]+1]
 				p[i]++;
 			}
+			//palindrome substring s[i-p[i],i+p[i]]
 			if(i+p[i]>r)
 			{
 				r=i+p[i];
@@ -34,6 +35,7 @@ struct Manacher
 				//palindrome substring s[i-p[i]-1,i+p[i]]
 				p[i]++;
 			}
+			//palindrome substring s[i-p[i],i+p[i]-1]
 			if(i+p[i]-1>r)
 			{
 				r=i+p[i]-1;
